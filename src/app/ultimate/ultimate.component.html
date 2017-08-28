@@ -23,14 +23,21 @@
   </div>
   <div class="bar">
     <p>Click below to get your FREE ebook that will transform your body and your life!</p>
-    <button>GET THE FREE EBOOK</button>
+    <button (click)="showForm = true">GET THE FREE EBOOK</button>
   </div>
 </div>
-<div class="modal-background">
-  <div class="form">
+<div class="modal-background" *ngIf="showForm" (click)="showForm=false">
+  <form (ngSubmit)="onSubmit(ultimateForm)" #ultimateForm="ngForm" (click)="stopPropagation($event)">
+    <i class="fa fa-window-close-o" aria-hidden="true" (click)="showForm=false"></i>
     <p>Enter your name and email below to get the Ultimate Body Transformation ebook!</p>
-    <input type="text" placeholder="First Name">
-    <input type="text" placeholder="Email">
-    <button>Yes! Send me the free ebook!</button>
-  </div>
+    <input type="text" placeholder="First Name" required [(ngModel)]="name" name="name" autofocus #fname="ngModel">
+    <div [hidden]="!ultimateForm.submitted || fname.valid" class="warning">
+      <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Please enter your name
+    </div>
+    <input type="email" placeholder="Email" required [(ngModel)]="email" name="email" ngModel email #eMail="ngModel">
+    <div [hidden]="!ultimateForm.submitted || eMail.valid" class="warning">
+      <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Please enter your email
+    </div>
+    <button type="submit">Yes! Send me the free ebook!</button>
+  </form>
 </div>
