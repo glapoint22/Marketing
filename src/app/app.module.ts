@@ -6,11 +6,19 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UltimateComponent } from './ultimate/ultimate.component';
+import { MailComponent } from './mail/mail.component';
+import { LoadingComponent } from './loading/loading.component';
+import { PreferencesComponent } from './preferences/preferences.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UltimateComponent
+    UltimateComponent,
+    MailComponent,
+    LoadingComponent,
+    PreferencesComponent,
+    ThankYouComponent
   ],
   imports: [
     BrowserModule,
