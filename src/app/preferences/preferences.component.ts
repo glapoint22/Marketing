@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'preferences',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./preferences.component.scss']
 })
 export class PreferencesComponent implements OnInit {
-
+  @Input() height: string = '100%';
   constructor() { }
 
   ngOnInit() {

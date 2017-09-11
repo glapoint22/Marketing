@@ -1,34 +1,176 @@
-<div class="title-bar">
-  Email Preferences
+<div class="container" [style.minHeight]="height">
+  <div class="title-bar">
+    Email Preferences
+  </div>
+
+
+  <form (ngSubmit)="onSubmit(preferencesForm)" #preferencesForm="ngForm">
+    <h3>Personal Information:</h3>
+
+    <input type="text" placeholder="First Name" required [(ngModel)]="name" name="name" autofocus #fname="ngModel">
+    <input type="email" placeholder="Email" required [(ngModel)]="email" name="email" ngModel email #eMail="ngModel">
+    
+    <!-- <div [hidden]="!preferencesForm.submitted || fname.valid" class="warning">
+      <i class="fa fa-exclamation-circle" aria-hidden="true"> Please enter your name</i>
+    </div> -->
+    
+    
+    
+    
+    <!-- <div [hidden]="!preferencesForm.submitted || eMail.valid" class="warning warning-email">
+        <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Please enter your email
+    </div> -->
+
+    <h3>How often to send you mail:</h3>
+    <input type="radio" name="emailSendFrequency" value="1" checked> Daily<br>
+    <input type="radio" name="emailSendFrequency" value="3"> Twice a week<br>
+    <input type="radio" name="emailSendFrequency" value="7"> Once a week<br>
+    <input type="radio" name="emailSendFrequency" value="14"> Twice a month<br>
+    <input type="radio" name="emailSendFrequency" value="30"> Once a month<br>
+    <input type="radio" name="emailSendFrequency" value="0"> Unsubscribe to all subscriptions<br>
+    <br>
+    <h3>
+      Other subscriptions you might like to subscribe to:
+    </h3>
+    <div class="message">
+      *Check or uncheck to subscribe or unsubscribe, respectively
+    </div>
+    
+
+    <ul>
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+
+      <li>
+        <h4>Health & Fitness</h4>      
+        <input type="checkbox" name="subscription" value="2"> Wealth<br>
+        <input type="checkbox" name="subscription" value="3"> Love<br>
+        <input type="checkbox" name="subscription" value="4"> Gaming<br>
+      </li>
+      
+
+      
+      
+
+     
+      
+
+      
+
+    </ul>
+
+    
+
+    
+
+
+
+
+    <button type="submit">Submit</button>
+  </form>
 </div>
-
-<form (ngSubmit)="onSubmit(preferencesForm)" #preferencesForm="ngForm">
-  
-  
-  <input type="text" placeholder="First Name" required [(ngModel)]="name" name="name" autofocus #fname="ngModel">
-  <div [hidden]="!preferencesForm.submitted || fname.valid" class="warning">
-    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Please enter your name
-  </div>
-  <input type="email" placeholder="Email" required [(ngModel)]="email" name="email" ngModel email #eMail="ngModel">
-  <div [hidden]="!preferencesForm.submitted || eMail.valid" class="warning">
-    <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Please enter your email
-  </div>
-  <br>
-  <input type="radio" name="emailSendFrequency" value="1" checked> Daily<br>
-  <input type="radio" name="emailSendFrequency" value="3"> Twice a week<br>
-  <input type="radio" name="emailSendFrequency" value="7"> Once a week<br>
-  <input type="radio" name="emailSendFrequency" value="14"> Twice a month<br>
-  <input type="radio" name="emailSendFrequency" value="30"> Once a month<br>
-  <input type="radio" name="emailSendFrequency" value="0"> Unsubscribe<br>
-
-  <br>
-  <input type="checkbox" name="subscription" value="1"> Health & Fitness<br>
-  <input type="checkbox" name="subscription" value="2"> Wealth<br>
-  <input type="checkbox" name="subscription" value="3"> Love<br>
-  <input type="checkbox" name="subscription" value="4"> Gaming<br>
-  
-  
-  
-
-  <button type="submit">Submit</button>
-</form>
