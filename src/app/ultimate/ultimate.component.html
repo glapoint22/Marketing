@@ -31,7 +31,7 @@
   <form (ngSubmit)="onSubmit(ultimateForm)" #ultimateForm="ngForm" (click)="stopPropagation($event)">
     <i class="fa fa-window-close-o" aria-hidden="true" (click)="showForm=false"></i>
     <p>Enter your name and email below to get the Ultimate Body Transformation ebook!</p>
-    <input type="text" placeholder="First Name" required [(ngModel)]="name" name="name" autofocus #fname="ngModel">
+    <input type="text" placeholder="First Name" required [(ngModel)]="name" name="name" autofocus #fname="ngModel" maxlength="10">
     <div [hidden]="!ultimateForm.submitted || fname.valid" class="warning">
       <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Please enter your name
     </div>

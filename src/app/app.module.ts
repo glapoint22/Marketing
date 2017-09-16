@@ -11,6 +11,8 @@ import { LoadingComponent } from './loading/loading.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 
+import { DataService } from "./data.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,7 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

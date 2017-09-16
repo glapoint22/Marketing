@@ -4,6 +4,7 @@ import { Http, Response } from "@angular/http";
 import { HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
+import { DataService } from "../data.service";
 
 @Component({
   selector: 'ultimate',
@@ -16,7 +17,7 @@ export class UltimateComponent{
   public name: string;
   public email: string;
 
-  constructor(private http: Http, private router: Router){}
+  constructor(private http: Http, private router: Router, private dataService: DataService){}
 
   onSubmit(form): void{
     if(form.form.status === 'VALID'){
@@ -31,13 +32,13 @@ export class UltimateComponent{
       this.http.post('api/Customers', body)
         .map((response: Response) => response.json())
         .subscribe((response: Response) => {
-            response
+            this.dataService.data =  response
           }, error => {
             console.log(error);
           },
           () => {
             this.isLoading = false;
-            this.router.navigate(['/thank-you'])
+            this.router.navigate(['/thank-you']);
           }
         );
     }

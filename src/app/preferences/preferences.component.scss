@@ -25,11 +25,9 @@ form{
     padding-top: 10px;
     margin-bottom: 20px;
 }
-
 input[type=radio]{
-    margin: 0 0 0 20px;
+    margin: 0 0 0 10px;
 }
-
 input[type=text], input[type=email]{
     width: 320px;
     height: 25px;
@@ -39,20 +37,17 @@ input[type=text], input[type=email]{
     outline: 1px solid #b57718;
 }
 input[type=checkbox]{
-    margin-left: 25px;
+    margin-left: 10px;
 }
-
 h3{
     margin: 5px 0 5px 10px;
     text-align: left;
     color: #b57718;
 }
-
 h4{
-    margin: 0 0 0 10px;
-    color: #dcdcdc;
+    margin: 0 52px 0 10px;
+    color: #b57718;
 }
-
 ul{
     list-style: none; 
     padding: 0; 
@@ -60,16 +55,17 @@ ul{
 }
 li{
     display: inline-table; 
-    margin: 0 20px 20px 10px;
+    margin: 10px 20px 10px 20px;
+    width: 320px;
 }
 button{
     margin: 0 0 5px 25px;
     position: relative;
-    top: -16px;
+    top: -10px;
 }
 .message{
     color: #daab64;
-    margin: -6px 0 10px 10px;
+    margin: -6px 10px 10px 10px;
     font-size: 13px;
 }
 @media screen and (max-width: 1080px) {
@@ -80,8 +76,17 @@ button{
         width: 290px;
     }
 }
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 360px) {
     input[type=text], input[type=email]{
         width: 82vw;
+    }
+    input[type=checkbox]{
+        margin-left: 0;
+    }
+    h4{
+        margin-left: 0;
+    }
+    button{
+        margin-left: 20px;
     }
 }

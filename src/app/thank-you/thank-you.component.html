@@ -1,17 +1,16 @@
 <div class="container">
-  <h1>
-    Thank you, WWWWWWWWWW!
-  </h1>
-  <p>
-    An email has been sent to <b><i>glapoint22@gmail.com</i></b> where you will be able to download your <b><i>Ultimate Body Transformation eBook</i></b>.
-    If you don’t see your new email, check your spam folder and please be sure to whitelist the p2pMarketing email address.
-    I have more exciting offers I'd love to send you, but I don't want to spam your inbox. Below are your email preferences
-    where you can set how often I will send you mail. You will also be able to update your personal information and subscribe
-    to other exciting offers. You can access your email preferences at any time by clicking on the email preferences link
-    at the bottom of every email I send you.
-  </p>
+  <div *ngIf="customer">
+    <h1>
+      Thank you, {{customer.name}}!
+    </h1>
+    <p>
+      An email has been sent to <b><i>{{customer.email}}</i></b> where you will be able to download your <b><i>{{leadMagnet}}</i></b>.
+      If you don’t see your new email, check your spam folder and please be sure to whitelist the p2pMarketing email address.
+      I have more exciting offers I'd love to send you, but I don't want to spam your inbox. Below are your email preferences
+      where you can set how often I will send you mail. You will also be able to update your personal information and subscribe
+      to other exciting offers. You can access your email preferences at any time by clicking on the email preferences link
+      at the bottom of every email I send you.
+    </p>
+  </div>
   <preferences [height]="'0%'"></preferences>
 </div>
-
-<!-- <preferences></preferences> -->
-
