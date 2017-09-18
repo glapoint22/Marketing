@@ -1,4 +1,4 @@
-<div class="container" [style.minHeight]="height" *ngIf="customer">
+<div class="container" [style.minHeight]="height" *ngIf="subscriptions">
   <!-- Title Bar -->
   <div class="title-bar">
     Email Preferences
@@ -8,19 +8,19 @@
   <form (ngSubmit)="onSubmit(preferencesForm)" #preferencesForm="ngForm">
     <h3>Personal Information:</h3>
     <!-- First Name -->
-    <input type="text" placeholder="First Name" required [(ngModel)]="customer.name" name="name" autofocus #fname="ngModel" maxlength="10">
+    <input type="text" placeholder="First Name" required [(ngModel)]="name" name="name" autofocus maxlength="10" (change)="onUpdate()">
 
     <!-- Last Name -->
-    <input type="email" placeholder="Email" required [(ngModel)]="customer.email" name="email" ngModel email #eMail="ngModel">
+    <input type="email" placeholder="Email" required [(ngModel)]="email" name="email" (change)="onUpdate()">
 
     <!-- Email Send Frequency -->
     <h3>How often to send you mail:</h3>
-    <input type="radio" name="emailSendFrequency" [value]=1 [(ngModel)]="customer.emailSendFrequency"> Daily<br>
-    <input type="radio" name="emailSendFrequency" [value]=3 [(ngModel)]="customer.emailSendFrequency"> Twice a week<br>
-    <input type="radio" name="emailSendFrequency" [value]=7 [(ngModel)]="customer.emailSendFrequency"> Once a week<br>
-    <input type="radio" name="emailSendFrequency" [value]=14 [(ngModel)]="customer.emailSendFrequency"> Twice a month<br>
-    <input type="radio" name="emailSendFrequency" [value]=30 [(ngModel)]="customer.emailSendFrequency"> Once a month<br>
-    <input type="radio" name="emailSendFrequency" [value]=0 [(ngModel)]="customer.emailSendFrequency"> Unsubscribe to all subscriptions<br>
+    <input type="radio" name="emailSendFrequency" [value]=1 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Daily<br>
+    <input type="radio" name="emailSendFrequency" [value]=3 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Twice a week<br>
+    <input type="radio" name="emailSendFrequency" [value]=7 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Once a week<br>
+    <input type="radio" name="emailSendFrequency" [value]=14 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Twice a month<br>
+    <input type="radio" name="emailSendFrequency" [value]=30 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Once a month<br>
+    <input type="radio" name="emailSendFrequency" [value]=0 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Unsubscribe to all subscriptions<br>
     <br>
     
     <!-- Other subscriptions -->
@@ -29,12 +29,12 @@
       <li *ngFor="let subscription of subscriptions">
         <h4>{{subscription.name}}</h4>
         <div *ngFor="let niche of subscription.niches">
-          <input type="checkbox" [checked]="niche.isSubscribed" (change)="updateSubscription(niche)" [disabled]="customer.emailSendFrequency === 0">{{niche.name}}<br>
+          <input type="checkbox" [checked]="niche.isSubscribed" (change)="onUpdateSubscription(niche)" [disabled]="emailSendFrequency === 0">{{niche.name}}<br>
         </div>
       </li>
     </ul>
 
     <!-- Submit button -->
-    <button type="submit">Submit</button>
+    <button type="submit" [disabled]="!isUpdated">Submit</button>
   </form>
 </div>

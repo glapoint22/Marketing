@@ -29,7 +29,7 @@ export class UltimateComponent{
           leadPage: 'UltimateBodyTransformation'
       }
 
-      this.http.post('api/Customers', body)
+      this.http.post('api/Subscriptions', body)
         .map((response: Response) => response.json())
         .subscribe((response: Response) => {
             this.dataService.data =  response
