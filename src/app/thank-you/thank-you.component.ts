@@ -14,7 +14,7 @@ export class ThankYouComponent implements OnInit {
 
   ngOnInit() {
     if(this.dataService.data){
-      this.customer = this.dataService.data.customer;
+      this.customer = this.dataService.data.preferences.customer;
       this.leadMagnet = this.dataService.data.leadMagnet;
     }
   }
