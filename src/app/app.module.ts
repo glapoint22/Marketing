@@ -12,6 +12,8 @@ import { PreferencesComponent } from './preferences/preferences.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 
 import { DataService } from "./data.service";
+import { LeadsComponent } from './leads/leads.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { DataService } from "./data.service";
     MailComponent,
     LoadingComponent,
     PreferencesComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    LeadsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

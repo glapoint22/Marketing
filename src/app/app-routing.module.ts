@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UltimateComponent } from "./ultimate/ultimate.component";
+import { HomeComponent } from "./home/home.component";
 import { MailComponent } from "./mail/mail.component";
 import { ThankYouComponent } from "./thank-you/thank-you.component";
 import { PreferencesComponent } from "./preferences/preferences.component";
+import { LeadsComponent } from "./leads/leads.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: UltimateComponent
+    component: HomeComponent
   },
   {
     path: 'mail',
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'preferences',
     component: PreferencesComponent
+  },
+  {
+    path: ':leadPage',
+    component: LeadsComponent
   }
 ];
 
