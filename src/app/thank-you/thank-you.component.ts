@@ -18,5 +18,4 @@ export class ThankYouComponent implements OnInit {
       this.leadMagnet = this.dataService.data.leadMagnet;
     }
   }
-
 }

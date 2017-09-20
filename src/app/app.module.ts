@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UltimateComponent } from './ultimate/ultimate.component';
 import { MailComponent } from './mail/mail.component';
 import { LoadingComponent } from './loading/loading.component';
 import { PreferencesComponent } from './preferences/preferences.component';
@@ -18,7 +17,6 @@ import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
-    UltimateComponent,
     MailComponent,
     LoadingComponent,
     PreferencesComponent,

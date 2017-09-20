@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Http, Response, RequestOptions, URLSearchParams } from "@angular/http";
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DataService } from "../data.service";
 
 @Component({
   selector: 'mail',
@@ -11,27 +11,16 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class MailComponent implements OnInit {
   public html: SafeHtml;
 
-  constructor(private route: ActivatedRoute, private http: Http, private sanitizer: DomSanitizer) { }
+  constructor(private dataService: DataService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(queryParams => {
-      let emailId = queryParams.get('eid');
-      let customerId = queryParams.get('cid');
+      let emailId = queryParams.get('eid'), customerId = queryParams.get('cid');
 
-      let params: URLSearchParams = new URLSearchParams();
-      params.set('emailId', emailId);
-      params.set('customerId', customerId);
-      
-      let requestOptions = new RequestOptions();
-      requestOptions.search = params;
-      
-
-      this.http.get('api/Mail', requestOptions)
-      .map((response: Response) => response.json())
-      .subscribe((response) => {
+      this.dataService.get('api/Mail', [{key: 'emailId', value: emailId}, {key: 'customerId', value: customerId}])
+        .subscribe((response: any) => {
           this.html = this.sanitizer.bypassSecurityTrustHtml(response) ;
-        }
-      );
+        });
     });
   }
 }

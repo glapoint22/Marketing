@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { HostListener } from '@angular/core';
-import { Http, Response, RequestOptions, URLSearchParams } from "@angular/http";
-import { HttpParams } from '@angular/common/http';
-import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
 import { DataService } from "../data.service";
 import { ActivatedRoute } from '@angular/router';
@@ -30,21 +27,15 @@ export class LeadsComponent implements OnInit {
   public email: string;
   public leadId: number;
 
-  constructor(private http: Http, private router: Router, private dataService: DataService, private sanitizer: DomSanitizer, private route: ActivatedRoute) { }
+  constructor(private router: Router, private dataService: DataService, private sanitizer: DomSanitizer, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(param => {
-      let leadPage = param.get('leadPage'),
-        params: URLSearchParams = new URLSearchParams(),
-        requestOptions = new RequestOptions();
-      
-      //Set the request options
-      params.set('leadPage', leadPage);
-      requestOptions.params = params;
+      let leadPage = param.get('leadPage');
 
-      this.http.get('api/Leads', requestOptions)
-      .map((response: Response) => response.json())
-      .subscribe((response) => {
+      //Get the lead page
+      this.dataService.get('api/Leads', [{key: 'leadPage', value: leadPage}])
+      .subscribe((response: any) => {
         this.mainStyle = this.sanitizer.bypassSecurityTrustStyle(response.mainStyle);
         this.image = response.image;
         this.text = this.sanitizer.bypassSecurityTrustHtml(response.text);
@@ -56,11 +47,8 @@ export class LeadsComponent implements OnInit {
         this.formButtonText = response.formButtonText;
         this.leadMagnet = response.leadMagnet;
         this.leadId = response.leadId;
-        }, error => {
-          console.log(error);
         }
       );
-      
     })
   }
 
@@ -75,14 +63,9 @@ export class LeadsComponent implements OnInit {
           leadMagnet: this.leadMagnet
       }
 
-      this.http.post('api/Subscriptions', body)
-        .map((response: Response) => response.json())
-        .subscribe((response: Response) => {
-            this.dataService.data =  response
-          }, error => {
-            console.log(error);
-          },
-          () => {
+      this.dataService.post('api/Subscriptions', body)
+        .subscribe((response: any) => {
+            this.dataService.data =  response;
             this.isLoading = false;
             this.router.navigate(['/thank-you']);
           }

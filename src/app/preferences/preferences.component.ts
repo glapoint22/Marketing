@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from "../data.service";
 import { Router } from '@angular/router';
-import { Http, Response, RequestOptions, URLSearchParams } from "@angular/http";
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -22,7 +21,7 @@ export class PreferencesComponent implements OnInit {
   public updatedSubscriptions: Array<any> = [];
   public isUpdated: boolean = false;
 
-  constructor(private dataService: DataService, private router: Router, private http: Http, private route: ActivatedRoute) { }
+  constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     if (this.dataService.data) {
@@ -31,7 +30,7 @@ export class PreferencesComponent implements OnInit {
     } else {
       this.route.queryParamMap.subscribe(queryParams => {
         //Get the customer id from the query params
-        let params: URLSearchParams = new URLSearchParams(), customerId = queryParams.get('cid'), requestOptions = new RequestOptions();
+        let customerId = queryParams.get('cid');
 
         //If customer id is null, navigate back to route
         if(customerId === null){
@@ -39,19 +38,11 @@ export class PreferencesComponent implements OnInit {
           return;
         }
         
-        //Set the request options
-        params.set('customerId', customerId);
-        requestOptions.search = params;
-
         //Get the preferences
-        this.http.get('api/Subscriptions', requestOptions)
-          .map((response: Response) => response.json())
-          .subscribe((response) => {
+        this.dataService.get('api/Subscriptions', [{key: 'customerId', value: customerId}])
+          .subscribe((response: any) => {
             this.init(response);
-            }, error => {
-              console.log(error);
-            }
-          );
+          });
       });
     }
   }
@@ -118,17 +109,9 @@ export class PreferencesComponent implements OnInit {
     };
 
     //Send the updated data
-    this.http.put('api/Subscriptions', preferences)
-      .map((response: Response) => response.json())
-      .subscribe((response: Response) => {
-        //this.dataService.data =  response
-      }, error => {
-        console.log(error);
-      },
-      () => {
-
+    this.dataService.put('api/Subscriptions', preferences)
+      .subscribe((response: any) => {
         //this.router.navigate(['/thank-you']);
-      }
-      );
+      });
   }
 }
