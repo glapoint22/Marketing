@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, URLSearchParams } from "@angular/http";
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/Observable/throw';
 
 @Injectable()
 export class DataService {
@@ -25,25 +23,17 @@ export class DataService {
 
     //Get the data
     return this.http.get(url, requestOptions)
-    .map((response: Response) => response.json())
-    .catch(this.handleError);
+                    .map((response: Response) => response.json())
   }
 
 
   post(url: string, body: any): Observable<Response>{
     return this.http.post(url, body)
-    .map((response: Response) => response.json())
-    .catch(this.handleError);
+                    .map((response: Response) => response.json())
   }
 
   put(url: string, body: any): Observable<Response>{
     return this.http.put(url, body)
-    .map((response: Response) => response.json())
-    .catch(this.handleError);
-  }
-
-  handleError(error: Response){
-    console.log(error);
-    return Observable.throw(error);
+                    .map((response: Response) => response.json())
   }
 }

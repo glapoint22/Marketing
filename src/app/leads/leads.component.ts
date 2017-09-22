@@ -47,8 +47,10 @@ export class LeadsComponent implements OnInit {
         this.formButtonText = response.formButtonText;
         this.leadMagnet = response.leadMagnet;
         this.leadId = response.leadId;
-        }
-      );
+        }, error => {
+          this.dataService.data = error;
+          this.router.navigate(['/error']);
+        });
     })
   }
 
@@ -68,8 +70,10 @@ export class LeadsComponent implements OnInit {
             this.dataService.data =  response;
             this.isLoading = false;
             this.router.navigate(['/thank-you']);
-          }
-        );
+          }, error => {
+            this.dataService.data = error;
+            this.router.navigate(['/error']);
+          });
     }
   }
 

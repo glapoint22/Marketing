@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { DataService } from "../data.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mail',
@@ -11,7 +12,7 @@ import { DataService } from "../data.service";
 export class MailComponent implements OnInit {
   public html: SafeHtml;
 
-  constructor(private dataService: DataService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
+  constructor(private dataService: DataService, private route: ActivatedRoute, private sanitizer: DomSanitizer, private router: Router) { }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(queryParams => {
@@ -20,6 +21,9 @@ export class MailComponent implements OnInit {
       this.dataService.get('api/Mail', [{key: 'emailId', value: emailId}, {key: 'customerId', value: customerId}])
         .subscribe((response: any) => {
           this.html = this.sanitizer.bypassSecurityTrustHtml(response) ;
+        }, error => {
+          this.dataService.data = error;
+          this.router.navigate(['/error']);
         });
     });
   }

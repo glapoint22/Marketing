@@ -5,6 +5,7 @@ import { MailComponent } from "./mail/mail.component";
 import { ThankYouComponent } from "./thank-you/thank-you.component";
 import { PreferencesComponent } from "./preferences/preferences.component";
 import { LeadsComponent } from "./leads/leads.component";
+import { ErrorComponent } from "./error/error.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'preferences',
     component: PreferencesComponent
+  },
+  {
+    path: 'error',
+    component: ErrorComponent
   },
   {
     path: ':leadPage',

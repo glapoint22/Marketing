@@ -13,6 +13,7 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
 import { DataService } from "./data.service";
 import { LeadsComponent } from './leads/leads.component';
 import { HomeComponent } from './home/home.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HomeComponent } from './home/home.component';
     PreferencesComponent,
     ThankYouComponent,
     LeadsComponent,
-    HomeComponent
+    HomeComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

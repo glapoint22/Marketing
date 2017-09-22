@@ -42,6 +42,9 @@ export class PreferencesComponent implements OnInit {
         this.dataService.get('api/Subscriptions', [{key: 'customerId', value: customerId}])
           .subscribe((response: any) => {
             this.init(response);
+          }, error => {
+            this.dataService.data = error;
+            this.router.navigate(['/error']);
           });
       });
     }
@@ -112,6 +115,9 @@ export class PreferencesComponent implements OnInit {
     this.dataService.put('api/Subscriptions', preferences)
       .subscribe((response: any) => {
         //this.router.navigate(['/thank-you']);
+      }, error => {
+        this.dataService.data = error;
+        this.router.navigate(['/error']);
       });
   }
 }
