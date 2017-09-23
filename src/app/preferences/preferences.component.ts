@@ -86,7 +86,7 @@ export class PreferencesComponent implements OnInit {
       this.updatedSubscriptions.push({
         subscriptionId: niche.subscriptionId,
         isSubscribed: niche.isSubscribed,
-        nicheId: niche.id,
+        subNicheId: niche.id,
         nicheName: niche.name
       });
     }
