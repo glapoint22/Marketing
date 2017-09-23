@@ -20,11 +20,12 @@ export class PreferencesComponent implements OnInit {
   public originalEmailSendFrequency: number;
   public updatedSubscriptions: Array<any> = [];
   public isUpdated: boolean = false;
+  public isLoading: boolean = false;
 
   constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if (this.dataService.data) {
+    if (this.dataService.data && this.dataService.data.preferences) {
       //Get the data from the data service
       this.init(this.dataService.data.preferences);
     } else {
@@ -85,13 +86,16 @@ export class PreferencesComponent implements OnInit {
       this.updatedSubscriptions.push({
         subscriptionId: niche.subscriptionId,
         isSubscribed: niche.isSubscribed,
-        nicheId: niche.id
+        nicheId: niche.id,
+        nicheName: niche.name
       });
     }
     this.onUpdate();
   }
 
   onSubmit(form) {
+    this.isLoading = true
+
     //Unsubscribing from all subscriptions
     if (this.emailSendFrequency === 0) {
       this.updatedSubscriptions = [];
@@ -106,7 +110,10 @@ export class PreferencesComponent implements OnInit {
         ID: this.customerId,
         Name: this.name,
         Email: this.email,
-        EmailSendFrequency: this.emailSendFrequency
+        EmailSendFrequency: this.emailSendFrequency,
+        originalName: this.originalName,
+        originalEmail: this.originalEmail,
+        originalEmailSendFrequency: this.originalEmailSendFrequency
       },
       updatedSubscriptions: this.updatedSubscriptions
     };
@@ -114,7 +121,8 @@ export class PreferencesComponent implements OnInit {
     //Send the updated data
     this.dataService.put('api/Subscriptions', preferences)
       .subscribe((response: any) => {
-        //this.router.navigate(['/thank-you']);
+        this.dataService.data = preferences;
+        this.router.navigate(['/confirm']);
       }, error => {
         this.dataService.data = error;
         this.router.navigate(['/error']);

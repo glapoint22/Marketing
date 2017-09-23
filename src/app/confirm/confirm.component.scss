@@ -1,0 +1,30 @@
+.main-container{
+    position:absolute;
+    width: 100%;
+    min-height: 100%;
+    background-color: #f5f5f5;
+    color: #353535;
+    font-size: 18px;
+}
+.content{
+    width: 600px;
+    margin: auto;
+    margin-top: 20px;
+}
+.thanks{
+    font-size: 25px;
+    font-weight: bold;
+}
+hr{
+    height: 3px;
+    background: #b57718;
+    border: none;
+}
+ul{
+    padding-left: 15px;
+}
+@media screen and (max-width: 600px) {
+    .content{
+        width: 90vw;
+    }
+}

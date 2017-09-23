@@ -6,6 +6,7 @@ import { ThankYouComponent } from "./thank-you/thank-you.component";
 import { PreferencesComponent } from "./preferences/preferences.component";
 import { LeadsComponent } from "./leads/leads.component";
 import { ErrorComponent } from "./error/error.component";
+import { ConfirmComponent } from "./confirm/confirm.component";
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'error',
     component: ErrorComponent
+  },
+  {
+    path: 'confirm',
+    component: ConfirmComponent
   },
   {
     path: ':leadPage',

@@ -14,6 +14,7 @@ import { DataService } from "./data.service";
 import { LeadsComponent } from './leads/leads.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ErrorComponent } from './error/error.component';
     ThankYouComponent,
     LeadsComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,

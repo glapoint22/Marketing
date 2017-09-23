@@ -1,0 +1,16 @@
+<div class="main-container">
+  <div class="content">
+    <div class="thanks">
+      Thanks, {{name}}!
+    </div>
+      <hr>
+    <div>
+      Here's a summary of your updated preferences for {{email}}:
+    </div>
+    <ul>
+      <li *ngFor="let item of preferenceList">
+        {{item}}
+      </li>
+    </ul>
+  </div>
+</div>

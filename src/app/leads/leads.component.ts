@@ -68,7 +68,6 @@ export class LeadsComponent implements OnInit {
       this.dataService.post('api/Subscriptions', body)
         .subscribe((response: any) => {
             this.dataService.data =  response;
-            this.isLoading = false;
             this.router.navigate(['/thank-you']);
           }, error => {
             this.dataService.data = error;

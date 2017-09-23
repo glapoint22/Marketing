@@ -1,4 +1,5 @@
-<div class="container" [style.minHeight]="height" *ngIf="subscriptions">
+<loading *ngIf="isLoading"></loading>
+<div class="container" [style.minHeight]="height" *ngIf="subscriptions && !isLoading">
   <!-- Title Bar -->
   <div class="title-bar">
     Email Preferences
