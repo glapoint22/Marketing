@@ -1,6 +1,6 @@
 {
    "/api": {
-      "target": "http://localhost:49699",
+      "target": "http://172.100.235.238/MarketingServer",
       "secure": false
    }
 }
