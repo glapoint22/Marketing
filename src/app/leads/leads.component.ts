@@ -25,7 +25,7 @@ export class LeadsComponent implements OnInit {
   public isLoading: boolean = false;
   public name: string;
   public email: string;
-  public leadId: number;
+  public nicheId: number;
 
   constructor(private router: Router, private dataService: DataService, private sanitizer: DomSanitizer, private route: ActivatedRoute) { }
 
@@ -46,7 +46,7 @@ export class LeadsComponent implements OnInit {
         this.buttonText = response.buttonText;
         this.formButtonText = response.formButtonText;
         this.leadMagnet = response.leadMagnet;
-        this.leadId = response.leadId;
+        this.nicheId = response.nicheId;
         }, error => {
           this.dataService.data = error;
           this.router.navigate(['/error']);
@@ -61,7 +61,7 @@ export class LeadsComponent implements OnInit {
       let body = {
           email: this.email,
           name: this.name,
-          leadId: this.leadId,
+          nicheId: this.nicheId,
           leadMagnet: this.leadMagnet
       }
 

@@ -26,6 +26,10 @@ export class DataService {
                     .map((response: Response) => response.json())
   }
 
+  get2(url: string): Observable<Response>{
+    return this.http.get(url)
+    .map((response: Response) => response.json())
+  }
 
   post(url: string, body: any): Observable<Response>{
     return this.http.post(url, body)
