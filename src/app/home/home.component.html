@@ -19,12 +19,10 @@
         </div>
     </div>
     <div class="banner-container">
-        <div class="slider">
-            <a *ngFor="let bannerImage of bannerImages" [href]="bannerImage.url"><img [src]="'assets/' + bannerImage.name"></a>
+        <div class="slider" [style.transform]="'translateX(' + translate + '%)'">
+            <a *ngFor="let bannerImage of bannerImages" [href]="bannerImage.url" [style.left.%]="bannerImage.pos"><img [src]="'assets/' + bannerImage.name"></a>
         </div>
-
-        <i class="arrow arrow-left" aria-hidden="true"></i>
-        <i class="arrow arrow-right" aria-hidden="true" (click)="onBannerArrowClick()"></i>
-        
+        <i class="arrow arrow-left" aria-hidden="true" (click)="moveSlider(1)"></i>
+        <i class="arrow arrow-right" aria-hidden="true" (click)="moveSlider(-1)"></i>
     </div>
 </div>
