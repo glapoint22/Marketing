@@ -1,28 +1,4 @@
-<!-- Temp select element to get width of categories select -->
-<select #tmpSelect style="padding-left: 5px; position: absolute; visibility: hidden">
-    <option [innerHtml]="selectedCategory.name" ></option>
-</select>
 <div class="main-container">
-    <div class="search-bar">
-        <div class="search-container">
-            <div class="category-select-container">
-                <select [style.width.px]="tmpSelect.offsetWidth" [(ngModel)]="selectedCategory">
-                    <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
-                </select>
-            </div>
-            <div class="input-container">
-                <input type="text">
-            </div>
-            <div class="button-container">
-                <button class="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
-            </div>
-        </div>
-    </div>
-    <div class="banner-container">
-        <div class="slider" [style.transform]="'translateX(' + translate + '%)'">
-            <a *ngFor="let bannerImage of bannerImages" [href]="bannerImage.url" [style.left.%]="bannerImage.pos"><img [src]="'assets/' + bannerImage.name"></a>
-        </div>
-        <i class="arrow arrow-left" aria-hidden="true" (click)="moveSlider(1)"></i>
-        <i class="arrow arrow-right" aria-hidden="true" (click)="moveSlider(-1)"></i>
-    </div>
+    <search-bar></search-bar>
+    <carousel></carousel>
 </div>

@@ -15,6 +15,8 @@ import { LeadsComponent } from './leads/leads.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ConfirmComponent } from './confirm/confirm.component';
     LeadsComponent,
     HomeComponent,
     ErrorComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    CarouselComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

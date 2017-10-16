@@ -1,0 +1,122 @@
+.carousel-container{
+    width: 1364px;
+    height: 300px;
+    margin: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    position:relative;
+    user-select: none;
+    a{
+        position: absolute;
+    }
+}
+.arrow{
+    background-image: url("/assets/arrows.png");
+    width: 34px;
+    height: 52px; 
+    position: absolute;
+    background-size: 68px 52px;
+    top: 124px;
+    cursor: pointer;
+}
+.arrow-left{
+    left: 0;
+    margin-left: 20px;
+}
+.arrow-right{
+    right: 0;
+    background-position: -34px 0;
+    margin-right: 20px;
+}
+.pagination-container{
+    position: relative;
+    display: table;
+    margin:auto;
+    top: 90%;
+    cursor: default;
+    ul{
+        list-style: none;
+        padding: 0;
+        margin:0;
+        li{
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+        }
+    }
+}
+.paginator{
+    border-radius: 50%;
+    margin: 0 10px 0 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+.play{
+    margin-top: -2px;
+    width: 0 !important;
+    height: 0 !important;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 10px solid #666;
+    cursor: pointer;
+}
+.pause{
+    color: #f5f5f5;
+    cursor: pointer;
+    font-size: 13px;
+}
+.shadow{
+    box-shadow: 0 0 1px rgba(0,0,0,.5), 1px 1px 3px rgba(0,0,0,.5);
+}
+@media screen and (max-width: 1364px) {
+    .carousel-container{
+        width: 100vw;
+    }
+    img{
+        width: 100vw;
+    }
+    .arrow{
+        top: 9vw;
+    }
+    .pagination-container{
+        top: 20vw;
+    }
+    
+}
+@media screen and (max-width: 800px) {
+    .arrow{
+        top: 8vw;
+    }
+    .pagination-container{
+        top: 19vw;
+    }
+}
+@media screen and (max-width: 700px) {
+    .arrow{
+        top: 7vw;
+    }
+    .pagination-container{
+        top: 18vw;
+    }
+}
+@media screen and (max-width: 500px) {
+    .arrow{
+        top: 5vw;
+    }
+    .pagination-container{
+        top: 17vw;
+    }
+}
+@media screen and (max-width: 360px) {
+    .arrow{
+        top: 4vw;
+    }
+    .pagination-container{
+        top: 16vw;
+    }
+}
+@media screen and (max-width: 320px) {
+    .arrow{
+        top: 3vw;
+    }
+}

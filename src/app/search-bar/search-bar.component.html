@@ -1,0 +1,19 @@
+<!-- Temp select element to get width of categories select -->
+<select #tmpSelect style="padding-left: 5px; position: absolute; visibility: hidden">
+  <option [innerHtml]="selectedCategory.name" ></option>
+</select>
+<div class="search-bar">
+  <div class="search-container">
+      <div class="category-select-container">
+          <select [style.width.px]="tmpSelect.offsetWidth" [(ngModel)]="selectedCategory">
+              <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
+          </select>
+      </div>
+      <div class="input-container">
+          <input type="text">
+      </div>
+      <div class="button-container">
+          <button class="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
+      </div>
+  </div>
+</div>
