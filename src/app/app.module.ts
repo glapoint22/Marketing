@@ -17,6 +17,7 @@ import { ErrorComponent } from './error/error.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { ProductsSliderComponent } from './products-slider/products-slider.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     ErrorComponent,
     ConfirmComponent,
     CarouselComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    ProductsSliderComponent
   ],
   imports: [
     BrowserModule,
