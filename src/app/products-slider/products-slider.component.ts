@@ -10,6 +10,14 @@ export class ProductsSliderComponent implements OnInit {
   private currentIndex = 0;
   private currentTranslation = 0;
 
+  public products: Array<any> = [
+    { "name": "2WeekDiet.gif", "url": "http://www.walmar.com" },
+    { "name": "2WeekDiet.gif", "url": "http://www.target.com" },
+    { "name": "2WeekDiet.gif", "url": "http://www.amazon.com" },
+    { "name": "2WeekDiet.gif", "url": "http://www.target.com" },
+    { "name": "2WeekDiet.gif", "url": "http://www.target.com" }
+  ];
+
   constructor() { }
 
   ngOnInit() {

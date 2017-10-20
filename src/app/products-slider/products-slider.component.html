@@ -1,117 +1,24 @@
-<div style="background: red; width: 1364px; height: 368px; margin: auto; overflow:hidden; position:relative" #container>
-  <div style="background: blue; width: 100%; height: 68px;">
-    <div style="line-height: 68px; font-size: 18px; text-align:center">Sponsored products you might like</div>
+<div class="products-slider-container" #container>
+  <div class="caption-container">
+    <div class="caption">Products you might like</div>
   </div>
-  <div style="top:0; width:50px; height:50px; background: orange; position:absolute" (click)="onArrowClick(container.clientWidth, slider.offsetWidth, products.children)"></div>
-  <div #slider style="transition: all 0.3s ease-in-out; background: green; white-space: nowrap; position:absolute" [style.transform]="'translateX(-' + translate + 'px)'" (init)="'Hello'">
-    
-    
-    <ul #products style="list-style: none;padding: 0;margin:0;">
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:auto; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:auto; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:226px; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:auto; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 183, 4); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:200px; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(205, 4, 223); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:auto; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:auto; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:auto; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:auto; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:100px; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
+  <div class="slider-container">
+    <div #slider class="slider" [style.transform]="'translateX(-' + translate + 'px)'">
+      <ul #list>
+        <li *ngFor="let product of products">
+          <a [href]="product.url">
+            <img [src]="'assets/' + product.name">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="arrow arrow-right" (click)="onArrowClick(container.clientWidth, slider.offsetWidth, list.children)">
+      <img src="/assets/arrows.png">
+    </div>
 
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:auto; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:auto; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:226px; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:auto; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:200px; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(219, 223, 4); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:auto; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:auto; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:auto; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:auto; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      <li style="display: inline-block; height: 300px; background: rgb(223, 4, 186); line-height: 300px; margin: 0 6px 0 0">
-        <a href="http://www.walmart.com">
-          <img src="assets/2WeekDiet.gif" style="width:100px; height:auto; max-width: 300px; max-height: 300px; vertical-align:middle">
-        </a>
-      </li>
-      
-      
+    <div class="arrow arrow-left" (click)="onArrowClick(container.clientWidth, slider.offsetWidth, list.children)">
+      <img src="/assets/arrows.png">
+    </div>
 
-
-    </ul>
   </div>
 </div>
