@@ -1,6 +1,6 @@
 <div class="carousel-container">
   <div [style.transition]="'all ' + speed + 's ' + curve" [style.transform]="'translateX(' + translate + '%)'" (transitionend)="transitionEnd()">
-      <a *ngFor="let carouselImage of carouselImages" [href]="carouselImage.url" [style.left.%]="carouselImage.pos"><img [src]="'assets/' + carouselImage.name"></a>
+      <a *ngFor="let carouselImage of carouselImages" [href]="carouselImage.url" [style.left.%]="carouselImage.pos"><img [src]="'assets/images/carousel/' + carouselImage.name"></a>
   </div>
   <i class="arrow arrow-left" aria-hidden="true" (click)="onArrowClick(1)"></i>
   <i class="arrow arrow-right" aria-hidden="true" (click)="onArrowClick(-1)"></i>
