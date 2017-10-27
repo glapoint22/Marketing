@@ -1,10 +1,10 @@
 .products-slider-container{
     position: relative;
     width: 1364px;
-    height: 500px;
+    height: 550px;
     margin: auto;
     overflow: hidden;
-    // background: #00ff4c;
+    // background: #e7e7e7;
 }
 .caption-container{
     width: 100%;
@@ -32,11 +32,9 @@ ul{
     display: flex;
     li{
         display: inline-block;
-        max-width: 300px;
         margin: 0 10px 0 0;
         text-align: center;
         position: relative;
-        // border: 1px solid #ab038f;
         a{
             height: 300px;
             line-height: 300px;
@@ -46,6 +44,7 @@ ul{
                 max-width: 300px;
                 max-height: 300px;
                 vertical-align: middle;
+                min-width: 230px;
             }
         }
         
@@ -60,22 +59,23 @@ ul{
     font-weight: bold;
     line-height: 30px;
     vertical-align:middle;
+    padding: 0 10px 0 10px;
 }
 .product-description{
     overflow-y: auto;
     text-align: center;
-    height: 80px;
+    height: 130px;
     white-space: normal;
     padding: 10px;
-    color: rgb(235, 235, 235);
-    background: #940381;
+    color: #171921;
+    background: #f3f3f3;
 }
 .arrow{
     width: 34px;
     height: 52px;
     position: absolute;
-    top: 50%;
-    background: rgba(121, 121, 121, 0.5);
+    top: 42%;
+    background: rgba(121, 121, 121, 0.7);
     overflow: hidden;
     cursor: pointer;
     img{
@@ -84,16 +84,12 @@ ul{
         
     }
 }
-
 .arrow-left{
-    // margin-left: -4px;
     img{
         left: 3px;
     }
 }
 .arrow-right{
-    // left: 100%;
-    // margin-left: -68px;
     right: 0;
     img{
         left: -36px;
@@ -101,16 +97,38 @@ ul{
 }
 .fa-play-circle{
     position: absolute;
-    font-size: 96px;
+    font-size: 60px;
     right: 0;
-    margin-right: 10px;
-    top: 36px;
-    width: 80px;
-    height: 80px;
+    margin-right: 3px;
+    top: 34px;
     border-radius: 50%;
-    background: white;
-    line-height: 80px;
+    line-height: 50px;
     cursor: pointer;
     color: #ce0505;
-    border: 6px solid #6b0101;
+    border: 4px solid #6b0101;
+    box-sizing: border-box;
+}
+.fa-play-circle:before {
+    background: white;
+    display: inline-block;
+    width: 51px;
+    height: 50px;
+    border-radius: 50%;
+}
+.video-tag{
+    background: #ce0505;
+    height: 45px;
+    position: absolute;
+    right: 43px;
+    top: 42px;
+    line-height: 37px;
+    font-size: 28px;
+    color: white;
+    border-radius: 10px;
+    border: 4px solid #6b0101;
+    box-sizing: border-box;
+    font-weight: bold;
+    padding: 0 20px 0 8px;
+    user-select: none;
+    cursor: default;
 }

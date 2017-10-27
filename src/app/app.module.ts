@@ -11,6 +11,7 @@ import { PreferencesComponent } from './preferences/preferences.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 
 import { DataService } from "./data.service";
+import { WindowService } from "./window.service";
 import { LeadsComponent } from './leads/leads.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
@@ -18,6 +19,7 @@ import { ConfirmComponent } from './confirm/confirm.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ProductsSliderComponent } from './products-slider/products-slider.component';
+import { VideoPlayerComponent } from './video-player/video-player.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { ProductsSliderComponent } from './products-slider/products-slider.compo
     ConfirmComponent,
     CarouselComponent,
     SearchBarComponent,
-    ProductsSliderComponent
+    ProductsSliderComponent,
+    VideoPlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,7 @@ import { ProductsSliderComponent } from './products-slider/products-slider.compo
     FormsModule,
     HttpModule
   ],
-  providers: [DataService],
+  providers: [DataService, WindowService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

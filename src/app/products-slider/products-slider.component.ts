@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WindowService } from "../window.service";
 
 
 @Component({
@@ -16,22 +17,22 @@ export class ProductsSliderComponent implements OnInit {
   public products;
   public sliderWidth: number = 0;
 
-  constructor() { }
+  constructor(private windowService: WindowService) { }
 
   ngOnInit() {
     this.products = [
-      {"title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "2WeekDiet.gif", "siteUrl": "http://www.walmar.com" },
-      {"title": "Unlock Your Hip Flexors", "description": "The \"Hidden Survival Muscle\" In Your Body Missed By Modern Physicians That Keep Millions Of Men And Women Defeated By Pain, Frustrated With Belly Fat, And Struggling To Feel Energized Every Day…", "image": "Unlock-Your-Hip-Flexors.png", "siteUrl": "http://www.target.com" },
-      {"title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "diabetes-lie-3d.png", "siteUrl": "http://www.target.com" },
-      {"title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "leanbelly.png", "siteUrl": "http://www.target.com" },
-      {"title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "organifi.png", "siteUrl": "http://www.target.com" },
-      {"title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "EatStopEat.png", "siteUrl": "http://www.target.com" },
-      {"title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "WakeUpLean.png", "siteUrl": "http://www.target.com" },
-      {"title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "hnm2.jpg", "siteUrl": "http://www.target.com" },
-      {"title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "box-medium.jpg", "siteUrl": "http://www.target.com" },
-      {"title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "book.png", "siteUrl": "http://www.target.com" },
-      {"title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "ynm3.jpg", "siteUrl": "http://www.target.com" },
-      {"title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "ad2.jpg", "siteUrl": "http://www.target.com" },
+      {"videoUrls": ['//player.vimeo.com/video/203810510?title=0&byline=0&portrait=0&color=ffffff','//player.vimeo.com/video/195471382?title=0&byline=0&portrait=0&color=ffffff'], "title": "The 2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "2WeekDiet.gif", "siteUrl": "http://www.walmar.com" },
+      {"videoUrls": [], "title": "Unlock Your Hip Flexors", "description": "The \"Hidden Survival Muscle\" In Your Body Missed By Modern Physicians That Keep Millions Of Men And Women Defeated By Pain, Frustrated With Belly Fat, And Struggling To Feel Energized Every Day…", "image": "Unlock-Your-Hip-Flexors.png", "siteUrl": "http://www.target.com" },
+      {"videoUrls": [], "title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "diabetes-lie-3d.png", "siteUrl": "http://www.target.com" },
+      {"videoUrls": [], "title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "leanbelly.png", "siteUrl": "http://www.target.com" },
+      {"videoUrls": [], "title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "organifi.png", "siteUrl": "http://www.target.com" },
+      {"videoUrls": [], "title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "EatStopEat.png", "siteUrl": "http://www.target.com" },
+      {"videoUrls": [], "title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "WakeUpLean.png", "siteUrl": "http://www.target.com" },
+      {"videoUrls": [], "title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "hnm2.jpg", "siteUrl": "http://www.target.com" },
+      {"videoUrls": ['//player.vimeo.com/video/203810510?title=0&byline=0&portrait=0&color=ffffff'], "title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "box-medium.jpg", "siteUrl": "http://www.target.com" },
+      {"videoUrls": [], "title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "book.png", "siteUrl": "http://www.target.com" },
+      {"videoUrls": [], "title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "ynm3.jpg", "siteUrl": "http://www.target.com" },
+      {"videoUrls": [], "title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "ad2.jpg", "siteUrl": "http://www.target.com" },
   
     ];
   }

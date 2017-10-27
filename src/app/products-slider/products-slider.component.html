@@ -7,20 +7,12 @@
       <ul #list>
         <li *ngFor="let product of products">
           <div [innerHtml]="product.title" class="product-title"></div>
-          <div style="background: #ce0505;
-          width: 115px;
-          height: 50px;
-          position: absolute;
-          right: 87px;
-          top: 59px;
-          line-height: 42px;
-          font-size: 28px;
-          color: white;
-          border-radius: 10px;
-          border: 5px solid #6b0101;
-          box-sizing: border-box;
-          font-weight: bold;">Videos</div>
-          <i class="fa fa-play-circle" aria-hidden="true"></i>
+          
+          <div *ngIf="product.videoUrls.length > 0">
+            <div class="video-tag">Videos ({{product.videoUrls.length}})</div>
+            <i class="fa fa-play-circle" aria-hidden="true" (click)="windowService.open(product)"></i>
+          </div>
+          
           
           <a [href]="product.siteUrl">
             <img #img [src]="'assets/images/products/' + product.image" (load)="onLoad(img, container)">
