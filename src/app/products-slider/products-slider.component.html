@@ -3,6 +3,8 @@
     <div class="caption">Products you might like</div>
   </div>
   <div class="slider-container">
+    
+      
     <div #slider class="slider" [style.transform]="'translateX(-' + translate + 'px)'">
       <ul #list>
         <li *ngFor="let product of products">
@@ -21,11 +23,17 @@
         </li>
       </ul>
     </div>
-    <div *ngIf="translate !== 0" class="arrow arrow-left" (click)="onLeftArrowClick()">
+
+    <arrows [showLeftArrow]="translate !== 0" [showRightArrow]="!lastPage" (onArrowClick)="onArrowClick($event, container.clientWidth, list.children)"></arrows>
+
+    
+    <!-- <div *ngIf="translate !== 0" class="arrow arrow-left" (click)="onLeftArrowClick()">
       <img src="/assets/arrows.png">
     </div>
+
     <div *ngIf="!lastPage" class="arrow arrow-right" (click)="onRightArrowClick(container.clientWidth, list.children)">
       <img src="/assets/arrows.png">
-    </div>
+    </div> -->
+
   </div>
 </div>

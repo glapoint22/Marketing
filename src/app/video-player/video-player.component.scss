@@ -62,33 +62,6 @@ iframe{
     height: 100%;
     background: black;
 }
-.img-arrow-circle{
-    line-height: 40px; 
-    text-align: center; 
-    width:40px; 
-    height: 40px; 
-    background: rgba(41, 41, 41, 0.8);
-    position: absolute; 
-    top: 50%;
-    border-radius: 50%; 
-    cursor: pointer;
-    color: white;
-    &.img-arrow-circle-left{
-        left: 3%;
-    }
-    &.img-arrow-circle-right{
-        right: 3%;
-    }
-}
-.img-arrow-circle:hover{
-    background: rgba(80, 80, 80, 0.8);
-}
-.img-arrow-circle:active{
-    background-color: rgba(43, 68, 103, 0.50);
-}
-
-    
-
 @media screen and (max-width: 1023px) {
     .window{
         height: 87.976539589442815249266862170088vw; 

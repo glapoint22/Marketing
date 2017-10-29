@@ -21,7 +21,7 @@ export class ProductsSliderComponent implements OnInit {
 
   ngOnInit() {
     this.products = [
-      {"videoUrls": ['//player.vimeo.com/video/203810510?title=0&byline=0&portrait=0&color=ffffff','//player.vimeo.com/video/195471382?title=0&byline=0&portrait=0&color=ffffff'], "title": "The 2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "2WeekDiet.gif", "siteUrl": "http://www.walmar.com" },
+      {"videoUrls": ['//player.vimeo.com/video/203810510?title=0&byline=0&portrait=0&color=ffffff','//player.vimeo.com/video/195471382?title=0&byline=0&portrait=0&color=ffffff', '//player.vimeo.com/video/196271312?title=0&byline=0&portrait=0&color=ffffff'], "title": "The 2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "2WeekDiet.gif", "siteUrl": "http://www.walmar.com" },
       {"videoUrls": [], "title": "Unlock Your Hip Flexors", "description": "The \"Hidden Survival Muscle\" In Your Body Missed By Modern Physicians That Keep Millions Of Men And Women Defeated By Pain, Frustrated With Belly Fat, And Struggling To Feel Energized Every Day…", "image": "Unlock-Your-Hip-Flexors.png", "siteUrl": "http://www.target.com" },
       {"videoUrls": [], "title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "diabetes-lie-3d.png", "siteUrl": "http://www.target.com" },
       {"videoUrls": [], "title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "leanbelly.png", "siteUrl": "http://www.target.com" },
@@ -35,6 +35,14 @@ export class ProductsSliderComponent implements OnInit {
       {"videoUrls": [], "title": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "ad2.jpg", "siteUrl": "http://www.target.com" },
   
     ];
+  }
+
+  onArrowClick(direction: number, containerWidth: number, products: Array<any>){
+    if(direction === -1){
+      this.onLeftArrowClick();
+    }else{
+      this.onRightArrowClick(containerWidth, products);
+    }
   }
 
   onRightArrowClick(containerWidth, products){

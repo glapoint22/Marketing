@@ -7,14 +7,7 @@
       </div>
       <div class="video-container" (click)="stopPropagation($event)">
         <iframe [src]="windowService.currentUrl" frameborder="0" ></iframe>
-          <!--Arrow Buttons-->
-          <div *ngIf="windowService.currentIndex != 0" class="img-arrow-circle img-arrow-circle-left" (click)="windowService.showNextVideo(-1)" >
-            <i class="fa fa-chevron-left" aria-hidden="true"></i>
-          </div>
-          <div *ngIf="windowService.currentIndex != windowService.urlsCount - 1" class="img-arrow-circle img-arrow-circle-right" (click)="windowService.showNextVideo(1)" >
-            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-          </div>
-        
+        <arrows [showLeftArrow]="windowService.currentIndex != 0" [showRightArrow]="windowService.currentIndex != windowService.urlsCount - 1" (onArrowClick)="windowService.showNextVideo($event)"></arrows>
       </div>
     </div>
   </div>

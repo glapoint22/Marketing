@@ -77,7 +77,7 @@ export class CarouselComponent implements OnInit {
   onArrowClick(direction: number) {
     if (!this.arrowClicked) {
       this.arrowClicked = true;
-      this.nextImage(direction);
+      this.nextImage(-direction);
     } else {
       this.iterations += 1;
     }
