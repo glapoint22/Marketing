@@ -142,5 +142,4 @@ export class CarouselComponent implements OnInit {
     }
     this.speed = this.defaultSpeed / this.iterations;
   }
-
 }

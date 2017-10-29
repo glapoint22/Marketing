@@ -1,0 +1,13 @@
+<!-- Product Title -->
+<div [innerHtml]="product.title" class="product-title"></div>
+
+<!-- Video Play Button -->
+<video-play-button [videos]="product.videos" [productTitle]="product.title"></video-play-button>
+
+<!-- Site Url -->
+<a [href]="product.siteUrl">
+  <img #img [src]="'assets/images/products/' + product.image" >
+</a>
+
+<!-- Product Description -->
+<div [innerHtml]="product.description" class="product-description"></div>

@@ -1,0 +1,32 @@
+a{
+    height: 300px;
+    line-height: 300px;
+    img{
+        width:auto;
+        height:auto;
+        max-width: 300px;
+        max-height: 300px;
+        vertical-align: middle;
+        min-width: 230px;
+    }
+}
+.product-title{
+    height: 32px;
+    background: #940381;
+    font-size:20px;
+    color:rgb(230, 230, 230);
+    text-align: center;
+    font-weight: bold;
+    line-height: 30px;
+    vertical-align:middle;
+    padding: 0 10px 0 10px;
+}
+.product-description{
+    overflow-y: auto;
+    text-align: center;
+    height: 130px;
+    white-space: normal;
+    padding: 10px;
+    color: #171921;
+    background: #f3f3f3;
+}

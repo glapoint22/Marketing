@@ -21,6 +21,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ProductsSliderComponent } from './products-slider/products-slider.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { ArrowsComponent } from './arrows/arrows.component';
+import { ProductComponent } from './product/product.component';
+import { VideoPlayButtonComponent } from './video-play-button/video-play-button.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { ArrowsComponent } from './arrows/arrows.component';
     SearchBarComponent,
     ProductsSliderComponent,
     VideoPlayerComponent,
-    ArrowsComponent
+    ArrowsComponent,
+    ProductComponent,
+    VideoPlayButtonComponent
   ],
   imports: [
     BrowserModule,

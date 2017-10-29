@@ -1,39 +1,15 @@
-<div class="products-slider-container" #container>
+<div #container class="products-slider-container">
   <div class="caption-container">
     <div class="caption">Products you might like</div>
   </div>
   <div class="slider-container">
-    
-      
     <div #slider class="slider" [style.transform]="'translateX(-' + translate + 'px)'">
       <ul #list>
         <li *ngFor="let product of products">
-          <div [innerHtml]="product.title" class="product-title"></div>
-          
-          <div *ngIf="product.videoUrls.length > 0">
-            <div class="video-tag">Videos ({{product.videoUrls.length}})</div>
-            <i class="fa fa-play-circle" aria-hidden="true" (click)="windowService.open(product)"></i>
-          </div>
-          
-          
-          <a [href]="product.siteUrl">
-            <img #img [src]="'assets/images/products/' + product.image" (load)="onLoad(img, container)">
-          </a>
-          <div [innerHtml]="product.description" class="product-description"></div>
+          <product [product]="product"></product>
         </li>
       </ul>
     </div>
-
-    <arrows [showLeftArrow]="translate !== 0" [showRightArrow]="!lastPage" (onArrowClick)="onArrowClick($event, container.clientWidth, list.children)"></arrows>
-
-    
-    <!-- <div *ngIf="translate !== 0" class="arrow arrow-left" (click)="onLeftArrowClick()">
-      <img src="/assets/arrows.png">
-    </div>
-
-    <div *ngIf="!lastPage" class="arrow arrow-right" (click)="onRightArrowClick(container.clientWidth, list.children)">
-      <img src="/assets/arrows.png">
-    </div> -->
-
+    <arrows [showLeftArrow]="translate !== 0" [showRightArrow]="slider.offsetWidth > container.offsetWidth + 10 && !lastPage" (onArrowClick)="onArrowClick($event, container.clientWidth, list.children)"></arrows>
   </div>
 </div>

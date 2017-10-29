@@ -15,12 +15,12 @@ export class WindowService {
     this.currentUrl = this.sanitizer.bypassSecurityTrustResourceUrl('');
   }
 
-  open(product){
-    this.urls = product.videoUrls;
+  open(videos, productTitle){
+    this.urls = videos;
     this.display = 'block';
     this.currentIndex = 0;
     this.urlsCount = this.urls.length;
-    this.title = product.title;
+    this.title = productTitle;
     this.currentUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.urls[this.currentIndex]);
   }
 
