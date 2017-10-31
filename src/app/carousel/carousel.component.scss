@@ -54,12 +54,70 @@
 @media screen and (max-width: 1364px) {
     .carousel-container{
         width: 100%;
-        height: 22vw;
+        height: 300px;
     }
     img{
         width: 100vw;
+        height: 300px;
+        object-fit: cover;
     }
     .pagination-container{
         top: 20vw;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .carousel-container{
+        height: 280px;
+    }
+    img{
+        height: 280px;
+    }
+}
+@media screen and (max-width: 900px) {
+    .carousel-container{
+        height: 250px;
+    }
+    img{
+        height: 250px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .carousel-container{
+        height: 200px;
+    }
+    img{
+        height: 200px;
+    }
+}
+@media screen and (max-width: 550px) {
+    .carousel-container{
+        height: 180px;
+    }
+    img{
+        height: 180px;
+    }
+}
+@media screen and (max-width: 460px) {
+    .carousel-container{
+        height: 150px;
+    }
+    img{
+        height: 150px;
+    }
+}
+@media screen and (max-width: 380px) {
+    .carousel-container{
+        height: 135px;
+    }
+    img{
+        height: 135px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .carousel-container{
+        height: 125px;
+    }
+    img{
+        height: 125px;
     }
 }
