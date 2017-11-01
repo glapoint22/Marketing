@@ -1,3 +1,5 @@
+@import 'theme';
+
 a{
     height: 300px;
     line-height: 300px;
@@ -12,7 +14,7 @@ a{
 }
 .product-title{
     height: 32px;
-    background: #940381;
+    @include gradient($color1, $color2);
     font-size:20px;
     color:rgb(230, 230, 230);
     text-align: center;

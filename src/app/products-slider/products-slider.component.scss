@@ -43,3 +43,23 @@ ul{
         width: 100%;
     }
 }
+@media screen and (max-width: 500px) {
+    .products-slider-container{
+        width: 300px;
+        height: 100%;
+        overflow: visible;
+    }
+    .slider-container{
+        height: 100%;
+    }
+    .slider{
+        white-space: normal;
+        position: relative;
+    }
+    ul{
+        display: block;
+        li{
+            margin-bottom: 20px;
+        }
+    }
+}
