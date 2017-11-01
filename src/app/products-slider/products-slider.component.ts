@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 @Component({
@@ -10,6 +10,7 @@ export class ProductsSliderComponent implements OnInit {
   public products;
   public lastPage: boolean = false;
   public translate = 0;
+  @Input() caption: string;
 
   private currentIndex = 0;
   private currentTranslation = 0;

@@ -101,10 +101,10 @@ export class CarouselComponent implements OnInit {
     }
   }
 
-  onPaginatorClick(paginatorIndex: number) {
-    let diff = (this.index - paginatorIndex) * 100;
-    this.currentDirection = Math.sign(diff);
-    this.iterations = Math.abs(diff / 100);
+  onPaginatorClick(page: number) {
+    let offset = this.index - page;
+    this.currentDirection = Math.sign(offset);
+    this.iterations = Math.abs(offset);
     this.speed = this.defaultSpeed / this.iterations;
 
     if (this.iterations > 1) {

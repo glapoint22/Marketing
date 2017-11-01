@@ -1,20 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { WindowService } from "../window.service";
+import { Component } from '@angular/core';
+import { VideoService } from "../video.service";
 
 @Component({
   selector: 'video-player',
   templateUrl: './video-player.component.html',
   styleUrls: ['./video-player.component.scss']
 })
-export class VideoPlayerComponent implements OnInit {
+export class VideoPlayerComponent {
 
-  constructor(private windowService: WindowService) { }
-
-  ngOnInit() {
-    
-  }
+  constructor(private videoService: VideoService) { }
 
   stopPropagation(event){
     event.stopPropagation();
+  }
+
+  showNextVideo(direction: number){
+    this.videoService.setVideo(this.videoService.currentVideoIndex + direction);
+  }
+
+  showVideo(index: number){
+    this.videoService.setVideo(index);
   }
 }

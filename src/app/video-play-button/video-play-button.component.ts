@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { WindowService } from "../window.service";
+import { VideoService } from "../video.service";
 
 @Component({
   selector: 'video-play-button',
@@ -10,5 +10,5 @@ export class VideoPlayButtonComponent {
   @Input() videos: Array<string>;
   @Input() productTitle: string;
 
-  constructor(private windowService: WindowService) { }
+  constructor(private videoService: VideoService) { }
 }

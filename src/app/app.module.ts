@@ -1,17 +1,16 @@
+// Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
 import { AppRoutingModule } from './app-routing.module';
+
+// Components
 import { AppComponent } from './app.component';
 import { MailComponent } from './mail/mail.component';
 import { LoadingComponent } from './loading/loading.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
-
-import { DataService } from "./data.service";
-import { WindowService } from "./window.service";
 import { LeadsComponent } from './leads/leads.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
@@ -23,6 +22,11 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
 import { ArrowsComponent } from './arrows/arrows.component';
 import { ProductComponent } from './product/product.component';
 import { VideoPlayButtonComponent } from './video-play-button/video-play-button.component';
+import { PaginatorComponent } from './paginator/paginator.component';
+
+// Services
+import { DataService } from "./data.service";
+import { VideoService } from "./video.service";
 
 @NgModule({
   declarations: [
@@ -41,7 +45,8 @@ import { VideoPlayButtonComponent } from './video-play-button/video-play-button.
     VideoPlayerComponent,
     ArrowsComponent,
     ProductComponent,
-    VideoPlayButtonComponent
+    VideoPlayButtonComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,7 @@ import { VideoPlayButtonComponent } from './video-play-button/video-play-button.
     FormsModule,
     HttpModule
   ],
-  providers: [DataService, WindowService],
+  providers: [DataService, VideoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,14 +1,18 @@
-<div (click)="windowService.close()" [style.display]="windowService.display">
+<div (click)="videoService.close()" [style.display]="videoService.display">
   <div class="player-background">
     <div class="window">
       <div class="title-bar" (click)="stopPropagation($event)">
-          <div [innerHtml]="windowService.title" class="title"></div>
-          <div class="close-button" (click)="windowService.close()"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div [innerHtml]="videoService.title" class="title"></div>
+        <div class="close-button" (click)="videoService.close()">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
       </div>
       <div class="video-container" (click)="stopPropagation($event)">
-        <iframe [src]="windowService.currentUrl" frameborder="0" ></iframe>
-        <arrows [showLeftArrow]="windowService.currentIndex != 0" [showRightArrow]="windowService.currentIndex != windowService.urlsCount - 1" (onArrowClick)="windowService.showNextVideo($event)"></arrows>
+        <iframe [src]="videoService.currentVideo" frameborder="0"></iframe>
+        <arrows [showLeftArrow]="videoService.currentVideoIndex != 0" [showRightArrow]="videoService.currentVideoIndex != videoService.videosCount - 1"
+          (onArrowClick)="showNextVideo($event)"></arrows>
       </div>
+      <paginator (click)="stopPropagation($event)" [pages]="videoService.videos" [currentPage]="videoService.currentVideoIndex" (onPaginatorClick)="showVideo($event)"></paginator>
     </div>
   </div>
 </div>

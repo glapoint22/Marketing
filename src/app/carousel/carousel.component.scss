@@ -11,46 +11,6 @@
         position: absolute;
     }
 }
-.pagination-container{
-    position: relative;
-    display: table;
-    margin:auto;
-    top: 90%;
-    cursor: default;
-    ul{
-        list-style: none;
-        padding: 0;
-        margin:0;
-        li{
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-        }
-    }
-}
-.paginator{
-    border-radius: 50%;
-    margin: 0 10px 0 10px;
-    display: inline-block;
-    cursor: pointer;
-}
-.play{
-    margin-top: -2px;
-    width: 0 !important;
-    height: 0 !important;
-    border-top: 7px solid transparent;
-    border-bottom: 7px solid transparent;
-    border-left: 10px solid #666;
-    cursor: pointer;
-}
-.pause{
-    color: #f5f5f5;
-    cursor: pointer;
-    font-size: 13px;
-}
-.shadow{
-    box-shadow: 0 0 1px rgba(0,0,0,.5), 1px 1px 3px rgba(0,0,0,.5);
-}
 @media screen and (max-width: 1364px) {
     .carousel-container{
         width: 100%;
@@ -60,9 +20,6 @@
         width: 100vw;
         height: 300px;
         object-fit: cover;
-    }
-    .pagination-container{
-        top: 20vw;
     }
 }
 @media screen and (max-width: 1024px) {

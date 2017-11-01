@@ -1,0 +1,10 @@
+<div *ngIf="pages && pages.length > 1" #container class="paginator-container" [style.marginLeft.px]="container.offsetWidth * -0.5">
+  <ul>
+    <li *ngFor="let page of pages; let idx = index" class="paginator shadow" [style.background]="idx === currentPage ? '#f5f5f5' : '#666'"
+      (click)="onPaginatorButtonClick(idx)"></li>
+    <li *ngIf="showPlay" (click)="onPlayButtonClick()">
+      <div class="play" *ngIf="!play" title="Play"></div>
+      <i class="fa fa-pause pause shadow" aria-hidden="true" *ngIf="play" title="Pause"></i>
+    </li>
+  </ul>
+</div>
