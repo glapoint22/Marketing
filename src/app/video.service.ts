@@ -15,11 +15,11 @@ export class VideoService {
     this.currentVideo = this.desanitize('');
   }
 
-  open(videos, productTitle){
+  open(videos, productName){
     this.videos = videos;
     this.display = 'block';
     this.videosCount = this.videos.length;
-    this.title = productTitle;
+    this.title = productName;
     this.setVideo(0);
   }
 

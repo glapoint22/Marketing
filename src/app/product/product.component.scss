@@ -12,7 +12,7 @@ a{
         min-width: 230px;
     }
 }
-.product-title{
+.product-name{
     height: 32px;
     @include gradient($color1, $color2);
     font-size:20px;
@@ -24,11 +24,11 @@ a{
     padding: 0 10px 0 10px;
 }
 .product-description{
-    overflow-y: auto;
     text-align: center;
-    height: 130px;
     white-space: normal;
     padding: 10px;
-    color: #171921;
-    background: #f3f3f3;
+    color: #ffffff;
+    @include gradient($color3, $color4);
+    height: 92px;
+    overflow: auto;
 }

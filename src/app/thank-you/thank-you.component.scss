@@ -1,3 +1,5 @@
+@import 'theme';
+
 .container{
     background: #b9b9b9;
     text-align: center;
@@ -7,7 +9,7 @@
     min-height: 100%;
 }
 h1{
-    color:#b57718; 
+    color: $color1; 
     margin: 0;
     padding: 20px 0 0 0;
 }

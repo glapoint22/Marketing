@@ -2,14 +2,14 @@
   <div class="caption-container">
     <div class="caption">{{caption}}</div>
   </div>
-  <div class="slider-container">
+  <div class="slider-container" [ngClass]="{'center' : slider.offsetWidth <= container.offsetWidth + margin}">
     <div #slider class="slider" [style.transform]="'translateX(-' + translate + 'px)'">
       <ul #list>
-        <li *ngFor="let product of products">
+        <li *ngFor="let product of products" [style.marginRight.px]="margin">
           <product [product]="product"></product>
         </li>
       </ul>
     </div>
-    <arrows [showLeftArrow]="translate !== 0" [showRightArrow]="slider.offsetWidth > container.offsetWidth + 10 && !lastPage" (onArrowClick)="onArrowClick($event, container.clientWidth, list.children)"></arrows>
+    <arrows [showLeftArrow]="translate !== 0" [showRightArrow]="slider.offsetWidth > container.offsetWidth + margin && !lastPage" (onArrowClick)="onArrowClick($event, container.clientWidth, list.children)"></arrows>
   </div>
 </div>

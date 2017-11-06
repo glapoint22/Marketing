@@ -1,8 +1,10 @@
 $color1: #ab0395;
-$color2: #6e0353;
+$color2: #550240;
+$color3: #420033;
+$color4: #1f0118;
 
 @mixin gradient($color...){
     background: nth(nth($color, 2), 1);
-    background: -webkit-gradient($color);
+    // background: -webkit-gradient($color);
     background: linear-gradient($color);
 }

@@ -24,12 +24,12 @@
     <input type="radio" name="emailSendFrequency" [value]=0 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Unsubscribe to all subscriptions<br>
     <br>
     
-    <!-- Other subscriptions -->
-    <h3>Other subscriptions you might like to subscribe to:<span class="message">(Check or uncheck to subscribe or unsubscribe, respectively)</span></h3>
+    <!-- Subscriptions -->
+    <h3>Subscriptions:<span class="message">(Check or uncheck to subscribe or unsubscribe, respectively)</span></h3>
     <ul>
       <li *ngFor="let subscription of subscriptions">
         <h4>{{subscription.name}}</h4>
-        <div *ngFor="let niche of subscription.subNiches">
+        <div *ngFor="let niche of subscription.niches">
           <input type="checkbox" [checked]="niche.isSubscribed" (change)="onUpdateSubscription(niche)" [disabled]="emailSendFrequency === 0">{{niche.name}}<br>
         </div>
       </li>

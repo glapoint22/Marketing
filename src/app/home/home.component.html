@@ -1,5 +1,5 @@
 <div class="main-container">
     <search-bar></search-bar>
     <carousel></carousel>
-    <products-slider [caption]="'Products you may like'"></products-slider>
+    <products-slider *ngFor="let productSlider of productSliders" [caption]="productSlider.niche" [products]="productSlider.products"></products-slider>
 </div>

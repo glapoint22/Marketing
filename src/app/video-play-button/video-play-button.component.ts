@@ -8,7 +8,7 @@ import { VideoService } from "../video.service";
 })
 export class VideoPlayButtonComponent {
   @Input() videos: Array<string>;
-  @Input() productTitle: string;
+  @Input() productName: string;
 
   constructor(private videoService: VideoService) { }
 }
