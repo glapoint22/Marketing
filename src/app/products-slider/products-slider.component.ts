@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 
 @Component({
@@ -6,7 +6,7 @@ import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
   templateUrl: './products-slider.component.html',
   styleUrls: ['./products-slider.component.scss']
 })
-export class ProductsSliderComponent implements OnInit {
+export class ProductsSliderComponent {
   public margin: number = 20;
   public lastPage: boolean = false;
   public translate = 0;
@@ -17,29 +17,7 @@ export class ProductsSliderComponent implements OnInit {
   private currentTranslation = 0;
   private translations: Array<any> = [{'translate': 0, 'index': 0}];
 
-  constructor(private cdr: ChangeDetectorRef) {}
-
-  ngAfterViewInit() {
-    this.cdr.detectChanges();
-  }
-
-  ngOnInit() {
-    // this.products = [
-    //   {"videos": ['//player.vimeo.com/video/203810510?title=0&byline=0&portrait=0&color=ffffff','//player.vimeo.com/video/195471382?title=0&byline=0&portrait=0&color=ffffff', '//player.vimeo.com/video/196271312?title=0&byline=0&portrait=0&color=ffffff'], "name": "The 2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "2WeekDiet.gif", "hopLink": "http://www.walmar.com" },
-    //   {"videos": [], "name": "Unlock Your Hip Flexors", "description": "The \"Hidden Survival Muscle\" In Your Body Missed By Modern Physicians ", "image": "Unlock-Your-Hip-Flexors.png", "hopLink": "http://www.target.com" },
-    //   {"videos": [], "name": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "diabetes-lie-3d.png", "hopLink": "http://www.target.com" },
-    //   {"videos": [], "name": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "leanbelly.png", "hopLink": "http://www.target.com" },
-    //   {"videos": [], "name": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "organifi.png", "hopLink": "http://www.target.com" },
-    //   {"videos": [], "name": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "EatStopEat.png", "hopLink": "http://www.target.com" },
-    //   {"videos": [], "name": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "WakeUpLean.png", "hopLink": "http://www.target.com" },
-    //   {"videos": [], "name": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "hnm2.jpg", "hopLink": "http://www.target.com" },
-    //   {"videos": ['//player.vimeo.com/video/203810510?title=0&byline=0&portrait=0&color=ffffff'], "name": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "box-medium.jpg", "hopLink": "http://www.target.com" },
-    //   {"videos": [], "name": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "book.png", "hopLink": "http://www.target.com" },
-    //   {"videos": [], "name": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "ynm3.jpg", "hopLink": "http://www.target.com" },
-    //   {"videos": [], "name": "2 Week Diet", "description": "A Foolproof, Science-Based System that's Guaranteed to Melt Away All Your Unwanted Stubborn Body Fat in Just 14 Days.", "image": "ad2.jpg", "hopLink": "http://www.target.com" },
   
-    // ];
-  }
 
   onArrowClick(direction: number, containerWidth: number, products: Array<any>){
     if(direction === -1){

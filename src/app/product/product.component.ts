@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'product',
@@ -7,4 +8,12 @@ import { Component, Input } from '@angular/core';
 })
 export class ProductComponent {
   @Input() product: any;
+
+  constructor(private cookieService: CookieService) { }
+
+  onClick(url: string) {
+    if (this.cookieService.check('Customer')) {
+      window.location.href = url;
+    }
+  }
 }

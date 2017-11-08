@@ -6,21 +6,7 @@
   </div>
   <div class="bar" [style]="barStyle" >
     <p [innerHTML]="barText"></p>
-    <button (click)="showForm = true" [innerHTML]="buttonText" [style]="buttonStyle"></button>
+    <button (click)="subscriptionForm.show = true" [innerHTML]="buttonText" [style]="buttonStyle"></button>
   </div>
 </div>
-<div class="modal-background" *ngIf="showForm" (click)="showForm=false">
-  <form (ngSubmit)="onSubmit(leadForm)" #leadForm="ngForm" (click)="stopPropagation($event)">
-    <i class="fa fa-window-close-o" aria-hidden="true" (click)="showForm=false"></i>
-    <p>Enter your name and email below to get the {{leadMagnet}}!</p>
-    <input type="text" placeholder="First Name" required [(ngModel)]="name" name="name" autofocus #fname="ngModel" maxlength="10">
-    <div [hidden]="!leadForm.submitted || fname.valid" class="warning">
-      <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Please enter your name
-    </div>
-    <input type="email" placeholder="Email" required [(ngModel)]="email" name="email" ngModel email #eMail="ngModel">
-    <div [hidden]="!leadForm.submitted || eMail.valid" class="warning">
-      <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Please enter your email
-    </div>
-    <button type="submit" [innerHTML]="formButtonText" [style]="buttonStyle"></button>
-  </form>
-</div>
+<subscription-form #subscriptionForm [caption]="'Enter your name and email below to get the ' + leadMagnet + '!'" [buttonText]="formButtonText"></subscription-form>

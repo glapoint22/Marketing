@@ -23,10 +23,13 @@ import { ArrowsComponent } from './arrows/arrows.component';
 import { ProductComponent } from './product/product.component';
 import { VideoPlayButtonComponent } from './video-play-button/video-play-button.component';
 import { PaginatorComponent } from './paginator/paginator.component';
+import { SubscriptionFormComponent } from './subscription-form/subscription-form.component';
+import { ModalComponent } from './modal/modal.component';
 
 // Services
 import { DataService } from "./data.service";
 import { VideoService } from "./video.service";
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,9 @@ import { VideoService } from "./video.service";
     ArrowsComponent,
     ProductComponent,
     VideoPlayButtonComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    SubscriptionFormComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,7 @@ import { VideoService } from "./video.service";
     FormsModule,
     HttpModule
   ],
-  providers: [DataService, VideoService],
+  providers: [DataService, VideoService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
