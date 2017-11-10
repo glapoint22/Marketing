@@ -25,6 +25,8 @@ import { VideoPlayButtonComponent } from './video-play-button/video-play-button.
 import { PaginatorComponent } from './paginator/paginator.component';
 import { SubscriptionFormComponent } from './subscription-form/subscription-form.component';
 import { ModalComponent } from './modal/modal.component';
+import { ModalFormComponent } from './modal-form/modal-form.component';
+import { LeadsSubscriptionFormComponent } from './leads-subscription-form/leads-subscription-form.component';
 
 // Services
 import { DataService } from "./data.service";
@@ -51,7 +53,9 @@ import { CookieService } from 'ngx-cookie-service';
     VideoPlayButtonComponent,
     PaginatorComponent,
     SubscriptionFormComponent,
-    ModalComponent
+    ModalComponent,
+    ModalFormComponent,
+    LeadsSubscriptionFormComponent
   ],
   imports: [
     BrowserModule,

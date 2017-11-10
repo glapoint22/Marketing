@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, EventEmitter, Input, Output} from '@angular/core';
 
 
 @Component({
@@ -12,12 +12,11 @@ export class ProductsSliderComponent {
   public translate = 0;
   @Input() caption: string;
   @Input() products;
+  @Output() onShowSubscriptionForm = new EventEmitter<void>();
 
   private currentIndex = 0;
   private currentTranslation = 0;
   private translations: Array<any> = [{'translate': 0, 'index': 0}];
-
-  
 
   onArrowClick(direction: number, containerWidth: number, products: Array<any>){
     if(direction === -1){

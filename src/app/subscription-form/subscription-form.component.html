@@ -11,5 +11,6 @@
       <i class="fa fa-exclamation-circle" aria-hidden="true"></i> Please enter your email
     </div>
     <button type="submit" [innerHTML]="buttonText"></button>
+    <button *ngIf="showCancelButton" type="button">Cancel</button>
   </form>
 </div>

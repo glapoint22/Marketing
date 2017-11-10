@@ -22,9 +22,10 @@ export class LeadsComponent implements OnInit {
   public formButtonText: string;
   public leadMagnet: string;
   public isLoading: boolean = false;
-  public name: string;
-  public email: string;
+  // public name: string;
+  // public email: string;
   public nicheId: number;
+  public caption: string;
 
   constructor(private router: Router, private dataService: DataService, private sanitizer: DomSanitizer, private route: ActivatedRoute) { }
 
@@ -46,6 +47,7 @@ export class LeadsComponent implements OnInit {
           this.formButtonText = response.formButtonText;
           this.leadMagnet = response.leadMagnet;
           this.nicheId = response.nicheId;
+          this.caption = 'Enter your name and email below to get the ' + this.leadMagnet + '!'
         }, error => {
           this.dataService.data = error;
           this.router.navigate(['/error']);

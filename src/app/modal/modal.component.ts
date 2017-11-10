@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { HostListener } from '@angular/core';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
+  template: '',
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent {

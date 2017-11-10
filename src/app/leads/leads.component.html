@@ -9,4 +9,4 @@
     <button (click)="subscriptionForm.show = true" [innerHTML]="buttonText" [style]="buttonStyle"></button>
   </div>
 </div>
-<subscription-form #subscriptionForm [caption]="'Enter your name and email below to get the ' + leadMagnet + '!'" [buttonText]="formButtonText"></subscription-form>
+<leads-subscription-form #subscriptionForm [caption]="caption" [buttonText]="formButtonText"></leads-subscription-form>
