@@ -1,24 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { VideoService } from "../video.service";
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'video-player',
   templateUrl: './video-player.component.html',
-  styleUrls: ['./video-player.component.scss']
+  styleUrls: ['./video-player.component.scss', '../modal/modal.component.scss']
 })
-export class VideoPlayerComponent {
+export class VideoPlayerComponent extends ModalComponent implements OnInit {
 
-  constructor(private videoService: VideoService) { }
+  constructor(private videoService: VideoService) { super(); }
 
-  stopPropagation(event){
-    event.stopPropagation();
+  ngOnInit() {
+    this.videoService.showPlayer.subscribe(result => {
+      this.show = result;
+    });
   }
 
-  showNextVideo(direction: number){
+  showNextVideo(direction: number) {
     this.videoService.setVideo(this.videoService.currentVideoIndex + direction);
   }
 
-  showVideo(index: number){
+  showVideo(index: number) {
     this.videoService.setVideo(index);
   }
 }

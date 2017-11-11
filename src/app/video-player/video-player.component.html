@@ -1,18 +1,17 @@
-<div (click)="videoService.close()" [style.display]="videoService.display">
-  <div class="player-background">
-    <div class="window">
-      <div class="title-bar" (click)="stopPropagation($event)">
-        <div [innerHtml]="videoService.title" class="title"></div>
-        <div class="close-button" (click)="videoService.close()">
-          <i class="fa fa-times" aria-hidden="true"></i>
-        </div>
+<div class="modal-background" *ngIf="show" (click)="videoService.close()">
+  <div class="window">
+    <div class="title-bar" (click)="stopPropagation($event)">
+      <div [innerHtml]="videoService.title" class="title"></div>
+      <div class="close-button" (click)="videoService.close()">
+        <i class="fa fa-times" aria-hidden="true"></i>
       </div>
-      <div class="video-container" (click)="stopPropagation($event)">
-        <iframe [src]="videoService.currentVideo" frameborder="0"></iframe>
-        <arrows [showLeftArrow]="videoService.currentVideoIndex != 0" [showRightArrow]="videoService.currentVideoIndex != videoService.videosCount - 1"
-          (onArrowClick)="showNextVideo($event)"></arrows>
-      </div>
-      <paginator (click)="stopPropagation($event)" [pages]="videoService.videos" [currentPage]="videoService.currentVideoIndex" (onPaginatorClick)="showVideo($event)"></paginator>
     </div>
+    <div class="video-container" (click)="stopPropagation($event)">
+      <iframe [src]="videoService.currentVideo" frameborder="0"></iframe>
+      <arrows [showLeftArrow]="videoService.currentVideoIndex != 0" [showRightArrow]="videoService.currentVideoIndex != videoService.videosCount - 1"
+        (onArrowClick)="showNextVideo($event)"></arrows>
+    </div>
+    <paginator (click)="stopPropagation($event)" [pages]="videoService.videos" [currentPage]="videoService.currentVideoIndex"
+      (onPaginatorClick)="showVideo($event)"></paginator>
   </div>
 </div>

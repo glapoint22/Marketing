@@ -20,7 +20,6 @@ export class LeadsComponent implements OnInit {
   public buttonText: string;
   public formButtonText: string;
   public leadMagnet: string;
-  // public isLoading: boolean = false;
   public nicheId: number;
   public caption: string;
 

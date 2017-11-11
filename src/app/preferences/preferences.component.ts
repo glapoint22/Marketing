@@ -20,7 +20,6 @@ export class PreferencesComponent implements OnInit {
   public originalEmailSendFrequency: number;
   public updatedSubscriptions: Array<any> = [];
   public isUpdated: boolean = false;
-  public isLoading: boolean = false;
 
   constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) { }
 
@@ -94,7 +93,6 @@ export class PreferencesComponent implements OnInit {
   }
 
   onSubmit(form) {
-    this.isLoading = true
 
     //Unsubscribing from all subscriptions
     if (this.emailSendFrequency === 0) {

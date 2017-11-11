@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 // Components
 import { AppComponent } from './app.component';
 import { MailComponent } from './mail/mail.component';
-import { LoadingComponent } from './loading/loading.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { LeadsComponent } from './leads/leads.component';
@@ -37,7 +36,6 @@ import { CookieService } from 'ngx-cookie-service';
   declarations: [
     AppComponent,
     MailComponent,
-    LoadingComponent,
     PreferencesComponent,
     ThankYouComponent,
     LeadsComponent,
