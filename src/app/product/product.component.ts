@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { DataService } from "../data.service";
 
 @Component({
   selector: 'product',
@@ -10,12 +11,13 @@ export class ProductComponent {
   @Input() product: any;
   @Output() onShowSubscriptionForm = new EventEmitter<void>();
 
-  constructor(private cookieService: CookieService) { }
+  constructor(private cookieService: CookieService, private dataService: DataService) { }
 
-  onClick(url: string) {
+  onClick() {
     if (this.cookieService.check('Customer')) {
-      window.location.href = url;
+      window.location.href = this.product.hopLink;
     }else{
+      this.dataService.data = this.product;
       this.onShowSubscriptionForm.emit();
     }
   }

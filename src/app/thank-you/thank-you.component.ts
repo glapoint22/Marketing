@@ -13,8 +13,8 @@ export class ThankYouComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    if(this.dataService.data && this.dataService.data.preferences){
-      this.customer = this.dataService.data.preferences.customer;
+    if(this.dataService.data && this.dataService.data.customer){
+      this.customer = this.dataService.data.customer;
       this.leadMagnet = this.dataService.data.leadMagnet;
     }
   }

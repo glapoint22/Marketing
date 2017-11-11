@@ -10,7 +10,7 @@ export class ModalFormComponent extends ModalComponent {
   public data: any;
   public url: string;
 
-  constructor(private dataService: DataService, private router: Router) { super(); }
+  constructor(public dataService: DataService, public router: Router) { super(); }
 
   onSubmit(form): void {
     if (form.form.status !== 'VALID') return;
@@ -22,7 +22,7 @@ export class ModalFormComponent extends ModalComponent {
     this.dataService.post(this.url, this.data)
       .subscribe((response: any) => {
         this.setResponse(response);
-        this.nextAction();
+        this.nextAction(response);
       }, error => {
         this.dataService.data = error;
         this.router.navigate(['/error']);
@@ -30,6 +30,6 @@ export class ModalFormComponent extends ModalComponent {
   }
 
   setResponse(response) { }
-  nextAction() { }
+  nextAction(response) { }
   setData() { }
 }

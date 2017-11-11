@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { DataService } from "../data.service";
 import { ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'leads',
   templateUrl: './leads.component.html',
@@ -21,9 +20,7 @@ export class LeadsComponent implements OnInit {
   public buttonText: string;
   public formButtonText: string;
   public leadMagnet: string;
-  public isLoading: boolean = false;
-  // public name: string;
-  // public email: string;
+  // public isLoading: boolean = false;
   public nicheId: number;
   public caption: string;
 

@@ -15,7 +15,11 @@ export class ModalComponent {
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'Escape') {
-      this.show = false;
+      this.close();
     }
+  }
+
+  close(){
+    this.show = false;
   }
 }

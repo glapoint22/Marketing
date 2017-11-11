@@ -25,9 +25,9 @@ export class PreferencesComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if (this.dataService.data && this.dataService.data.preferences) {
+    if (this.dataService.data && this.dataService.data.customer) {
       //Get the data from the data service
-      this.init(this.dataService.data.preferences);
+      this.init(this.dataService.data);
     } else {
       this.route.queryParamMap.subscribe(queryParams => {
         //Get the customer id from the query params
@@ -51,12 +51,12 @@ export class PreferencesComponent implements OnInit {
     }
   }
 
-  init(preferences){
-    this.customerId = preferences.customer.id;
-    this.subscriptions = preferences.subscriptions;
-    this.originalName = this.name = preferences.customer.name;
-    this.originalEmail = this.email = preferences.customer.email;
-    this.originalEmailSendFrequency = this.emailSendFrequency = preferences.customer.emailSendFrequency;
+  init(data){
+    this.customerId = data.customer.id;
+    this.subscriptions = data.subscriptions;
+    this.originalName = this.name = data.customer.name;
+    this.originalEmail = this.email = data.customer.email;
+    this.originalEmailSendFrequency = this.emailSendFrequency = data.customer.emailSendFrequency;
   }
 
   onUpdate() {

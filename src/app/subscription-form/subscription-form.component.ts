@@ -14,13 +14,11 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
   @Input() buttonText: string;
   public name: string;
   public email: string;
-  public showCancelButton: boolean;
 
   constructor(private cookieService: CookieService, dataService: DataService, router: Router) { super(dataService, router); }
 
-  ngOnInit(){
+  ngOnInit() {
     this.url = 'api/Subscriptions';
-    this.showCancelButton = true;
   }
 
   setData() {
@@ -38,45 +36,12 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
     }
   }
 
-  nextAction() { 
-    console.log('next action');
+  close() {
+    super.close();
+    window.location.href = this.dataService.data.hopLink;
   }
 
-
-
-  // postData(data: any) {
-  //   this.dataService.post('api/Subscriptions', data)
-  //     .subscribe((response: any) => {
-  //       //Get the response
-  //       this.dataService.data = response;
-        
-  //       //Check to see if a cookie is set for this customer
-  //       if (!this.cookieService.check('Customer')) {
-  //         this.cookieService.set('Customer', response.customer.id, 9999);
-  //       }
-
-  //       this.next();
-  //     }, error => {
-  //       this.dataService.data = error;
-  //       this.router.navigate(['/error']);
-  //     });
-  // }
-
-  // next(){
-  //   this.router.navigate(['/thank-you']);
-  // }
-  // this.isLoading = true;
-  // let body = {
-  //     email: this.email,
-  //     name: this.name,
-  //     nicheId: this.nicheId,
-  //     leadMagnet: this.leadMagnet
-  // }
-
-
-
-
-
-
-
+  nextAction(response) {
+    window.location.href = this.dataService.data.hopLink + '?tid=' + response.customer.id + this.dataService.data.id;
+  }
 }
