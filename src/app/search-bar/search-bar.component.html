@@ -3,6 +3,12 @@
   <option [innerHtml]="selectedCategory.name" ></option>
 </select>
 <div class="search-bar">
+    <div style="position: absolute;
+    height: 60px;
+    margin-left: 425px;
+    line-height: 60px;
+    font-size: 18px;
+    color: white; cursor:pointer"><i class="fa fa-bars" aria-hidden="true" style="margin-right: 8px"></i>Categories</div>
   <div class="search-container">
       <div class="category-select-container">
           <select [style.width.px]="tmpSelect.offsetWidth" [(ngModel)]="selectedCategory">
@@ -17,3 +23,8 @@
       </div>
   </div>
 </div>
+<menu></menu>
+
+
+    
+
