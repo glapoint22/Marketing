@@ -1,18 +1,18 @@
-<div class="menu-container">
+<div *ngIf="showMenu" class="menu-container" (mouseleave)="showNicheList = false" [ngClass]="{'shadow' : showNicheList}">
   <div class="arrow"></div>
-  <div class="category-list-container border">
+  <div class="category-list-container border menu-background border-left-radius" [ngClass]="{'shadow border-right-radius' : !showNicheList}">
     <ul>
-      <li>
-        <div>Health & Fitness</div>
+      <li *ngFor="let category of categories" (mouseenter)="showNicheList = true; currentCategory = category">
+        <div>{{category.name}}</div>
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </li>
     </ul>
   </div>
-  <!-- <div class="niche-list-container border">
+  <div *ngIf="showNicheList" class="niche-list-container border menu-background border-right-radius" style="border-left: none;">
     <ul>
-      <li>
-        <div>Exercise & Fitness</div>
+      <li *ngFor="let niche of currentCategory.niches">
+        <div>{{niche.name}}</div>
       </li>
     </ul>
-  </div> -->
+  </div>
 </div>

@@ -10,9 +10,9 @@ export class SearchBarComponent implements OnInit {
   public selectedCategory: Object = {};
 
   constructor() { }
+  public foo: boolean = false;
 
   ngOnInit() {
     this.selectedCategory = this.categories[0];
   }
-
 }
