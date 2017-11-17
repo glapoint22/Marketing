@@ -1,7 +1,7 @@
 @import 'theme';
 
 .menu-container{
-    width: 1080px;
+    width: 1006px;
     height: 500px;
     position: fixed;
     top: 60px;
@@ -66,20 +66,41 @@ ul{
     }
 }
 .niche-list-container{
-    width: 830px;
-    overflow:auto;
+    width: 807px;
     cursor: default;
+    display: flex;
+    .niche-container{
+        width: 580px;
+        overflow: auto;
+        height: 100%;
+        border-right: 1px solid $color1;
+    }
+    img{
+        position: absolute;
+        right: -19px;
+        cursor: pointer;
+    }
     li{
         margin: 16px;
         display: inline-grid;
         width: 160px;
         cursor: pointer;
         line-height: initial;
-        text-align:center;
-        color: $color1;
-    }
-    li:hover{
-        color: $color5;
+        text-align: left;
+        .niche{
+            color: $color1;
+        }
+        .niche:hover{
+            color: $color5;
+        }
+        .product{
+            font-size: 14px;
+            color: #c5c5c5;
+            font-weight: normal;
+        }
+        .product:hover{
+            color: rgb(255, 255, 255);
+        }
     }
 }
 .border{

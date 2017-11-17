@@ -9,10 +9,14 @@
     </ul>
   </div>
   <div *ngIf="showNicheList" class="niche-list-container border menu-background border-right-radius" style="border-left: none;">
-    <ul>
-      <li *ngFor="let niche of currentCategory.niches">
-        <div>{{niche.name}}</div>
-      </li>
-    </ul>
+    <div class="niche-container">
+      <ul>
+        <li *ngFor="let niche of currentCategory.niches">
+          <div class="niche" (click)="onNicheClick(niche)">{{niche.name}}</div>
+          <div *ngFor="let product of niche.products" class="product" (click)="onProductClick(product)">{{product.name}}</div>
+        </li>
+      </ul>
+    </div>
+    <img src="assets/images/{{currentCategory.image}}">
   </div>
 </div>

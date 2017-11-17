@@ -37,8 +37,10 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
   }
 
   close() {
-    super.close();
-    window.location.href = this.dataService.data.hopLink;
+    if(this.show){
+      super.close();
+      window.location.href = this.dataService.data.hopLink;
+    }
   }
 
   nextAction(response) {

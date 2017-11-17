@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'search-bar',
@@ -6,11 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent implements OnInit {
+  @Output() onShowSubscriptionForm = new EventEmitter<void>();
   public categories: Array<object> = [{ "name": "All Categories", "value": "All" }, { "name": "Books", "value": "Books" }];
   public selectedCategory: Object = {};
 
   constructor() { }
-  public foo: boolean = false;
+  
+  stopPropagation(event): void {
+    event.stopPropagation();
+  }
 
   ngOnInit() {
     this.selectedCategory = this.categories[0];

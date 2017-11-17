@@ -6,7 +6,7 @@
     <div class="category-menu-button" (mouseenter)="menu.showMenu = true" (mouseleave)="menu.showMenu = false" (click)="menu.showMenu = !menu.showMenu">
         <i class="fa fa-bars" aria-hidden="true" style="margin-right: 8px"></i>
         Categories
-        <menu #menu></menu>
+        <menu #menu (click)="stopPropagation($event)" (onShowSubscriptionForm)="onShowSubscriptionForm.emit()"></menu>
     </div>
     <div class="search-container">
         <div class="category-select-container">
