@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class SearchBarComponent implements OnInit {
   @Output() onShowSubscriptionForm = new EventEmitter<void>();
-  public categories: Array<object> = [{ "name": "All Categories" }, { "name": "Books" }];
+  public categories: Array<object>;
+  public searchCategories: Array<object>;
   public selectedCategory: Object = {};
 
   constructor(private dataService: DataService, private router: Router) { }
@@ -22,8 +23,9 @@ export class SearchBarComponent implements OnInit {
     this.dataService.get('api/Categories')
     .subscribe((response: any) => {
       this.categories = response;
-      // this.categories.unshift({name: 'All'});
-      this.selectedCategory = this.categories[0];
+      this.searchCategories = this.categories.slice();
+      this.searchCategories.unshift({name: 'All', id: 0});
+      this.selectedCategory = this.searchCategories[0];
     }, error => {
       this.dataService.data = error;
       this.router.navigate(['/error']);

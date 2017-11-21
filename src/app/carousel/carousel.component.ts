@@ -18,11 +18,11 @@ export class CarouselComponent implements OnInit {
   public curve: string = 'ease-in-out';
   public speed: number = this.defaultSpeed;
   public carouselImages: Array<any> = [
-    { "name": "Costumes.png", "url": "http://www.walmar.com", "pos": 0 },
-    { "name": "Halloween.png", "url": "http://www.target.com", "pos": 100 },
-    { "name": "2WeekDiet.png", "url": "http://www.amazon.com", "pos": 200 },
-    { "name": "Delight.jpg", "url": "http://www.target.com", "pos": 300 },
-    { "name": "Fall.jpg", "url": "http://www.target.com", "pos": 400 }
+    { "name": "Costumes.png", "hopLink": "http://www.walmart.com", "pos": 0 },
+    { "name": "Halloween.png", "hopLink": "http://www.target.com", "pos": 100 },
+    { "name": "2WeekDiet.png", "hopLink": "http://www.amazon.com", "pos": 200 },
+    { "name": "Delight.jpg", "hopLink": "http://www.target.com", "pos": 300 },
+    { "name": "Fall.jpg", "hopLink": "http://www.target.com", "pos": 400 }
   ];
 
   constructor() { }

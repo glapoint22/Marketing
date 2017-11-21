@@ -13,12 +13,12 @@ export class ProductComponent {
 
   constructor(private cookieService: CookieService, private dataService: DataService) { }
 
-  onClick() {
+  onClick(product, showSubscriptionForm) {
     if (this.cookieService.check('Customer')) {
-      window.location.href = this.product.hopLink;
+      window.location.href = product.hopLink;
     }else{
-      this.dataService.data = this.product;
-      this.onShowSubscriptionForm.emit();
+      this.dataService.data = product;
+      showSubscriptionForm.emit();
     }
   }
 }

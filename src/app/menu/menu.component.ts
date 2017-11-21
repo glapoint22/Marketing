@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { DataService } from "../data.service";
+import { ProductComponent } from "../product/product.component";
 
 @Component({
   selector: 'menu',
@@ -17,12 +18,8 @@ export class MenuComponent implements OnInit {
   constructor(private cookieService: CookieService, private dataService: DataService) { }
 
   onProductClick(product){
-    if (this.cookieService.check('Customer')) {
-      window.location.href = product.hopLink;
-    }else{
-      this.dataService.data = product;
-      this.onShowSubscriptionForm.emit();
-    }
+    let productComponent = new ProductComponent(this.cookieService, this.dataService);
+    productComponent.onClick(product, this.onShowSubscriptionForm);
   }
 
   onNicheClick(niche){

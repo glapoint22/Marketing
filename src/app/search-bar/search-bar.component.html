@@ -11,7 +11,7 @@
     <div class="search-container">
         <div class="category-select-container">
             <select [style.width.px]="tmpSelect.offsetWidth" [(ngModel)]="selectedCategory">
-                <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
+                <option *ngFor="let category of searchCategories" [ngValue]="category">{{category.name}}</option>
             </select>
         </div>
         <div class="input-container">
