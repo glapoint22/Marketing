@@ -1,6 +1,6 @@
 <div class="main-container">
     <search-bar (onShowSubscriptionForm)="subscriptionForm.show = true"></search-bar>
-    <carousel></carousel>
+    <carousel (onShowSubscriptionForm)="subscriptionForm.show = true"></carousel>
     <products-slider (onShowSubscriptionForm)="subscriptionForm.show = true" *ngFor="let productSlider of productSliders" [caption]="productSlider.caption" [products]="productSlider.products"></products-slider>
-    <subscription-form #subscriptionForm [caption]="'Could I please get your name and email address so you can have a better experience when visiting this site?'" [buttonText]="'Yes! Sign me up!'"></subscription-form>
+    <subscription-form #subscriptionForm [caption]="'Could I please get your name and email address so I can send you exciting offers from products like the one you just clicked on?'" [buttonText]="'Yes! Sign me up!'"></subscription-form>
 </div>

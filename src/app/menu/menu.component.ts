@@ -9,6 +9,8 @@ import { ProductComponent } from "../product/product.component";
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  private productComponent: ProductComponent;
+
   @Output() onShowSubscriptionForm = new EventEmitter<void>();
   public showMenu: boolean;
   public showNicheList: boolean;
@@ -17,16 +19,17 @@ export class MenuComponent implements OnInit {
 
   constructor(private cookieService: CookieService, private dataService: DataService) { }
 
+  ngOnInit() {
+    this.productComponent = new ProductComponent(this.cookieService, this.dataService);
+    this.productComponent.onShowSubscriptionForm = this.onShowSubscriptionForm;
+  }
+
   onProductClick(product){
-    let productComponent = new ProductComponent(this.cookieService, this.dataService);
-    productComponent.onClick(product, this.onShowSubscriptionForm);
+    this.productComponent.product = product;
+    this.productComponent.onClick();
   }
 
   onNicheClick(niche){
-    
-  }
-
-  ngOnInit() {
     
   }
 }

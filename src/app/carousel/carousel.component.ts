@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { DataService } from "../data.service";
+import { Router } from '@angular/router';
+import { ProductComponent } from "../product/product.component";
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'carousel',
@@ -11,24 +15,42 @@ export class CarouselComponent implements OnInit {
   private iterations: number = 1;
   private defaultSpeed: number = 0.3;
   private arrowClicked: boolean = false;
+  private productComponent: ProductComponent;
 
   public translate = 0;
   public index: number = 0;
   public play: boolean = true;
   public curve: string = 'ease-in-out';
   public speed: number = this.defaultSpeed;
-  public carouselImages: Array<any> = [
-    { "name": "Costumes.png", "hopLink": "http://www.walmart.com", "pos": 0 },
-    { "name": "Halloween.png", "hopLink": "http://www.target.com", "pos": 100 },
-    { "name": "2WeekDiet.png", "hopLink": "http://www.amazon.com", "pos": 200 },
-    { "name": "Delight.jpg", "hopLink": "http://www.target.com", "pos": 300 },
-    { "name": "Fall.jpg", "hopLink": "http://www.target.com", "pos": 400 }
-  ];
+  @Output() onShowSubscriptionForm = new EventEmitter<void>();
+  public productBanners: Array<any>;
 
-  constructor() { }
+  constructor(private dataService: DataService, private router: Router, private cookieService: CookieService) { }
 
   ngOnInit() {
-    this.startTimer(this.currentDirection);
+    this.productComponent = new ProductComponent(this.cookieService, this.dataService);
+    this.productComponent.onShowSubscriptionForm = this.onShowSubscriptionForm;
+
+    this.dataService.get('api/ProductBanners')
+    .subscribe((response: any) => {
+      this.productBanners = response;
+
+      //Add the pos property
+      for(let i = 0; i < this.productBanners.length; i++){
+        this.productBanners[i]['pos'] = i * 100;
+      }
+      
+      //Start the timer
+      this.startTimer(this.currentDirection);
+    }, error => {
+      this.dataService.data = error;
+      this.router.navigate(['/error']);
+    });
+  }
+
+  onProductBannerClick(product){
+    this.productComponent.product = product;
+    this.productComponent.onClick();
   }
 
   moveSlider(direction: number) {
@@ -40,15 +62,15 @@ export class CarouselComponent implements OnInit {
     let nextIndex = this.getIndex(this.translate + 100 * direction);
 
     //Change the position of the images so it creates a continous loop
-    if (this.carouselImages[nextIndex].pos < this.carouselImages[this.index].pos) {
-      this.carouselImages[this.findIndex(direction)].pos = this.getPosition(direction) - 100 * direction;
+    if (this.productBanners[nextIndex].pos < this.productBanners[this.index].pos) {
+      this.productBanners[this.findIndex(direction)].pos = this.getPosition(direction) - 100 * direction;
     }
   }
 
   getIndex(translate): number {
-    let index = (Math.abs(translate) / 100) % this.carouselImages.length;
+    let index = (Math.abs(translate) / 100) % this.productBanners.length;
     if (translate > 0 && index != 0) {
-      index = this.carouselImages.length - index;
+      index = this.productBanners.length - index;
     }
     return index;
   }
@@ -59,11 +81,11 @@ export class CarouselComponent implements OnInit {
     let pos: number;
 
     //Get either the min or max position from the images based on the direction passed in
-    for (let i = 0; i < this.carouselImages.length; i++) {
+    for (let i = 0; i < this.productBanners.length; i++) {
       if (direction === -1) {
-        pos = maxPos = Math.max(maxPos, this.carouselImages[i].pos);
+        pos = maxPos = Math.max(maxPos, this.productBanners[i].pos);
       } else {
-        pos = minPos = Math.min(minPos, this.carouselImages[i].pos);
+        pos = minPos = Math.min(minPos, this.productBanners[i].pos);
       }
     }
     return pos;
@@ -71,7 +93,7 @@ export class CarouselComponent implements OnInit {
 
   findIndex(direction: number) {
     //Find the index of the image that will be shifting
-    return this.carouselImages.findIndex(x => x.pos === this.getPosition(-direction));
+    return this.productBanners.findIndex(x => x.pos === this.getPosition(-direction));
   }
 
   onArrowClick(direction: number) {

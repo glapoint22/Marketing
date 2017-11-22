@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 })
 export class SearchBarComponent implements OnInit {
   @Output() onShowSubscriptionForm = new EventEmitter<void>();
-  public categories: Array<object>;
-  public searchCategories: Array<object>;
-  public selectedCategory: Object = {};
+  public categories: Array<any>;
+  public searchCategories: Array<any>;
+  public selectedCategory: any = {};
 
   constructor(private dataService: DataService, private router: Router) { }
   
