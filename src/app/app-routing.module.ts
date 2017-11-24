@@ -7,6 +7,7 @@ import { PreferencesComponent } from "./preferences/preferences.component";
 import { LeadsComponent } from "./leads/leads.component";
 import { ErrorComponent } from "./error/error.component";
 import { ConfirmComponent } from "./confirm/confirm.component";
+import { SearchComponent } from "./search/search.component";
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'confirm',
     component: ConfirmComponent
+  },
+  {
+    path: 'search',
+    component: SearchComponent
   },
   {
     path: ':leadPage',

@@ -14,22 +14,27 @@ export class SearchBarComponent implements OnInit {
   public selectedCategory: any = {};
 
   constructor(private dataService: DataService, private router: Router) { }
-  
+
   stopPropagation(event): void {
     event.stopPropagation();
   }
 
   ngOnInit() {
     this.dataService.get('api/Categories')
-    .subscribe((response: any) => {
-      this.categories = response;
-      this.searchCategories = this.categories.slice();
-      this.searchCategories.unshift({name: 'All', id: 0});
-      this.selectedCategory = this.searchCategories[0];
-    }, error => {
-      this.dataService.data = error;
-      this.router.navigate(['/error']);
-    });
-    
+      .subscribe((response: any) => {
+        this.categories = response;
+        this.searchCategories = this.categories.slice();
+        this.searchCategories.unshift({ name: 'All', id: 0 });
+        this.selectedCategory = this.searchCategories[0];
+      }, error => {
+        this.dataService.data = error;
+        this.router.navigate(['/error']);
+      });
+  }
+
+  onSearchButtonClick(query, category) {
+    if(query !== ''){
+      this.router.navigate(['/search'], { queryParams: { 'query': query, 'cat_id': category } });
+    }
   }
 }

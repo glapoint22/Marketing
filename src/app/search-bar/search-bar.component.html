@@ -9,18 +9,20 @@
         <menu #menu (click)="stopPropagation($event)" (onShowSubscriptionForm)="onShowSubscriptionForm.emit()" [categories]="categories"></menu>
     </div>
     <div class="search-container">
-        <div class="category-select-container">
-            <select [style.width.px]="tmpSelect.offsetWidth" [(ngModel)]="selectedCategory">
-                <option *ngFor="let category of searchCategories" [ngValue]="category">{{category.name}}</option>
-            </select>
-        </div>
-        <div class="input-container">
-            <input type="text" placeholder="Search">
-        </div>
-        <div class="button-container">
-            <button class="search-button">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-        </div>
+        <form (ngSubmit)="onSearchButtonClick(search.value, selectedCategory.id)" style="display: inline-table">
+            <div class="category-select-container">
+                <select [style.width.px]="tmpSelect.offsetWidth" [(ngModel)]="selectedCategory" name="categories">
+                    <option *ngFor="let category of searchCategories" [ngValue]="category">{{category.name}}</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <input #search type="text" placeholder="Search">
+            </div>
+            <div class="button-container">
+                <button type="submit" class="search-button">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+        </form>
     </div>
 </div>

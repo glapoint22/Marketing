@@ -27,6 +27,7 @@ import { ModalComponent } from './modal/modal.component';
 import { ModalFormComponent } from './modal-form/modal-form.component';
 import { LeadsSubscriptionFormComponent } from './leads-subscription-form/leads-subscription-form.component';
 import { MenuComponent } from './menu/menu.component';
+import { SearchComponent } from './search/search.component';
 
 // Services
 import { DataService } from "./data.service";
@@ -55,7 +56,8 @@ import { CookieService } from 'ngx-cookie-service';
     ModalComponent,
     ModalFormComponent,
     LeadsSubscriptionFormComponent,
-    MenuComponent
+    MenuComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
