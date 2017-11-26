@@ -8,6 +8,7 @@ import { DataService } from "../data.service";
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  public products;
 
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
@@ -17,7 +18,7 @@ export class SearchComponent implements OnInit {
 
       this.dataService.get('api/Products', [{ key: 'query', value: query }, { key: 'category', value: category }])
     .subscribe((response: any) => {
-      response;
+      this.products = response;
     }, error => {
       // this.dataService.data = error;
       // this.router.navigate(['/error']);

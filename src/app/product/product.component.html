@@ -1,13 +1,15 @@
-<!-- Product Name -->
-<div [innerHtml]="product.name" class="product-name"></div>
+<div class="product">
+  <!-- Product Name -->
+  <div [innerHtml]="product.name" class="product-name"></div>
 
-<!-- Video Play Button -->
-<video-play-button [videos]="product.videos" [productName]="product.name"></video-play-button>
+  <!-- Video Play Button -->
+  <video-play-button [videos]="product.videos" [productName]="product.name"></video-play-button>
 
-<!-- Hop Link -->
-<div class="hop-link" (click)="onClick()">
-  <img #img [src]="'assets/images/products/' + product.image" >
+  <!-- Hop Link -->
+  <div class="hop-link" (click)="onClick()">
+    <img #img [src]="'assets/images/products/' + product.image">
+  </div>
+
+  <!-- Product Description -->
+  <div [innerHtml]="product.description" class="product-description"></div>
 </div>
-
-<!-- Product Description -->
-<div [innerHtml]="product.description" class="product-description"></div>

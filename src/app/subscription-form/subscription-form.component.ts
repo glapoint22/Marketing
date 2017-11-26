@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./subscription-form.component.scss', '../modal/modal.component.scss']
 })
 export class SubscriptionFormComponent extends ModalFormComponent implements OnInit {
-  @Input() caption: string;
-  @Input() buttonText: string;
+  @Input() caption: string = 'Could I please get your name and email address so I can send you exciting offers from products like the one you just clicked on?';
+  @Input() buttonText: string = 'Yes! Sign me up!';
   public name: string;
   public email: string;
 

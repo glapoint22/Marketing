@@ -1,5 +1,13 @@
 @import 'theme';
 
+.product{
+    // display: inline-block;
+    text-align: center;
+    position: relative;
+    max-width: 300px;
+    background: #1f0118;
+    box-shadow: 4px 0 10px #020202;
+}
 .hop-link{
     height: 300px;
     line-height: 300px;

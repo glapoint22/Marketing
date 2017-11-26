@@ -3,7 +3,6 @@
 body{
     margin: 0;
 }
-
 button{
     @include gradient($color1, $color2);
     height: 50px;
@@ -21,6 +20,12 @@ button{
 button:hover{
     color: #FFFFFF;
     cursor: pointer;
+}
+.background-container{
+    position:absolute;
+    width: 100%;
+    min-height: 100%;
+    background: $background-color;
 }
 
 
