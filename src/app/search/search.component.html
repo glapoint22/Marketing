@@ -1,15 +1,32 @@
 <div class="background-container">
   <search-bar></search-bar>
-  <div style="width: 1700px; margin: auto; margin-top:80px;">
-    <div style="color: white;
-    margin-left: 20px;">Showing 1-40 of 4,645,710 results</div>
-    <ul style="list-style: none;
-padding: 0;
-margin: 0;">
-      <li *ngFor="let product of products" style="display:inline-block; margin: 20px">
+  <div class="products-container">
+    <div *ngIf="totalProducts > 0" class="results-display">Showing {{productStart}}-{{productEnd}} of {{totalProducts}} results
+  </div>
+
+  <div *ngIf="totalProducts === 0" class="no-match-container">
+    <div><i class="fa fa-exclamation-circle" aria-hidden="true"></i>Sorry, no products matched "{{query}}"</div>
+    <ul>
+      <li>Check your spelling</li>
+      <li>Use different keywords and try again</li>
+    </ul>
+  </div>
+    
+    
+    
+    <ul>
+      <li *ngFor="let product of products">
         <product (onShowSubscriptionForm)="subscriptionForm.show = true" [product]="product"></product>
       </li>
     </ul>
+  </div>
+  <div *ngIf="totalProducts > 0" class="pages-container">
+    <div class="page-numbers">
+      <ul>
+        <li *ngFor="let number of pageList" (click)="onPageClick(number)" [ngClass]="{'selected-page': page == number, 'default-cursor': number == '...'}">{{number}}</li>
+      </ul>
+    </div>
+    <arrows [showLeftArrow]="page > 1" [showRightArrow]="page < pages" (onArrowClick)="onArrowClick($event)"></arrows>
   </div>
   <subscription-form #subscriptionForm></subscription-form>
 </div>

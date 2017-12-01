@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from "../data.service";
 
 @Component({
@@ -9,22 +9,89 @@ import { DataService } from "../data.service";
 })
 export class SearchComponent implements OnInit {
   public products;
+  public totalProducts: number;
+  public pages: number;
+  public productStart: number;
+  public productEnd: number;
+  public query: string;
+  public page: number;
+  public category;
+  public pageList: Array<string> = [];
 
-  constructor(private dataService: DataService, private route: ActivatedRoute) { }
+  constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(queryParams => {
-      let query = queryParams.get('query'), category = queryParams.get('cat_id');
+      let page = queryParams.get('page');
 
-      this.dataService.get('api/Products', [{ key: 'query', value: query }, { key: 'category', value: category }])
-    .subscribe((response: any) => {
-      this.products = response;
-    }, error => {
-      // this.dataService.data = error;
-      // this.router.navigate(['/error']);
+
+      this.category = queryParams.get('cat_id');
+      this.query = queryParams.get('query');
+
+      this.dataService.get('api/Products', [{ key: 'query', value: this.query }, { key: 'category', value: this.category }, { key: 'page', value: page !== null ? page : 1 }])
+        .subscribe((response: any) => {
+          let resultsPerPage = response.resultsPerPage, body = document.scrollingElement || document.documentElement;
+          body.scrollTop = 0;
+          this.pageList = [];
+          this.page = response.page;
+          this.products = response.products;
+          this.totalProducts = response.totalProducts;
+          this.productStart = resultsPerPage * (this.page - 1) + 1;
+          this.productEnd = this.productStart + response.products.length - 1;
+          this.pages = Math.ceil(this.totalProducts / resultsPerPage);
+
+          // this.pages = 1;
+
+          this.pageList.push('1');
+          if (this.page >= 5 && this.pages > 7) {
+            this.pageList.push('...');
+            
+            if(this.pages - this.page < 4){
+              for (let i = this.pages - 5; i < this.pages; i++){
+                this.pageList.push(i.toString());
+              }
+            }else{
+              for (let i = this.page - 2; i < Math.min(this.page + 3, this.pages); i++) {
+                this.pageList.push(i.toString());
+              }
+            }
+
+            
+            if(this.pages - this.page > 3)this.pageList.push('...');
+            
+           
+
+
+          } else {
+            for (let i = 2; i <= Math.min(this.pages - 1, 6); i++) {
+              this.pageList.push(i.toString());
+            }
+            if (this.pages > 7) this.pageList.push('...');
+          }
+          if(this.pages > 1)this.pageList.push(this.pages.toString());
+          
+
+
+
+        }, error => {
+          // this.dataService.data = error;
+          // this.router.navigate(['/error']);
+        });
     });
-      
-    });
+  }
+
+  onArrowClick(direction) {
+    this.setPage(this.page + direction);
+  }
+
+  onPageClick(page){
+    if(page !== '...'){
+      this.setPage(page);
+    }
+  }
+
+  setPage(page){
+    this.router.navigate(['/search'], { queryParams: { 'query': this.query, 'cat_id': this.category, 'page': page } });
   }
 
 }
