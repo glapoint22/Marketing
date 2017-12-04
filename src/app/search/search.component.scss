@@ -1,16 +1,21 @@
 @import 'theme';
 
 .products-container{
-    width: 1700px;
-    margin: auto;
-    margin-top:80px;
+    width: 1360px;
+    position: relative;
+    left: 220px;
     li{
         margin: 20px;
     }
 }
+.results-sort-container{
+    width: 100%;
+    position: relative;
+}
 .results-display{
     color: #dedede;
     margin-left: 20px;
+    display: inline;
 }
 .no-match-container{
     width: 50%;

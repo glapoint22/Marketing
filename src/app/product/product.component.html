@@ -1,6 +1,9 @@
 <div class="product">
   <!-- Product Name -->
-  <div [innerHtml]="product.name" class="product-name"></div>
+  <div class="product-name">
+    {{product.name}}
+    <div>{{product.price | currency:'USD':true}}</div>
+  </div>
 
   <!-- Video Play Button -->
   <video-play-button [videos]="product.videos" [productName]="product.name"></video-play-button>
