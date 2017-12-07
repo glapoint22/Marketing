@@ -1,0 +1,17 @@
+<div style="background: green; min-height: 50px; border: 1px solid black; padding-left: 20px; position:relative">
+  <div style="font-weight: 600; margin: 16px 0 10px;">{{title}}</div>
+  <div style="width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid black;
+  position: absolute;
+  top: 24px;
+  right: 20px;"></div>
+  <div>
+    <div *ngFor="let option of options">
+      <input type="checkbox" [checked]="option.checked" (change)="setFilter(option.name)">{{option.name}}<br>
+    </div>
+    
+  </div>
+</div>

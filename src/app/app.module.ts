@@ -28,6 +28,7 @@ import { ModalFormComponent } from './modal-form/modal-form.component';
 import { LeadsSubscriptionFormComponent } from './leads-subscription-form/leads-subscription-form.component';
 import { MenuComponent } from './menu/menu.component';
 import { SearchComponent } from './search/search.component';
+import { CheckboxFilterComponent } from './checkbox-filter/checkbox-filter.component';
 
 // Services
 import { DataService } from "./data.service";
@@ -57,7 +58,8 @@ import { CookieService } from 'ngx-cookie-service';
     ModalFormComponent,
     LeadsSubscriptionFormComponent,
     MenuComponent,
-    SearchComponent
+    SearchComponent,
+    CheckboxFilterComponent
   ],
   imports: [
     BrowserModule,

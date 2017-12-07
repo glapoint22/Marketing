@@ -15,20 +15,21 @@ export class SearchComponent implements OnInit {
   public productEnd: number;
   public query: string;
   public page: number;
-  public category;
   public pageList: Array<string> = [];
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(queryParams => {
-      let page = queryParams.get('page');
+      let parameters: Array<any> = [];
 
-
-      this.category = queryParams.get('cat_id');
       this.query = queryParams.get('query');
+      
+      for (let i = 0; i < queryParams.keys.length; i++) {
+        parameters.push({ key: queryParams.keys[i], value: queryParams.get(queryParams.keys[i]) })
+      }
 
-      this.dataService.get('api/Products', [{ key: 'query', value: this.query }, { key: 'category', value: this.category }, { key: 'page', value: page !== null ? page : 1 }])
+      this.dataService.get('api/Products', parameters)
         .subscribe((response: any) => {
           let resultsPerPage = response.resultsPerPage, body = document.scrollingElement || document.documentElement;
           body.scrollTop = 0;
@@ -40,26 +41,25 @@ export class SearchComponent implements OnInit {
           this.productEnd = this.productStart + response.products.length - 1;
           this.pages = Math.ceil(this.totalProducts / resultsPerPage);
 
-          // this.pages = 1;
 
           this.pageList.push('1');
           if (this.page >= 5 && this.pages > 7) {
             this.pageList.push('...');
-            
-            if(this.pages - this.page < 4){
-              for (let i = this.pages - 5; i < this.pages; i++){
+
+            if (this.pages - this.page < 4) {
+              for (let i = this.pages - 5; i < this.pages; i++) {
                 this.pageList.push(i.toString());
               }
-            }else{
+            } else {
               for (let i = this.page - 2; i < Math.min(this.page + 3, this.pages); i++) {
                 this.pageList.push(i.toString());
               }
             }
 
-            
-            if(this.pages - this.page > 3)this.pageList.push('...');
-            
-           
+
+            if (this.pages - this.page > 3) this.pageList.push('...');
+
+
 
 
           } else {
@@ -68,8 +68,8 @@ export class SearchComponent implements OnInit {
             }
             if (this.pages > 7) this.pageList.push('...');
           }
-          if(this.pages > 1)this.pageList.push(this.pages.toString());
-          
+          if (this.pages > 1) this.pageList.push(this.pages.toString());
+
 
 
 
@@ -84,14 +84,16 @@ export class SearchComponent implements OnInit {
     this.setPage(this.page + direction);
   }
 
-  onPageClick(page){
-    if(page !== '...'){
+  onPageClick(page) {
+    if (page !== '...') {
       this.setPage(page);
     }
   }
 
-  setPage(page){
-    this.router.navigate(['/search'], { queryParams: { 'query': this.query, 'cat_id': this.category, 'page': page } });
+  setPage(page) {
+    this.router.navigate(['/search'], {
+      queryParams: {'page': page},
+      queryParamsHandling: 'merge'
+    });
   }
-
 }

@@ -9,21 +9,10 @@
     width: 220px;
     position: absolute;">
 
-
-    <div style="background: green; min-height: 50px; border: 1px solid black; padding-left: 20px; position:relative">
-      <div style="font-weight: 600; margin: 16px 0 10px;">Categories</div>
-      <div style="width: 0;
-      height: 0;
-      border-left: 7px solid transparent;
-      border-right: 7px solid transparent;
-      border-bottom: 7px solid black;
-      position: absolute;
-      top: 24px;
-      right: 20px;"></div>
-      <div>Hello</div>
-    </div>
-
-
+  
+  <checkbox-filter [optionsList]="'English,German,Spanish,French,Italian,Portuguese'" title="Language"></checkbox-filter>
+  <checkbox-filter [optionsList]="'Digital Downlaod,Shippable'" title="Product Type"></checkbox-filter>
+  <checkbox-filter [optionsList]="'Single Payment,Subscription,Trial'" title="Billing"></checkbox-filter>
     
 
 

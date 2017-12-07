@@ -33,8 +33,8 @@ export class SearchBarComponent implements OnInit {
   }
 
   onSearchButtonClick(query, category) {
-    if(query !== ''){
-      this.router.navigate(['/search'], { queryParams: { 'query': query, 'cat_id': category } });
+    if (query !== '') {
+      this.router.navigate(['/search'], {queryParams: {'query': query, 'category': category}});
     }
   }
 }
