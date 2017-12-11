@@ -1,40 +1,6 @@
 <div class="background-container">
   <search-bar></search-bar>
-  <div style="
-  width: 1580PX;
-  margin: auto;
-  position: relative;
-  margin-top: 80px;">
-    <div style="background: red;
-    width: 220px;
-    position: absolute;">
-
-  
-  <checkbox-filter [optionsList]="'English,German,Spanish,French,Italian,Portuguese'" title="Language"></checkbox-filter>
-  <checkbox-filter [optionsList]="'Digital Downlaod,Shippable'" title="Product Type"></checkbox-filter>
-  <checkbox-filter [optionsList]="'Single Payment,Subscription,Trial'" title="Billing"></checkbox-filter>
-    
-
-
-
-  </div>
-    <div class="products-container">
-      <div *ngIf="totalProducts > 0" class="results-sort-container">
-        <div class="results-display">
-          Showing {{productStart}}-{{productEnd}} of {{totalProducts}} results
-        </div>
-        <div style="position: absolute; right: 20px; display:inline">
-          sort
-          <select>
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-          </select>
-        </div>
-
-      </div>
-      <div *ngIf="totalProducts === 0" class="no-match-container">
+  <div *ngIf="totalProducts === 0" class="no-match-container">
         <div>
           <i class="fa fa-exclamation-circle" aria-hidden="true"></i>Sorry, no products matched "{{query}}"
         </div>
@@ -44,23 +10,94 @@
         </ul>
       </div>
 
-
-
-      <ul>
-        <li *ngFor="let product of products">
-          <product (onShowSubscriptionForm)="subscriptionForm.show = true" [product]="product"></product>
-        </li>
-      </ul>
-    </div>
-    <div *ngIf="totalProducts > 0" class="pages-container">
-      <div class="page-numbers">
-        <ul>
-          <li *ngFor="let number of pageList" (click)="onPageClick(number)" [ngClass]="{'selected-page': page == number, 'default-cursor': number == '...'}">{{number}}</li>
-        </ul>
+  <div *ngIf="totalProducts > 0">
+    <div style="width: 1580px; margin: auto; margin-top: 80px; position:relative; margin-bottom: 10px;">
+      <div class="results-display">
+        Showing {{productStart}}-{{productEnd}} of {{totalProducts}} results for "{{query}}"
       </div>
-      <arrows [showLeftArrow]="page > 1" [showRightArrow]="page < pages" (onArrowClick)="onArrowClick($event)"></arrows>
+  
+      <div style="position: absolute;
+      display: inline;
+      right: 0;
+      margin-right: 20px;">
+        sort
+        <select>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+      </div>
+  
+    </div>
+    <div style="
+    width: 1580PX;
+    margin: auto;
+    display: flex;">
+      <div style="width: 220px;">
+  
+    
+  
+  
+  
+  
+      <div style="background: green; min-height: 50px; border: 1px solid black; padding-left: 20px; position:relative">
+        <div style="font-weight: 600; margin: 16px 0 10px;">Categories</div>
+        <div style="width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid black;
+        position: absolute;
+        top: 24px;
+        right: 20px;"></div>
+        
+          <div *ngFor="let category of categories" style="font-weight:bold; margin-bottom: 10px" (click)="setCategory(category.id)">{{category.name}}
+            <div *ngFor="let niche of category.niches" style="margin-left: 15px" (click)="setNiche(niche.id, category.id, $event)">{{niche.name}}</div>
+          </div>
+          
+          
+          
+        
+      </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <checkbox-filter [optionsList]="'English,German,Spanish,French,Italian,Portuguese'" title="Language"></checkbox-filter>
+    <checkbox-filter [optionsList]="'Digital Downlaod,Shippable'" title="Product Type"></checkbox-filter>
+    <checkbox-filter [optionsList]="'Single Payment,Subscription,Trial'" title="Billing"></checkbox-filter>
+      
+  
+  
+  
+    </div>
+  
+  
+  
+      <div class="products-container">
+        <ul>
+          <li *ngFor="let product of products">
+            <product (onShowSubscriptionForm)="subscriptionForm.show = true" [product]="product"></product>
+          </li>
+        </ul>
+        <div class="pages-container">
+          <div class="page-numbers">
+            <ul>
+              <li *ngFor="let number of pageList" (click)="onPageClick(number)" [ngClass]="{'selected-page': page == number, 'default-cursor': number == '...'}">{{number}}</li>
+            </ul>
+          </div>
+          <arrows [showLeftArrow]="page > 1" [showRightArrow]="page < pages" (onArrowClick)="onArrowClick($event)"></arrows>
+        </div>
+      </div>
     </div>
   </div>
+  
 
   <subscription-form #subscriptionForm></subscription-form>
 </div>

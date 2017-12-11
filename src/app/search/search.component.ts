@@ -17,6 +17,8 @@ export class SearchComponent implements OnInit {
   public page: number;
   public pageList: Array<string> = [];
 
+  public categories;
+
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -40,6 +42,8 @@ export class SearchComponent implements OnInit {
           this.productStart = resultsPerPage * (this.page - 1) + 1;
           this.productEnd = this.productStart + response.products.length - 1;
           this.pages = Math.ceil(this.totalProducts / resultsPerPage);
+
+          this.categories = response.categories;
 
 
           this.pageList.push('1');
@@ -96,4 +100,22 @@ export class SearchComponent implements OnInit {
       queryParamsHandling: 'merge'
     });
   }
+
+  setCategory(id){
+    this.router.navigate(['/search'], {
+      queryParams: {'category': id},
+      queryParamsHandling: 'merge'
+    });
+  }
+
+  setNiche(id, cat, event){
+    event.stopPropagation();
+
+    this.router.navigate(['/search'], {
+      queryParams: {'category': cat, 'nicheId': id},
+      queryParamsHandling: 'merge'
+    });
+  }
+
+  
 }
