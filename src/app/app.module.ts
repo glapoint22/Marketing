@@ -5,6 +5,11 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
+// Services
+import { DataService } from "./data.service";
+import { VideoService } from "./video.service";
+import { CookieService } from 'ngx-cookie-service';
+
 // Components
 import { AppComponent } from './app.component';
 import { MailComponent } from './mail/mail.component';
@@ -29,11 +34,8 @@ import { LeadsSubscriptionFormComponent } from './leads-subscription-form/leads-
 import { MenuComponent } from './menu/menu.component';
 import { SearchComponent } from './search/search.component';
 import { CheckboxFilterComponent } from './checkbox-filter/checkbox-filter.component';
-
-// Services
-import { DataService } from "./data.service";
-import { VideoService } from "./video.service";
-import { CookieService } from 'ngx-cookie-service';
+import { CategoryFilterComponent } from './category-filter/category-filter.component';
+import { FilterComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { CookieService } from 'ngx-cookie-service';
     LeadsSubscriptionFormComponent,
     MenuComponent,
     SearchComponent,
-    CheckboxFilterComponent
+    CheckboxFilterComponent,
+    CategoryFilterComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

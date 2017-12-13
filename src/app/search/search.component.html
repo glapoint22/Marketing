@@ -36,12 +36,12 @@
     display: flex;">
       <div style="width: 220px;">
   
-    
+    <category-filter [categories]="categories" [caption]="'Categories'"></category-filter>
   
   
   
   
-      <div style="background: green; min-height: 50px; border: 1px solid black; padding-left: 20px; position:relative">
+      <!-- <div style="background: green; min-height: 50px; border: 1px solid black; padding-left: 20px; position:relative">
         <div style="font-weight: 600; margin: 16px 0 10px;">Categories</div>
         <div style="width: 0;
         height: 0;
@@ -52,14 +52,20 @@
         top: 24px;
         right: 20px;"></div>
         
-          <div *ngFor="let category of categories" style="font-weight:bold; margin-bottom: 10px" (click)="setCategory(category.id)">{{category.name}}
-            <div *ngFor="let niche of category.niches" style="margin-left: 15px" (click)="setNiche(niche.id, category.id, $event)">{{niche.name}}</div>
+          <div *ngIf="currentCategory > 0" (click)="setCategory(0)">Any Category</div>
+          <div *ngFor="let category of categories; let i = index" style="font-weight:bold; margin-bottom: 10px">
+            <div *ngIf="!displayAllCategories ? i < 4 : categories.length">
+              <div (click)="setCategory(category.id)">{{category.name}}</div>
+              <div *ngFor="let niche of category.niches; let j = index">
+                <div *ngIf="!category.showAllNiches ? j < 4 : category.niches.length">
+                    <div style="margin-left: 15px" (click)="setNiche(niche.id, category.id, $event)">{{niche.name}}</div>
+                </div>
+              </div>
+              <div *ngIf="category.niches.length > 4" style="margin-left: 15px" (click)="category.showAllNiches = !category.showAllNiches" [innerHtml]="!category.showAllNiches ? 'See More' : 'See Less'"></div>
+            </div>
           </div>
-          
-          
-          
-        
-      </div>
+          <div *ngIf="categories.length > 4" (click)="displayAllCategories = !displayAllCategories" [innerHtml]="!displayAllCategories ? 'See All ' + categories.length + ' Categories' : 'See Fewer Categories'"></div>
+      </div> -->
   
   
   
@@ -69,9 +75,9 @@
   
   
   
-    <checkbox-filter [optionsList]="'English,German,Spanish,French,Italian,Portuguese'" title="Language"></checkbox-filter>
-    <checkbox-filter [optionsList]="'Digital Downlaod,Shippable'" title="Product Type"></checkbox-filter>
-    <checkbox-filter [optionsList]="'Single Payment,Subscription,Trial'" title="Billing"></checkbox-filter>
+    <checkbox-filter [optionsList]="'English,German,Spanish,French,Italian,Portuguese'" [caption]="'Language'"></checkbox-filter>
+    <checkbox-filter [optionsList]="'Digital Downlaod,Shippable'" [caption]="'Product Type'"></checkbox-filter>
+    <checkbox-filter [optionsList]="'Single Payment,Subscription,Trial'" [caption]="'Billing'"></checkbox-filter>
       
   
   

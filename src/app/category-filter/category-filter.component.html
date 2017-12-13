@@ -1,0 +1,26 @@
+<div style="background: green; min-height: 50px; border: 1px solid black; padding-left: 20px; position:relative">
+  <div style="font-weight: 600; margin: 16px 0 10px;">{{caption}}</div>
+  <div style="width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid black;
+  position: absolute;
+  top: 24px;
+  right: 20px;"></div>
+
+  <div *ngIf="currentCategory > 0" (click)="setQueryParameters([{name: 'category', value: 0}], ['nicheId', 'page'])">Any Category</div>
+  <div *ngFor="let category of categories; let i = index" style="font-weight:bold; margin-bottom: 10px">
+    <div *ngIf="!displayAllCategories ? i < 4 : categories.length">
+      <div (click)="setQueryParameters([{name: 'category', value: category.id}], ['nicheId', 'page'])">{{category.name}}</div>
+      <div *ngFor="let niche of category.niches; let j = index">
+        <div *ngIf="!category.showAllNiches ? j < 4 : category.niches.length">
+          <div style="margin-left: 15px" (click)="setQueryParameters([{name: 'nicheId', value: niche.id}, {name: 'category', value: category.id}], ['page'])">{{niche.name}}</div>
+        </div>
+      </div>
+      <div *ngIf="category.niches.length > 4" style="margin-left: 15px" (click)="category.showAllNiches = !category.showAllNiches"
+        [innerHtml]="!category.showAllNiches ? 'See More' : 'See Less'"></div>
+    </div>
+  </div>
+  <div *ngIf="categories.length > 4" (click)="displayAllCategories = !displayAllCategories" [innerHtml]="!displayAllCategories ? 'See All ' + categories.length + ' Categories' : 'See Fewer Categories'"></div>
+</div>

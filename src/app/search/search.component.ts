@@ -18,6 +18,10 @@ export class SearchComponent implements OnInit {
   public pageList: Array<string> = [];
 
   public categories;
+  // public displayAllCategories: boolean;
+  // public currentCategory;
+  // public queryParameters;
+  
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) { }
 
@@ -26,6 +30,7 @@ export class SearchComponent implements OnInit {
       let parameters: Array<any> = [];
 
       this.query = queryParams.get('query');
+      // this.currentCategory = queryParams.get('category')
       
       for (let i = 0; i < queryParams.keys.length; i++) {
         parameters.push({ key: queryParams.keys[i], value: queryParams.get(queryParams.keys[i]) })
@@ -43,7 +48,17 @@ export class SearchComponent implements OnInit {
           this.productEnd = this.productStart + response.products.length - 1;
           this.pages = Math.ceil(this.totalProducts / resultsPerPage);
 
+          // this.displayAllCategories = false;
+
+          // //Get all the query parameters from the url
+          // this.queryParameters = queryParams;
+
+          // for(let i = 0; i < this.categories.length; i++){
+          //   this.categories[i]['showAllNiches'] = false;
+          // }
+
           this.categories = response.categories;
+          
 
 
           this.pageList.push('1');
@@ -101,21 +116,43 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  setCategory(id){
-    this.router.navigate(['/search'], {
-      queryParams: {'category': id},
-      queryParamsHandling: 'merge'
-    });
-  }
+  
+  
+  
+  
+  // setCategory(id){
+  //   let params = {};
 
-  setNiche(id, cat, event){
-    event.stopPropagation();
+  //   for (let i = 0; i < this.queryParameters.keys.length; i++) {
+  //     if (this.queryParameters.keys[i] !== 'nicheId' && this.queryParameters.keys[i] !== 'page') {
+  //       params[this.queryParameters.keys[i]] = this.queryParameters.params[this.queryParameters.keys[i]];
+  //     }
+  //   }
 
-    this.router.navigate(['/search'], {
-      queryParams: {'category': cat, 'nicheId': id},
-      queryParamsHandling: 'merge'
-    });
-  }
+  //   params['category'] = id;
+
+  //   this.router.navigate(['/search'], {
+  //     queryParams: params
+  //   });
+  // }
+
+  // setNiche(id, category, event){
+  //   let params = {};
+  //   event.stopPropagation();
+
+  //   for (let i = 0; i < this.queryParameters.keys.length; i++) {
+  //     if (this.queryParameters.keys[i] !== 'page') {
+  //       params[this.queryParameters.keys[i]] = this.queryParameters.params[this.queryParameters.keys[i]];
+  //     }
+  //   }
+
+  //   params['nicheId'] = id;
+  //   params['category'] = category;
+
+  //   this.router.navigate(['/search'], {
+  //     queryParams: params
+  //   });
+  // }
 
   
 }
