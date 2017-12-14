@@ -5,7 +5,7 @@
     position: relative;
     max-width: 300px;
     background: #1f0118;
-    box-shadow: 4px 0 10px #020202;
+    @include shadow();
 }
 .hop-link{
     height: 300px;

@@ -1,21 +1,21 @@
 <div class="background-container">
   <search-bar></search-bar>
   <div *ngIf="totalProducts === 0" class="no-match-container">
-        <div>
-          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>Sorry, no products matched "{{query}}"
-        </div>
-        <ul>
-          <li>Check your spelling</li>
-          <li>Use different keywords and try again</li>
-        </ul>
-      </div>
+    <div>
+      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>Sorry, no products matched "{{query}}"
+    </div>
+    <ul>
+      <li>Check your spelling</li>
+      <li>Use different keywords and try again</li>
+    </ul>
+  </div>
 
   <div *ngIf="totalProducts > 0">
     <div style="width: 1580px; margin: auto; margin-top: 80px; position:relative; margin-bottom: 10px;">
       <div class="results-display">
         Showing {{productStart}}-{{productEnd}} of {{totalProducts}} results for "{{query}}"
       </div>
-  
+
       <div style="position: absolute;
       display: inline;
       right: 0;
@@ -28,64 +28,26 @@
           <option value="audi">Audi</option>
         </select>
       </div>
-  
+
     </div>
     <div style="
     width: 1580PX;
     margin: auto;
     display: flex;">
       <div style="width: 220px;">
-  
-    <category-filter [categories]="categories" [caption]="'Categories'"></category-filter>
-  
-  
-  
-  
-      <!-- <div style="background: green; min-height: 50px; border: 1px solid black; padding-left: 20px; position:relative">
-        <div style="font-weight: 600; margin: 16px 0 10px;">Categories</div>
-        <div style="width: 0;
-        height: 0;
-        border-left: 7px solid transparent;
-        border-right: 7px solid transparent;
-        border-bottom: 7px solid black;
-        position: absolute;
-        top: 24px;
-        right: 20px;"></div>
-        
-          <div *ngIf="currentCategory > 0" (click)="setCategory(0)">Any Category</div>
-          <div *ngFor="let category of categories; let i = index" style="font-weight:bold; margin-bottom: 10px">
-            <div *ngIf="!displayAllCategories ? i < 4 : categories.length">
-              <div (click)="setCategory(category.id)">{{category.name}}</div>
-              <div *ngFor="let niche of category.niches; let j = index">
-                <div *ngIf="!category.showAllNiches ? j < 4 : category.niches.length">
-                    <div style="margin-left: 15px" (click)="setNiche(niche.id, category.id, $event)">{{niche.name}}</div>
-                </div>
-              </div>
-              <div *ngIf="category.niches.length > 4" style="margin-left: 15px" (click)="category.showAllNiches = !category.showAllNiches" [innerHtml]="!category.showAllNiches ? 'See More' : 'See Less'"></div>
-            </div>
-          </div>
-          <div *ngIf="categories.length > 4" (click)="displayAllCategories = !displayAllCategories" [innerHtml]="!displayAllCategories ? 'See All ' + categories.length + ' Categories' : 'See Fewer Categories'"></div>
-      </div> -->
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    <checkbox-filter [optionsList]="'English,German,Spanish,French,Italian,Portuguese'" [caption]="'Language'"></checkbox-filter>
-    <checkbox-filter [optionsList]="'Digital Downlaod,Shippable'" [caption]="'Product Type'"></checkbox-filter>
-    <checkbox-filter [optionsList]="'Single Payment,Subscription,Trial'" [caption]="'Billing'"></checkbox-filter>
-      
-  
-  
-  
-    </div>
-  
-  
-  
+
+        <category-filter [categories]="categories" [caption]="'Categories'"></category-filter>
+        <checkbox-filter [optionsList]="'English,German,Spanish,French,Italian,Portuguese'" [caption]="'Language'"></checkbox-filter>
+        <checkbox-filter [optionsList]="'Digital Downlaod,Shippable'" [caption]="'Product Type'"></checkbox-filter>
+        <checkbox-filter [optionsList]="'Single Payment,Subscription,Trial'" [caption]="'Billing'"></checkbox-filter>
+
+
+
+
+      </div>
+
+
+
       <div class="products-container">
         <ul>
           <li *ngFor="let product of products">
@@ -103,7 +65,7 @@
       </div>
     </div>
   </div>
-  
+
 
   <subscription-form #subscriptionForm></subscription-form>
 </div>

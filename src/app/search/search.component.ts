@@ -8,20 +8,15 @@ import { DataService } from "../data.service";
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  public products;
-  public totalProducts: number;
-  public pages: number;
-  public productStart: number;
-  public productEnd: number;
-  public query: string;
-  public page: number;
-  public pageList: Array<string> = [];
-
-  public categories;
-  // public displayAllCategories: boolean;
-  // public currentCategory;
-  // public queryParameters;
-  
+  private products;
+  private totalProducts: number;
+  private pages: number;
+  private productStart: number;
+  private productEnd: number;
+  private query: string;
+  private page: number;
+  private pageList: Array<string> = [];
+  private categories;
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) { }
 
@@ -30,7 +25,6 @@ export class SearchComponent implements OnInit {
       let parameters: Array<any> = [];
 
       this.query = queryParams.get('query');
-      // this.currentCategory = queryParams.get('category')
       
       for (let i = 0; i < queryParams.keys.length; i++) {
         parameters.push({ key: queryParams.keys[i], value: queryParams.get(queryParams.keys[i]) })
@@ -47,18 +41,7 @@ export class SearchComponent implements OnInit {
           this.productStart = resultsPerPage * (this.page - 1) + 1;
           this.productEnd = this.productStart + response.products.length - 1;
           this.pages = Math.ceil(this.totalProducts / resultsPerPage);
-
-          // this.displayAllCategories = false;
-
-          // //Get all the query parameters from the url
-          // this.queryParameters = queryParams;
-
-          // for(let i = 0; i < this.categories.length; i++){
-          //   this.categories[i]['showAllNiches'] = false;
-          // }
-
           this.categories = response.categories;
-          
 
 
           this.pageList.push('1');
@@ -115,44 +98,4 @@ export class SearchComponent implements OnInit {
       queryParamsHandling: 'merge'
     });
   }
-
-  
-  
-  
-  
-  // setCategory(id){
-  //   let params = {};
-
-  //   for (let i = 0; i < this.queryParameters.keys.length; i++) {
-  //     if (this.queryParameters.keys[i] !== 'nicheId' && this.queryParameters.keys[i] !== 'page') {
-  //       params[this.queryParameters.keys[i]] = this.queryParameters.params[this.queryParameters.keys[i]];
-  //     }
-  //   }
-
-  //   params['category'] = id;
-
-  //   this.router.navigate(['/search'], {
-  //     queryParams: params
-  //   });
-  // }
-
-  // setNiche(id, category, event){
-  //   let params = {};
-  //   event.stopPropagation();
-
-  //   for (let i = 0; i < this.queryParameters.keys.length; i++) {
-  //     if (this.queryParameters.keys[i] !== 'page') {
-  //       params[this.queryParameters.keys[i]] = this.queryParameters.params[this.queryParameters.keys[i]];
-  //     }
-  //   }
-
-  //   params['nicheId'] = id;
-  //   params['category'] = category;
-
-  //   this.router.navigate(['/search'], {
-  //     queryParams: params
-  //   });
-  // }
-
-  
 }

@@ -10,3 +10,6 @@ $color5: #fa07de;
     // background: -webkit-gradient($color);
     background: linear-gradient($color);
 }
+@mixin shadow(){
+    box-shadow: 4px 0 10px #020202;
+}

@@ -1,26 +1,42 @@
-<div style="background: green; min-height: 50px; border: 1px solid black; padding-left: 20px; position:relative">
-  <div style="font-weight: 600; margin: 16px 0 10px;">{{caption}}</div>
-  <div style="width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 7px solid black;
-  position: absolute;
-  top: 24px;
-  right: 20px;"></div>
+<div class="filter-container" [ngClass]="{'padding' : showContent}">
+  <div class="caption">{{caption}}</div>
+  <div class="arrow" (click)="showContent = !showContent"></div>
 
-  <div *ngIf="currentCategory > 0" (click)="setQueryParameters([{name: 'category', value: 0}], ['nicheId', 'page'])">Any Category</div>
-  <div *ngFor="let category of categories; let i = index" style="font-weight:bold; margin-bottom: 10px">
-    <div *ngIf="!displayAllCategories ? i < 4 : categories.length">
-      <div (click)="setQueryParameters([{name: 'category', value: category.id}], ['nicheId', 'page'])">{{category.name}}</div>
-      <div *ngFor="let niche of category.niches; let j = index">
-        <div *ngIf="!category.showAllNiches ? j < 4 : category.niches.length">
-          <div style="margin-left: 15px" (click)="setQueryParameters([{name: 'nicheId', value: niche.id}, {name: 'category', value: category.id}], ['page'])">{{niche.name}}</div>
+  <div *ngIf="showContent">
+    <!-- Any Category -->
+    <div *ngIf="currentCategory > 0">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+      <div class="pointer inline" (click)="setQueryParameters([{name: 'category', value: 0}], ['nicheId', 'page'])">Any Category</div>
+    </div>
+
+
+    <!-- List of categories -->
+    <div *ngFor="let category of categories; let i = index">
+      <!-- Display all categories or partial  -->
+      <div *ngIf="!displayAllCategories ? i < 4 : categories.length">
+        <i *ngIf="currentNiche > 0" class="fa fa-angle-left" aria-hidden="true"></i>
+        <div style="display: inline-block" (click)="setQueryParameters([{name: 'category', value: category.id}], ['nicheId', 'page'])"
+          [ngClass]="{'margin-top' : currentCategory == 0, 'highlight' : currentNiche == null, 'pointer' : currentCategory == 0 || currentNiche > 0}">{{category.name}}</div>
+
+        <!-- List of niches per category -->
+        <div *ngFor="let niche of category.niches; let j = index">
+          <!-- Display all niches or partial -->
+          <div *ngIf="!category.showAllNiches ? j < 4 : category.niches.length">
+            <div [ngClass]="{'pointer' : currentNiche == null, 'highlight' : currentNiche != null}" class="margin-left" (click)="setQueryParameters([{name: 'nicheId', value: niche.id}, {name: 'category', value: category.id}], ['page'])">{{niche.name}}</div>
+          </div>
         </div>
+        <!-- See more/See less niches -->
+        <div *ngIf="category.niches.length > 4">
+          <i class="fa niche" aria-hidden="true" [ngClass]="{'fa-angle-double-down' : !category.showAllNiches, 'fa-angle-double-up' : category.showAllNiches}"></i>
+          <div class="see-more-less pointer" (click)="category.showAllNiches = !category.showAllNiches" [innerHtml]="!category.showAllNiches ? 'See More' : 'See Less'"></div>
+        </div>
+
       </div>
-      <div *ngIf="category.niches.length > 4" style="margin-left: 15px" (click)="category.showAllNiches = !category.showAllNiches"
-        [innerHtml]="!category.showAllNiches ? 'See More' : 'See Less'"></div>
+    </div>
+    <!-- See all/See fewer categories -->
+    <div *ngIf="categories.length > 4">
+      <i class="fa" aria-hidden="true" [ngClass]="{'fa-angle-double-down' : !displayAllCategories, 'fa-angle-double-up' : displayAllCategories}"></i>
+      <div style="margin-top: 10px" class="see-more-less pointer" (click)="displayAllCategories = !displayAllCategories" [innerHtml]="!displayAllCategories ? 'See All ' + categories.length + ' Categories' : 'See Fewer Categories'"></div>
     </div>
   </div>
-  <div *ngIf="categories.length > 4" (click)="displayAllCategories = !displayAllCategories" [innerHtml]="!displayAllCategories ? 'See All ' + categories.length + ' Categories' : 'See Fewer Categories'"></div>
 </div>

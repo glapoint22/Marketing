@@ -7,8 +7,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent {
-  public queryParameters
   @Input()caption: string;
+  public queryParameters;
+  public showContent: boolean = true;
+  
 
   constructor(public route: ActivatedRoute, private router: Router) {
     route.queryParamMap.subscribe(queryParams => {
@@ -16,8 +18,6 @@ export class FilterComponent {
       this.queryParameters = queryParams;
     });
    }
-
-  
 
   setQueryParameters(add, remove) {
     let params = {};
