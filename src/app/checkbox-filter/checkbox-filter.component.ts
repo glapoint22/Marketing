@@ -22,7 +22,7 @@ export class CheckboxFilterComponent extends FilterComponent implements OnInit {
     }
   }
 
-  constructor(route: ActivatedRoute, router: Router) {super(route, router); }
+  constructor(route: ActivatedRoute, router: Router) { super(route, router); }
 
   ngOnInit() {
     this.modifiedCaption = this.caption.substr(0, 1).toLowerCase() + this.caption.substr(1).replace(/\s/g, "");
@@ -63,7 +63,7 @@ export class CheckboxFilterComponent extends FilterComponent implements OnInit {
 
     //If there are selected options
     if (this.selectedOptions.length > 0) {
-      this.setQueryParameters([{name: this.modifiedCaption, value: this.selectedOptions.join()}], ['page']);
+      this.setQueryParameters([{ name: this.modifiedCaption, value: this.selectedOptions.join() }], ['page']);
       //No selected options
     } else {
       this.setQueryParameters([], [this.modifiedCaption, 'page']);

@@ -1,7 +1,12 @@
 <div class="filter-container" [ngClass]="{'padding' : showContent}">
   <div class="caption">{{caption}}</div>
-  <div class="arrow" (click)="showContent = !showContent"></div>
 
+  <!-- Arrow -->
+  <div (click)="showContent = !showContent" class="arrow-container">
+    <div class="arrow" [ngClass]="{'arrow-down' : showContent, 'arrow-right' : !showContent}"></div>
+  </div>
+
+  <!-- Content -->
   <div *ngIf="showContent">
     <!-- Any Category -->
     <div *ngIf="currentCategory > 0">
