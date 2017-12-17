@@ -21,13 +21,13 @@
       <div *ngIf="!displayAllCategories ? i < 4 : categories.length">
         <i *ngIf="currentNiche > 0" class="fa fa-angle-left" aria-hidden="true"></i>
         <div style="display: inline-block" (click)="setQueryParameters([{name: 'category', value: category.id}], ['nicheId', 'page'])"
-          [ngClass]="{'margin-top' : currentCategory == 0, 'highlight' : currentNiche == null, 'pointer' : currentCategory == 0 || currentNiche > 0}">{{category.name}}</div>
+          [ngClass]="{'margin-top' : currentCategory == 0, 'highlight' : currentNiche == null, 'pointer' : currentCategory == 0 || currentNiche > 0}">{{category.name}} ({{getProductCount(category)}})</div>
 
         <!-- List of niches per category -->
         <div *ngFor="let niche of category.niches; let j = index">
           <!-- Display all niches or partial -->
           <div *ngIf="!category.showAllNiches ? j < 4 : category.niches.length">
-            <div [ngClass]="{'pointer' : currentNiche == null, 'highlight' : currentNiche != null}" class="margin-left" (click)="setQueryParameters([{name: 'nicheId', value: niche.id}, {name: 'category', value: category.id}], ['page'])">{{niche.name}}</div>
+            <div [ngClass]="{'pointer' : currentNiche == null, 'highlight' : currentNiche != null}" class="margin-left" (click)="setQueryParameters([{name: 'nicheId', value: niche.id}, {name: 'category', value: category.id}], ['page'])">{{niche.name}} ({{niche.productCount}})</div>
           </div>
         </div>
         <!-- See more/See less niches -->

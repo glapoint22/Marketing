@@ -29,7 +29,8 @@
       <li *ngFor="let subscription of subscriptions">
         <h4>{{subscription.name}}</h4>
         <div *ngFor="let niche of subscription.niches">
-          <input type="checkbox" [checked]="niche.isSubscribed" (change)="onUpdateSubscription(niche)" [disabled]="emailSendFrequency === 0">{{niche.name}}<br>
+          <!-- <input type="checkbox" [checked]="niche.isSubscribed" (change)="onUpdateSubscription(niche)" [disabled]="emailSendFrequency === 0">{{niche.name}}<br> -->
+          <checkbox [label]="niche.name" [checked]="niche.isSubscribed" (change)="onUpdateSubscription(niche)" [disabled]="emailSendFrequency === 0"></checkbox>
         </div>
       </li>
     </ul>

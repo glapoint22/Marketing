@@ -28,4 +28,8 @@ export class CategoryFilterComponent extends FilterComponent implements OnInit {
       }
     });
   }
+
+  getProductCount(category){
+    return category.niches.map(a => a.productCount).reduce((a, b) => a + b);
+  }
 }
