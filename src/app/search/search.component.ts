@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit {
   private page: number;
   private pageList: Array<string> = [];
   private categories;
+  private filters;
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) { }
 
@@ -42,6 +43,7 @@ export class SearchComponent implements OnInit {
           this.productEnd = this.productStart + response.products.length - 1;
           this.pages = Math.ceil(this.totalProducts / resultsPerPage);
           this.categories = response.categories;
+          this.filters = response.filters;
 
 
           this.pageList.push('1');

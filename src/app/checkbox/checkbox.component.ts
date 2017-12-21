@@ -6,9 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./checkbox.component.scss']
 })
 export class CheckboxComponent {
-  @Input() label: string;
+  @Input() label: any;
   @Input() checked: boolean;
   @Input() disabled: boolean;
-
+  
   constructor() { }
 }

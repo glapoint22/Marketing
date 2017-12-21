@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DataService } from "./data.service";
 import { VideoService } from "./video.service";
 import { CookieService } from 'ngx-cookie-service';
+import { FilterService } from "./filter.service";
 
 // Components
 import { AppComponent } from './app.component';
@@ -75,7 +76,7 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
     FormsModule,
     HttpModule
   ],
-  providers: [DataService, VideoService, CookieService],
+  providers: [DataService, VideoService, CookieService, FilterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

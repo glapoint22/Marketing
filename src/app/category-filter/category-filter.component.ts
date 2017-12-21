@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FilterComponent } from '../filter/filter.component';
+import { FilterService } from "./../filter.service";
 
 @Component({
   selector: 'category-filter',
@@ -13,7 +14,7 @@ export class CategoryFilterComponent extends FilterComponent implements OnInit {
   private currentCategory;
   private currentNiche;
 
-  constructor(route: ActivatedRoute, router: Router) { super(route, router); }
+  constructor(private route: ActivatedRoute, filterService: FilterService) { super(filterService); }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(queryParams => {

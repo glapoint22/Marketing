@@ -37,12 +37,13 @@
       <div style="width: 220px;">
 
         <category-filter [categories]="categories" [caption]="'Categories'"></category-filter>
-        <price-filter [caption]="'Price'"></price-filter>
-        <checkbox-filter [optionsList]="'English,German,Spanish,French,Italian,Portuguese'" [caption]="'Language'"></checkbox-filter>
-        <checkbox-filter [optionsList]="'Digital Download,Shippable'" [caption]="'Product Type'"></checkbox-filter>
-        <checkbox-filter [optionsList]="'Single Payment,Subscription,Trial'" [caption]="'Billing'"></checkbox-filter>
+        <div *ngFor="let filter of filters">
+          <price-filter *ngIf="filter.caption == 'Price'" [caption]="filter.caption" [options]="filter.labels"></price-filter>
+          <checkbox-filter *ngIf="filter.caption != 'Price'" [caption]="filter.caption" [options]="filter.labels"></checkbox-filter>
+        </div>
+        
 
-
+          
 
 
       </div>
