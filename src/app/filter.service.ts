@@ -14,7 +14,7 @@ export class FilterService {
   }
 
   setFilter(filter: string, option: string) {
-    let result, startString, midString, endString, index;
+    let result, startString, midString, endString;
 
     //If there are any filters
     if (this.filterString) {
@@ -28,22 +28,17 @@ export class FilterService {
         startString = this.filterString.slice(0, result.index) + result[1];
         endString = this.filterString.slice(result.index + result[0].length);
 
-        //Get the index of the option passed in
-        index = result[2].indexOf(option);
+        //Split the results into an array
+        let array = result[2].split('~');
+        let index = array.indexOf(option);
 
         //If the option is not found, add it to the mid string
-        if (index === -1) {
-          midString = result[2] + ',' + option;
+        if (index == -1) {
+          midString = result[2] + '~' + option;
         } else {
           //The option was found, so remove it from the string
-          let array = result[2].split(',');
-          index = array.indexOf(option);
-
-          if (index > -1) {
-            array.splice(index, 1);
-          }
-
-          midString = array.join();
+          array.splice(index, 1);
+          midString = array.join('~');
         }
 
         //Combine all three strings together

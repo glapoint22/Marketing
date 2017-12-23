@@ -23,9 +23,11 @@ export class CheckboxFilterComponent extends FilterComponent {
 
       //If the current filter is in the list
       if (filter) {
+        let filterArray = filter[2].split('~');
+
         //Check or uncheck the options
         for (let i = 0; i < this.options.length; i++) {
-          this.options[i].checked = filter[2].indexOf(this.options[i].name) > -1 ? true : false;
+          this.options[i].checked = filterArray.includes(this.options[i].name);
         }
       }
     }
