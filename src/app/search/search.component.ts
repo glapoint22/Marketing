@@ -100,4 +100,8 @@ export class SearchComponent implements OnInit {
       queryParamsHandling: 'merge'
     });
   }
+
+  trackById(index: number, product: any){
+    return product.id;
+  }
 }

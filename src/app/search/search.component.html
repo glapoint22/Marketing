@@ -52,7 +52,7 @@
 
       <div class="products-container">
         <ul>
-          <li *ngFor="let product of products">
+          <li *ngFor="let product of products; trackBy:trackById">
             <product (onShowSubscriptionForm)="subscriptionForm.show = true" [product]="product"></product>
           </li>
         </ul>
