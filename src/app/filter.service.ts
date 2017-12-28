@@ -30,16 +30,41 @@ export class FilterService {
 
         //Split the results into an array
         let array = result[2].split('~');
-        let index = array.indexOf(option);
 
-        //If the option is not found, add it to the mid string
-        if (index == -1) {
-          midString = result[2] + '~' + option;
+        //Test to see if the option is a user defined price range
+        if (option.substr(0, 1) === '[') {
+          let found = false;
+
+          //Iterate through the array to see if there is an existing price range
+          for (let i = 0; i < array.length; i++) {
+            //If found, replace the existing price range with the new
+            if (array[i].substr(0, 1) === '[') {
+              array[i] = option;
+              found = true;
+              break;
+            }
+          }
+          //Assign to the mid string
+          if (found) {
+            midString = array.join('~');
+          } else {
+            midString = result[2] + '~' + option;
+          }
+
         } else {
-          //The option was found, so remove it from the string
-          array.splice(index, 1);
-          midString = array.join('~');
+          //The option is not a user defined price range
+          let index = array.indexOf(option);
+
+          //If the option is not found, add it to the mid string
+          if (index == -1) {
+            midString = result[2] + '~' + option;
+          } else {
+            //The option was found, so remove it from the string
+            array.splice(index, 1);
+            midString = array.join('~');
+          }
         }
+
 
         //Combine all three strings together
         this.filterString = startString + midString + endString;
@@ -63,7 +88,7 @@ export class FilterService {
     if (this.filterString === '') {
       this.setQueryParameters([], ['page', 'filter']);
     } else {
-      this.setQueryParameters([{name: 'filter', value: this.filterString}], ['page']);
+      this.setQueryParameters([{ name: 'filter', value: this.filterString }], ['page']);
     }
   }
 
@@ -92,7 +117,7 @@ export class FilterService {
     });
   }
 
-  getFilter(filter: string){
+  getFilter(filter: string) {
     let regEx = new RegExp('(' + filter + '\\|)([a-zA-Z0-9`~!@#$%^&*()\-_+={[}\\]\\:;"\'<,>.?/\\s]+)', 'g');
     return regEx.exec(this.filterString);
   }

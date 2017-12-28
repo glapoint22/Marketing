@@ -6,14 +6,19 @@
   </div>
   <!-- Content -->
   <div *ngIf="showContent">
-    $
-    <input style="margin: 0 2px 0 2px; width: 40px; border-radius: 4px"> to $
-    <input style="margin: 0 2px 0 2px; width: 40px; border-radius: 4px">
-    <button style="height: 30px;
-    padding: 0 4px;
-    font-size: 16px;margin: 0 0 0 10px;" type="submit">Go</button>
+    <form (ngSubmit)="onSubmit(priceForm)" #priceForm="ngForm">
+      $
+      <input required pattern="(\d+)?\.?(\d+)?" [(ngModel)]="min" name="min" #minNum="ngModel" [ngClass]="{'error-display': priceForm.submitted && !minNum.valid}">
+      <span style="margin-left: 5px">to</span> $
+      <input required pattern="(\d+)?\.?(\d+)?" [(ngModel)]="max" name="max" #maxNum="ngModel" [ngClass]="{'error-display': priceForm.submitted && !maxNum.valid}">
+      <button type="submit">Go</button>
+      <div [hidden]="!priceForm.submitted || (minNum.valid && maxNum.valid)" class="error">Please enter a valid price range</div>
+      <div *ngIf="showClearPrice" class="clear-price" (click)="clearPrice()">Clear Price Range</div>
+    </form>
+
     <div *ngFor="let option of options">
-      <checkbox [label]="option.name" [checked]="option.checked" (change)="filterService.setFilter(caption, option.name)"></checkbox><span class="count">({{option.productCount}})</span>
+      <checkbox [label]="option.name" [checked]="option.checked" (change)="filterService.setFilter(caption, option.name)"></checkbox>
+      <span class="count">({{option.productCount}})</span>
     </div>
 
 

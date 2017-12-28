@@ -1,0 +1,30 @@
+@import 'theme';
+
+input{
+    width: 40px;
+    border-radius: 4px;
+}
+button{
+    height: 30px;
+    padding: 0 4px;
+    font-size: 16px;
+    margin: 0 0 0 10px;
+}
+.error{
+    font-size: 15px;
+    color: #f3c231;
+    margin-top: 8px;
+}
+.error-display{
+    border: 2px solid red;
+    background: #dad8a2;
+}
+.clear-price{
+    color: $color5;
+    margin-top: 4px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.clear-price:hover{
+    text-decoration: underline;
+}

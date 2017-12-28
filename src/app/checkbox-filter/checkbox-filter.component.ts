@@ -13,8 +13,16 @@ export class CheckboxFilterComponent extends FilterComponent {
   constructor(filterService: FilterService) { super(filterService); }
 
   ngOnChanges() {
-    //Get the list of filters
-    let filterString = this.filterService.queryParams.params['filter'];
+    let optionsArray = this.getOptionsFromQueryParams();
+
+    //Check or uncheck the options
+    for (let i = 0; i < this.options.length; i++) {
+      this.options[i].checked = optionsArray.includes(this.options[i].name);
+    }
+  }
+
+  getOptionsFromQueryParams(){
+    let optionsArray = [], filterString = this.filterService.queryParams.params['filter'];
 
     //If there are any filters
     if (filterString) {
@@ -23,13 +31,9 @@ export class CheckboxFilterComponent extends FilterComponent {
 
       //If the current filter is in the list
       if (filter) {
-        let filterArray = filter[2].split('~');
-
-        //Check or uncheck the options
-        for (let i = 0; i < this.options.length; i++) {
-          this.options[i].checked = filterArray.includes(this.options[i].name);
-        }
+        optionsArray = filter[2].split('~');
       }
     }
+    return optionsArray;
   }
 }
