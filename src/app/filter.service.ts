@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class FilterService {
   private filterString: string;
   public queryParams;
+  public separator: string = '^'
 
   constructor(private route: ActivatedRoute, private router: Router) {
     route.queryParamMap.subscribe(queryParams => {
@@ -29,7 +30,7 @@ export class FilterService {
         endString = this.filterString.slice(result.index + result[0].length);
 
         //Split the results into an array
-        let array = result[2].split('~');
+        let array = result[2].split(this.separator);
 
         //Test to see if the option is a user defined price range
         if (option.substr(0, 1) === '[') {
@@ -37,18 +38,24 @@ export class FilterService {
 
           //Iterate through the array to see if there is an existing price range
           for (let i = 0; i < array.length; i++) {
-            //If found, replace the existing price range with the new
+            //If found...
             if (array[i].substr(0, 1) === '[') {
-              array[i] = option;
+              //If the passed in price range is different, replace
+              if(array[i] != option ){
+                array[i] = option;
+              }else{
+                //Otherwise, remove the price range
+                array.splice(i, 1);
+              }
               found = true;
               break;
             }
           }
           //Assign to the mid string
           if (found) {
-            midString = array.join('~');
+            midString = array.join(this.separator);
           } else {
-            midString = result[2] + '~' + option;
+            midString = result[2] + this.separator + option;
           }
 
         } else {
@@ -57,11 +64,11 @@ export class FilterService {
 
           //If the option is not found, add it to the mid string
           if (index == -1) {
-            midString = result[2] + '~' + option;
+            midString = result[2] + this.separator + option;
           } else {
             //The option was found, so remove it from the string
             array.splice(index, 1);
-            midString = array.join('~');
+            midString = array.join(this.separator);
           }
         }
 

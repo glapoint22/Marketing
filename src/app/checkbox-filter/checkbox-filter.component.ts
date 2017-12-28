@@ -31,7 +31,7 @@ export class CheckboxFilterComponent extends FilterComponent {
 
       //If the current filter is in the list
       if (filter) {
-        optionsArray = filter[2].split('~');
+        optionsArray = filter[2].split(this.filterService.separator);
       }
     }
     return optionsArray;

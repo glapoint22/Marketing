@@ -14,28 +14,48 @@ export class PriceFilterComponent extends CheckboxFilterComponent implements OnI
 
   constructor(filterService: FilterService) { super(filterService); }
 
-  onSubmit(priceForm){
-    if(priceForm.valid){
+  onSubmit(priceForm) {
+    //If price range is valid, set the filter
+    if (priceForm.valid) {
       this.filterService.setFilter('Price', '[' + Math.min(Number(this.min), Number(this.max)) + '-' + Math.max(Number(this.min), Number(this.max)) + ']');
     }
   }
 
-  ngOnInit(){
-    let optionsArray = this.getOptionsFromQueryParams();
+  ngOnInit() {
+    let priceRange = this.getPriceRange();
 
-    for(let i = 0; i < optionsArray.length; i++){
-      let regEx = new RegExp(/\[(\d+\.?(?:\d+)?)-(\d+\.?(?:\d+)?)\]/, 'g');
-
-      let result = regEx.exec(optionsArray[i]);
-      if(result){
-        this.min = result[1];
-        this.max = result[2];
-        this.showClearPrice = true;
-      }
+    //If there is a custom price range, set the min and max properties
+    if (priceRange) {
+      this.min = priceRange.min;
+      this.max = priceRange.max;
+      this.showClearPrice = true;
     }
   }
 
-  clearPrice(){
-    console.log('Hello');
+  getPriceRange() {
+    let priceRange: any, optionsArray = this.getOptionsFromQueryParams(), regEx = new RegExp(/\[(\d+\.?(?:\d+)?)-(\d+\.?(?:\d+)?)\]/, 'g');
+
+    //Iterate through all the options
+    for (let i = 0; i < optionsArray.length; i++) {
+      let result = regEx.exec(optionsArray[i]);
+
+      //If result contains a custom price range, set the min and max to the price range object
+      if (result) {
+        priceRange = {};
+        priceRange['min'] = result[1];
+        priceRange['max'] = result[2];
+      }
+    }
+    return priceRange;
+  }
+
+  clearPrice() {
+    //Get the price range from the url
+    let priceRange = this.getPriceRange();
+
+    //If there is an custom price range, set the filter with the same price range and it will clear it from the url
+    if (priceRange) {
+      this.filterService.setFilter('Price', '[' + priceRange.min + '-' + priceRange.max + ']');
+    }
   }
 }

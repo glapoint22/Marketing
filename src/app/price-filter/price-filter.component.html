@@ -6,6 +6,7 @@
   </div>
   <!-- Content -->
   <div *ngIf="showContent">
+    <!-- Custom price range -->
     <form (ngSubmit)="onSubmit(priceForm)" #priceForm="ngForm">
       $
       <input required pattern="(\d+)?\.?(\d+)?" [(ngModel)]="min" name="min" #minNum="ngModel" [ngClass]="{'error-display': priceForm.submitted && !minNum.valid}">
@@ -16,11 +17,10 @@
       <div *ngIf="showClearPrice" class="clear-price" (click)="clearPrice()">Clear Price Range</div>
     </form>
 
+    <!-- Price range options -->
     <div *ngFor="let option of options">
       <checkbox [label]="option.name" [checked]="option.checked" (change)="filterService.setFilter(caption, option.name)"></checkbox>
       <span class="count">({{option.productCount}})</span>
     </div>
-
-
   </div>
 </div>
