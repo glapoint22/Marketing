@@ -8,8 +8,8 @@ import { DataService } from "../data.service";
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  public totalProducts: number;
   private products;
-  private totalProducts: number;
   private pages: number;
   private productStart: number;
   private productEnd: number;
@@ -19,13 +19,40 @@ export class SearchComponent implements OnInit {
   private categories;
   private filters;
 
+  private selectedSortOption: any;
+  private sortOptions = [
+    {
+      name: 'Relevance',
+      value: 'relevance'
+    },
+    {
+      name: 'Price: Low to High',
+      value: 'price-asc'
+    },
+    {
+      name: 'Price: High to Low',
+      value: 'price-desc'
+    }
+  ];
+
+  
+
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    
+
     this.route.queryParamMap.subscribe(queryParams => {
       let parameters: Array<any> = [];
 
       this.query = queryParams.get('query');
+
+      setTimeout(()=> {
+        let index = this.sortOptions.findIndex(x => x.value == queryParams.get('sort'));
+        this.selectedSortOption =  this.sortOptions[index == -1 ? 0 : index]; 
+      });
+
+      
       
       for (let i = 0; i < queryParams.keys.length; i++) {
         parameters.push({ key: queryParams.keys[i], value: queryParams.get(queryParams.keys[i]) })
@@ -103,5 +130,12 @@ export class SearchComponent implements OnInit {
 
   trackById(index: number, product: any){
     return product.id;
+  }
+
+  onSortChange(){
+    this.router.navigate(['/search'], {
+      queryParams: {'sort': this.selectedSortOption.value},
+      queryParamsHandling: 'merge'
+    });
   }
 }
