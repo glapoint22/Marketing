@@ -2,20 +2,29 @@
 
 .products-container{
     width: 1360px;
-    // position: relative;
     display: table;
     left: 220px;
     li{
         margin: 0 20px 40px 20px;
     }
 }
-// .results-sort-container{
-//     width: 100%;
-//     position: relative;
-// }
+.results-container{
+    width: 1580px;
+    margin: auto;
+    margin-top: 80px;
+    position: relative;
+    margin-bottom: 10px;
+    @include gradient($color1, $color2);
+    height: 40px;
+    line-height: 40px;
+    @include shadow();
+    border-radius: 4px;
+}
 .results-display{
-    color: #dedede;
+    color: #ffffff;
     display: inline;
+    margin-left: 10px;
+    font-weight: bold;
 }
 .no-match-container{
     width: 50%;
@@ -79,4 +88,26 @@ li{
 }
 .default-cursor{
     cursor: default !important;
+}
+select{
+    border-radius: 4px;
+    border: 1px solid #250025;
+    height: 23px;
+    background: #f1f1f1;
+    color: #1f0118;
+    outline: none;
+    
+}
+.dropdown-container{
+    position: absolute;
+    display: inline;
+    margin-right: 20px;
+}
+.filters-products-container{
+    width: 1580PX;
+    margin: auto;
+    display: flex;
+}
+.filters-container{
+    width: 220px;
 }

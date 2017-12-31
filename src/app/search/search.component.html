@@ -1,5 +1,7 @@
 <div class="background-container">
   <search-bar></search-bar>
+
+  <!-- No match -->
   <div *ngIf="totalProducts === 0" class="no-match-container">
     <div>
       <i class="fa fa-exclamation-circle" aria-hidden="true"></i>Sorry, no products matched "{{query}}"
@@ -11,48 +13,47 @@
   </div>
 
   <div *ngIf="totalProducts > 0">
-    <div style="width: 1580px; margin: auto; margin-top: 80px; position:relative; margin-bottom: 10px;">
+    <!-- Results -->
+    <div class="results-container">
       <div class="results-display">
         Showing {{productStart}}-{{productEnd}} of {{totalProducts}} results for "{{query}}"
       </div>
 
-      <div style="position: absolute;
-      display: inline;
-      right: 0;
-      margin-right: 20px;">
-        sort
-        <select [(ngModel)]="selectedSortOption" (change)="onSortChange()">
+      <!-- Sort -->
+      <div class="dropdown-container" style="right: 0;">
+        <select [(ngModel)]="selectedSortOption" (change)="filterService.setQueryParameters([{name: 'sort', value: selectedSortOption.value}], ['page'])">
           <option *ngFor="let sortOption of sortOptions" [ngValue]="sortOption">{{sortOption.name}}</option>
-      </select>
+        </select>
       </div>
 
+      <!-- Per Page -->
+      <div class="dropdown-container" style="right: 200px;">
+        <select [(ngModel)]="productsPerPage" (change)="filterService.setQueryParameters([{name: 'limit', value: productsPerPage}], ['page'])">
+          <option *ngFor="let perPageOption of perPageOptions" [ngValue]="perPageOption">{{perPageOption}} Products Per Page</option>
+        </select>
+      </div>
     </div>
-    <div style="
-    width: 1580PX;
-    margin: auto;
-    display: flex;">
-      <div style="width: 220px;">
 
+
+    <div class="filters-products-container">
+      <!-- Filters -->
+      <div class="filters-container">
         <category-filter [categories]="categories" [caption]="'Categories'"></category-filter>
         <div *ngFor="let filter of filters">
           <price-filter *ngIf="filter.caption == 'Price'" [caption]="filter.caption" [options]="filter.labels"></price-filter>
           <checkbox-filter *ngIf="filter.caption != 'Price'" [caption]="filter.caption" [options]="filter.labels"></checkbox-filter>
         </div>
-        
-
-          
-
-
       </div>
 
-
-
+      <!-- Products -->
       <div class="products-container">
         <ul>
           <li *ngFor="let product of products; trackBy:trackById">
             <product (onShowSubscriptionForm)="subscriptionForm.show = true" [product]="product"></product>
           </li>
         </ul>
+
+        <!-- Pages -->
         <div *ngIf="pages > 1" class="pages-container">
           <div class="page-numbers">
             <ul>
@@ -61,6 +62,7 @@
           </div>
           <arrows [showLeftArrow]="page > 1" [showRightArrow]="page < pages" (onArrowClick)="onArrowClick($event)"></arrows>
         </div>
+
       </div>
     </div>
   </div>
