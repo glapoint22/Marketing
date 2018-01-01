@@ -14,7 +14,7 @@
       <ul>
         <li *ngFor="let niche of currentCategory.niches">
           <div class="niche" (click)="onNicheClick(niche)">{{niche.name}}</div>
-          <div *ngFor="let product of niche.products" class="product" (click)="onProductClick(product)">{{product.name}}</div>
+          <!-- <div *ngFor="let product of niche.products" class="product" (click)="onProductClick(product)">{{product.name}}</div> -->
         </li>
       </ul>
     </div>

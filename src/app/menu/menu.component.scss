@@ -85,25 +85,27 @@ ul{
     }
     li{
         margin: 16px;
-        display: inline-block;
+        // display: inline-block;
+        display: inline-table;
         width: 168px;
         cursor: pointer;
         line-height: normal;
         // text-align: left;
         .niche{
             color: $color1;
+            font-size: 18px;
         }
         .niche:hover{
             color: $color5;
         }
-        .product{
-            font-size: 14px;
-            color: #c5c5c5;
-            font-weight: normal;
-        }
-        .product:hover{
-            color: rgb(255, 255, 255);
-        }
+        // .product{
+        //     font-size: 14px;
+        //     color: #c5c5c5;
+        //     font-weight: normal;
+        // }
+        // .product:hover{
+        //     color: rgb(255, 255, 255);
+        // }
     }
 }
 .border{

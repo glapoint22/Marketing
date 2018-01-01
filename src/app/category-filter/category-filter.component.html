@@ -9,7 +9,7 @@
   <!-- Content -->
   <div *ngIf="showContent">
     <!-- Any Category -->
-    <div *ngIf="currentCategory > 0">
+    <div *ngIf="currentCategory > 0 && query != undefined">
       <i class="fa fa-angle-left" aria-hidden="true"></i>
       <div class="pointer inline margin-top" (click)="filterService.setQueryParameters([{name: 'category', value: 0}], ['nicheId', 'page'])">Any Category</div>
     </div>
@@ -21,7 +21,7 @@
       <div *ngIf="!displayAllCategories ? i < 4 : categories.length">
         <i *ngIf="currentNiche > 0" class="fa fa-angle-left" aria-hidden="true"></i>
         <div style="display: inline-block" (click)="filterService.setQueryParameters([{name: 'category', value: category.id}], ['nicheId', 'page'])"
-          [ngClass]="{'margin-top' : currentCategory == 0, 'highlight' : currentNiche == null, 'pointer' : currentCategory == 0 || currentNiche > 0}">{{category.name}}</div>
+          [ngClass]="{'margin-top' : currentCategory == 0 || query == undefined, 'highlight' : currentNiche == null, 'pointer' : currentCategory == 0 || currentNiche > 0}">{{category.name}}</div>
         <span class="count">({{getProductCount(category)}})</span>
 
         <!-- List of niches per category -->

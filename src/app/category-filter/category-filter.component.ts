@@ -13,6 +13,7 @@ export class CategoryFilterComponent extends FilterComponent implements OnInit {
   private displayAllCategories: boolean;
   private currentCategory;
   private currentNiche;
+  private query;
 
   constructor(private route: ActivatedRoute, filterService: FilterService) { super(filterService); }
 
@@ -21,6 +22,7 @@ export class CategoryFilterComponent extends FilterComponent implements OnInit {
       //Set the properties
       this.currentCategory = queryParams.get('category');
       this.currentNiche = queryParams.get('nicheId');
+      this.query = queryParams.get('query');
       this.displayAllCategories = false;
 
       //Set categories to not show all niches

@@ -15,8 +15,7 @@
   <div *ngIf="totalProducts > 0">
     <!-- Results -->
     <div class="results-container">
-      <div class="results-display">
-        Showing {{productStart}}-{{productEnd}} of {{totalProducts}} results for "{{query}}"
+      <div class="results-display" [innerHtml]="'Showing ' + productStart + '-' + productEnd + ' of ' + totalProducts + (query ==undefined?' Products':' results for &quot;' + query + '&quot;')">
       </div>
 
       <!-- Sort -->

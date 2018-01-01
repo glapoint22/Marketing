@@ -22,20 +22,7 @@ export class SearchComponent implements OnInit {
 
   //Sort Options
   private selectedSortOption: any;
-  private sortOptions = [
-    {
-      name: 'Sort by Relevance',
-      value: 'relevance'
-    },
-    {
-      name: 'Sort by Price: Low to High',
-      value: 'price-asc'
-    },
-    {
-      name: 'Sort by Price: High to Low',
-      value: 'price-desc'
-    }
-  ];
+  private sortOptions = [];
 
   //Products per page
   private productsPerPage: number;
@@ -47,6 +34,25 @@ export class SearchComponent implements OnInit {
     this.route.queryParamMap.subscribe(queryParams => {
       let parameters: Array<any> = [];
       this.query = queryParams.get('query');
+
+      //Set the sort options
+      this.sortOptions = [
+        {
+          name: 'Sort by Price: Low to High',
+          value: 'price-asc'
+        },
+        {
+          name: 'Sort by Price: High to Low',
+          value: 'price-desc'
+        }
+      ];
+
+      if(this.query){
+        this.sortOptions.unshift({
+          name: 'Sort by Relevance',
+          value: 'relevance'
+        });
+      }
 
       //Populate the dropdowns
       setTimeout(() => {
