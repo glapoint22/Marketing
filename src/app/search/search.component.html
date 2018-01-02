@@ -1,6 +1,6 @@
 <div class="background-container">
   <search-bar></search-bar>
-
+  
   <!-- No match -->
   <div *ngIf="totalProducts === 0" class="no-match-container">
     <div>
@@ -12,7 +12,7 @@
     </ul>
   </div>
 
-  <div *ngIf="totalProducts > 0">
+  <div *ngIf="totalProducts > 0" style="margin-bottom: 110px; ">
     <!-- Results -->
     <div class="results-container">
       <div class="results-display" [innerHtml]="'Showing ' + productStart + '-' + productEnd + ' of ' + totalProducts + (query ==undefined?' Products':' results for &quot;' + query + '&quot;')">
@@ -65,7 +65,7 @@
       </div>
     </div>
   </div>
-
+  <footer></footer>
 
   <subscription-form #subscriptionForm></subscription-form>
 </div>
