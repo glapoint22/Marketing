@@ -1,8 +1,10 @@
-<div class="container" [style.minHeight]="height" *ngIf="subscriptions">
+<div class="container" *ngIf="subscriptions">
   <!-- Title Bar -->
-  <div class="title-bar">
+  <!-- <div class="title-bar">
     Email Preferences
-  </div>
+  </div> -->
+
+  <search-bar></search-bar>
 
   <!-- Form -->
   <form (ngSubmit)="onSubmit(preferencesForm)" #preferencesForm="ngForm">
@@ -38,4 +40,5 @@
     <!-- Submit button -->
     <button type="submit" [disabled]="!isUpdated">Submit</button>
   </form>
+  <footer></footer>
 </div>

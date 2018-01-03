@@ -9,7 +9,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./preferences.component.scss']
 })
 export class PreferencesComponent implements OnInit {
-  @Input() height: string = '100%';
   public subscriptions;
   public customerId;
   public name: string;
@@ -24,10 +23,10 @@ export class PreferencesComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if (this.dataService.data && this.dataService.data.customer) {
+    // if (this.dataService.data && this.dataService.data.customer) {
       //Get the data from the data service
-      this.init(this.dataService.data);
-    } else {
+      // this.init(this.dataService.data);
+    // } else {
       this.route.queryParamMap.subscribe(queryParams => {
         //Get the customer id from the query params
         let customerId = queryParams.get('cid');
@@ -47,7 +46,7 @@ export class PreferencesComponent implements OnInit {
             this.router.navigate(['/error']);
           });
       });
-    }
+    // }
   }
 
   init(data){

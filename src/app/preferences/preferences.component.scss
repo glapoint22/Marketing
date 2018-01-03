@@ -1,11 +1,12 @@
 @import 'theme';
 
 .container{
-    background: #b9b9b9;
+    background: $background-color;
     width: 100%;
     text-align: left;
     font-family: Verdana, Geneva, Tahoma, sans-serif; 
     position: absolute;
+    min-height: 100%;
 }
 .title-bar{
     @include gradient($color1, $color2);
@@ -21,11 +22,11 @@
 form{
     width: 1080px;
     margin: auto;
-    background: #232323;
+    background: $color4;
     font-size: 14px;
     color: #b3b2b2;
     padding-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 80px;
 }
 input[type=radio]{
     margin: 0 0 0 10px;
