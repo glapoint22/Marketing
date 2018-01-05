@@ -14,10 +14,11 @@
       <i class="fa fa-pinterest-p" aria-hidden="true"></i>
     </a>
   </div>
-  <div class="links">
+  <div id="links">
     <a routerLink="/ultimatebodytransformation">About Us</a>
     <a routerLink="/ultimatebodytransformation">Contact Us</a>
-    <a routerLink="/ultimatebodytransformation">Email Preferences</a>
+    <a *ngIf="customerId" [routerLink]="['/preferences']" [queryParams]="{cid: customerId}">Email Preferences</a>
+    <span *ngIf="!customerId" (click)="onShowSubscriptionForm.emit()">Sign Up</span>
     <a routerLink="/ultimatebodytransformation">Returns Policy</a>
   </div>
 </div>

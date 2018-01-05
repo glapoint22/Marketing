@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'footer',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  @Output() onShowSubscriptionForm = new EventEmitter<void>();
+  private customerId: string ;
 
-  constructor() { }
+  constructor(private cookieService: CookieService) { }
 
   ngOnInit() {
+    if (this.cookieService.check('Customer')) this.customerId = this.cookieService.get('Customer');
   }
 
 }

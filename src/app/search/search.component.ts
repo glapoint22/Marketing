@@ -118,9 +118,9 @@ export class SearchComponent implements OnInit {
             if (this.pages > 7) this.pageList.push('...');
           }
           if (this.pages > 1) this.pageList.push(this.pages.toString());
+          this.dataService.error = null;
         }, error => {
-          // this.dataService.data = error;
-          // this.router.navigate(['/error']);
+          this.dataService.error = error;
         });
     });
   }

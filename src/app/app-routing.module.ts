@@ -5,7 +5,7 @@ import { MailComponent } from "./mail/mail.component";
 import { ThankYouComponent } from "./thank-you/thank-you.component";
 import { PreferencesComponent } from "./preferences/preferences.component";
 import { LeadsComponent } from "./leads/leads.component";
-import { ErrorComponent } from "./error/error.component";
+// import { ErrorComponent } from "./error/error.component";
 import { ConfirmComponent } from "./confirm/confirm.component";
 import { SearchComponent } from "./search/search.component";
 
@@ -26,10 +26,10 @@ const routes: Routes = [
     path: 'preferences',
     component: PreferencesComponent
   },
-  {
-    path: 'error',
-    component: ErrorComponent
-  },
+  // {
+  //   path: 'error',
+  //   component: ErrorComponent
+  // },
   {
     path: 'confirm',
     component: ConfirmComponent

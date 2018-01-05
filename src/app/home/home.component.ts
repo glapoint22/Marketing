@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from "../data.service";
-import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -11,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class HomeComponent implements OnInit {
   public productSliders;
 
-  constructor(private router: Router, private dataService: DataService, private cookieService: CookieService) { }
+  constructor(private dataService: DataService, private cookieService: CookieService) { }
 
   ngOnInit() {
     // this.dataService.post('api/Products',{})
@@ -19,7 +18,6 @@ export class HomeComponent implements OnInit {
     //   response
     // }, error => {
     //   this.dataService.data = error;
-    //   this.router.navigate(['/error']);
     // });
 
 
@@ -27,17 +25,17 @@ export class HomeComponent implements OnInit {
       this.dataService.get('api/Products', [{ key: 'customerId', value: this.cookieService.get('Customer') }])
         .subscribe((response: any) => {
           this.productSliders = response;
+          this.dataService.error = null;
         }, error => {
-          this.dataService.data = error;
-          this.router.navigate(['/error']);
+          this.dataService.error = error;
         });
     } else {
       this.dataService.get('api/Products')
         .subscribe((response: any) => {
           this.productSliders = response;
+          this.dataService.error = null;
         }, error => {
-          this.dataService.data = error;
-          this.router.navigate(['/error']);
+          this.dataService.error = error;
         });
     }
   }

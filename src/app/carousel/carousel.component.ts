@@ -42,9 +42,10 @@ export class CarouselComponent implements OnInit {
       
       //Start the timer
       this.startTimer(this.currentDirection);
+
+      this.dataService.error = null;
     }, error => {
-      this.dataService.data = error;
-      this.router.navigate(['/error']);
+      this.dataService.error = error;
     });
   }
 

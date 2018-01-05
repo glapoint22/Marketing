@@ -26,9 +26,9 @@ export class SearchBarComponent implements OnInit {
         this.searchCategories = this.categories.slice();
         this.searchCategories.unshift({ name: 'All', id: 0 });
         this.selectedCategory = this.searchCategories[0];
+        this.dataService.error = null;
       }, error => {
-        this.dataService.data = error;
-        this.router.navigate(['/error']);
+        this.dataService.error = error;
       });
   }
 

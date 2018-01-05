@@ -41,9 +41,9 @@ export class PreferencesComponent implements OnInit {
         this.dataService.get('api/Subscriptions', [{key: 'customerId', value: customerId}])
           .subscribe((response: any) => {
             this.init(response);
+            this.dataService.error = null;
           }, error => {
-            this.dataService.data = error;
-            this.router.navigate(['/error']);
+            this.dataService.error = error;
           });
       });
     // }
@@ -71,7 +71,7 @@ export class PreferencesComponent implements OnInit {
 
   onUpdateSubscription(niche) {
     //Check to see if this niche is in the array
-    let index = this.updatedSubscriptions.findIndex(x => x.id == niche.id);
+    let index = this.updatedSubscriptions.findIndex(x => x.nicheId == niche.id);
 
     //Set the value
     niche.isSubscribed = !niche.isSubscribed;
@@ -92,7 +92,6 @@ export class PreferencesComponent implements OnInit {
   }
 
   onSubmit(form) {
-
     //Unsubscribing from all subscriptions
     if (this.emailSendFrequency === 0) {
       this.updatedSubscriptions = [];
@@ -120,9 +119,9 @@ export class PreferencesComponent implements OnInit {
       .subscribe((response: any) => {
         this.dataService.data = preferences;
         this.router.navigate(['/confirm']);
+        this.dataService.error = null;
       }, error => {
-        this.dataService.data = error;
-        this.router.navigate(['/error']);
+        this.dataService.error = error;
       });
   }
 }

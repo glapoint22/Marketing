@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DataService {
   public data: any;
+  public error: any;
 
   constructor(private http: Http) { }
 

@@ -23,9 +23,9 @@ export class ModalFormComponent extends ModalComponent {
       .subscribe((response: any) => {
         this.setResponse(response);
         this.nextAction(response);
+        this.dataService.error = null;
       }, error => {
-        this.dataService.data = error;
-        this.router.navigate(['/error']);
+        this.dataService.error = error;
       });
   }
 

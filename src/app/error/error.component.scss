@@ -1,18 +1,29 @@
+@import 'theme';
+
 .container{
-    background: #EEEEEE; 
+    background: $background-color; 
     width: 100%; 
     height: 100%; 
     position: absolute;
     text-align: center;
+    z-index: 1000;
 }
 .fa-exclamation-triangle{
     font-size: 300px;
-    color: #ff0000;
+    color: $color1;
     margin-top: 100px;
 }
+.fa-exclamation-triangle:after{
+    content: "";
+    width: 60px;
+    height: 162px;
+    background: white;
+    display: block;
+    margin-top: -220px;
+    margin-left: 120px;
+}
 p{
-    
     font-size: 40px;
-    color: #000000;
-    margin: 0;
+    color: #ffffff;
+    user-select: none;
 }

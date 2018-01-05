@@ -21,9 +21,9 @@ export class MailComponent implements OnInit {
       this.dataService.get('api/Mail', [{key: 'emailId', value: emailId}, {key: 'customerId', value: customerId}])
         .subscribe((response: any) => {
           this.html = this.sanitizer.bypassSecurityTrustHtml(response) ;
+          this.dataService.error = null;
         }, error => {
-          this.dataService.data = error;
-          this.router.navigate(['/error']);
+          this.dataService.error = error;
         });
     });
   }

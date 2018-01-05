@@ -31,12 +31,15 @@ a{
         margin: 8px;
     }
 }
-.links{
-    a{
+#links{
+    span{
+        cursor: pointer;
+    }
+    a, span{
         color: white;
         margin: 20px;
     }
-    a:hover{
+    a:hover, span:hover{
         text-decoration: underline;
     }
 }

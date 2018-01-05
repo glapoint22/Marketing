@@ -43,10 +43,10 @@ export class LeadsComponent implements OnInit {
           this.formButtonText = response.formButtonText;
           this.leadMagnet = response.leadMagnet;
           this.nicheId = response.nicheId;
-          this.caption = 'Enter your name and email below to get the ' + this.leadMagnet + '!'
+          this.caption = 'Enter your name and email below to get the ' + this.leadMagnet + '!';
+          this.dataService.error = null;
         }, error => {
-          this.dataService.data = error;
-          this.router.navigate(['/error']);
+          this.dataService.error = error;
         });
     })
   }

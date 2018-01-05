@@ -21,6 +21,12 @@ button:hover{
     color: #FFFFFF;
     cursor: pointer;
 }
+button:disabled{
+    background: rgb(110, 110, 110);
+    color: rgb(151, 151, 151);
+    cursor: default;
+}
+
 .background-container{
     position:absolute;
     width: 100%;
