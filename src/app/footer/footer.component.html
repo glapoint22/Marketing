@@ -17,8 +17,8 @@
   <div id="links">
     <a routerLink="/ultimatebodytransformation">About Us</a>
     <a routerLink="/ultimatebodytransformation">Contact Us</a>
-    <a *ngIf="customerId" [routerLink]="['/preferences']" [queryParams]="{cid: customerId}">Email Preferences</a>
-    <span *ngIf="!customerId" (click)="onShowSubscriptionForm.emit()">Sign Up</span>
+    <a *ngIf="customerId" [routerLink]="['/preferences']" [queryParams]="{cid: customerId}">Manage Email Subscriptions</a>
+    <span *ngIf="!customerId" (click)="onShowSubscriptionForm.emit()">Manage Email Subscriptions</span>
     <a routerLink="/ultimatebodytransformation">Returns Policy</a>
   </div>
 </div>

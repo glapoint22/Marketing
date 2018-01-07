@@ -5,8 +5,28 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DataService {
-  public data: any;
-  public error: any;
+  public data: any = null;
+  // public error: any;
+
+  //isLoading
+  private _isLoading: boolean = false;
+  set isLoading(bool: boolean) {
+    this._isLoading = bool;
+    document.body.style.overflow = bool ? 'hidden' : 'visible';
+  }
+  get isLoading(): boolean { return this._isLoading; }
+
+
+
+  //error
+  private _error: any;
+  set error(error: any) {
+    this._error = error;
+    document.body.style.overflow = error != null ? 'hidden' : 'visible';
+  }
+  get error(): any { return this._error; }
+
+
 
   constructor(private http: Http) { }
 

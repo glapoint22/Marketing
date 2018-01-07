@@ -34,6 +34,7 @@ export class SearchComponent implements OnInit {
     this.route.queryParamMap.subscribe(queryParams => {
       let parameters: Array<any> = [];
       this.query = queryParams.get('query');
+      this.dataService.isLoading = true;
 
       //Set the sort options
       this.sortOptions = [
@@ -47,21 +48,12 @@ export class SearchComponent implements OnInit {
         }
       ];
 
-      if(this.query){
+      if (this.query) {
         this.sortOptions.unshift({
           name: 'Sort by Relevance',
           value: 'relevance'
         });
       }
-
-      //Populate the dropdowns
-      setTimeout(() => {
-        let index = this.sortOptions.findIndex(x => x.value === queryParams.get('sort'));
-        this.selectedSortOption = this.sortOptions[index == -1 ? 0 : index];
-
-        let perPage = Number(queryParams.get('limit'));
-        this.productsPerPage = perPage === 0 ? this.perPageOptions[0] : perPage;
-      });
 
       //Set the parameters array from the query params
       for (let i = 0; i < queryParams.keys.length; i++) {
@@ -81,6 +73,14 @@ export class SearchComponent implements OnInit {
       //Get the products
       this.dataService.get('api/Products', parameters)
         .subscribe((response: any) => {
+          //Products per page
+          let perPage = Number(queryParams.get('limit'));
+          this.productsPerPage = perPage === 0 ? this.perPageOptions[0] : perPage;
+
+          //Sort
+          let index = this.sortOptions.findIndex(x => x.value === queryParams.get('sort'));
+          this.selectedSortOption = this.sortOptions[index == -1 ? 0 : index];
+
           //Assign properties and variables
           let body = document.scrollingElement || document.documentElement;
           this.pageList = [];
@@ -119,7 +119,9 @@ export class SearchComponent implements OnInit {
           }
           if (this.pages > 1) this.pageList.push(this.pages.toString());
           this.dataService.error = null;
+          this.dataService.isLoading = false;
         }, error => {
+          this.dataService.isLoading = false;
           this.dataService.error = error;
         });
     });
