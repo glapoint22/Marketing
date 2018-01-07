@@ -1,6 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from "../data.service";
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'search-bar',
@@ -8,33 +8,47 @@ import { Router } from '@angular/router';
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent implements OnInit {
-  @Output() onShowSubscriptionForm = new EventEmitter<void>();
-  public categories: Array<any>;
-  public searchCategories: Array<any>;
-  public selectedCategory: any = {};
+  private query: string;
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) { }
 
   stopPropagation(event): void {
     event.stopPropagation();
   }
 
   ngOnInit() {
-    this.dataService.get('api/Categories')
-      .subscribe((response: any) => {
-        this.categories = response;
-        this.searchCategories = this.categories.slice();
-        this.searchCategories.unshift({ name: 'All', id: 0 });
-        this.selectedCategory = this.searchCategories[0];
-        this.dataService.error = null;
-      }, error => {
-        this.dataService.error = error;
-      });
+    this.route.queryParamMap.subscribe(queryParams => {
+      //Get the search words from the url
+      this.query = queryParams.get('query');
+      
+      //Get the category from the url
+      if (this.dataService.searchBar.categories) {
+        let id = this.dataService.searchBar.searchCategories.findIndex(x => x.id == Number(queryParams.get('category')));
+        this.dataService.searchBar.selectedCategory = this.dataService.searchBar.searchCategories[id];
+      }
+    });
+
+    //Assign the categories if not already done
+    if (!this.dataService.searchBar.categories) {
+      this.dataService.searchBar['selectedCategory'] = {};
+      this.dataService.get('api/Categories')
+        .subscribe((response: any) => {
+          this.dataService.searchBar['categories'] = response;
+          let searchCategories = this.dataService.searchBar.categories.slice().map(x => ({ id: x.id, name: x.name }));
+          searchCategories.unshift({ name: 'All', id: 0 });
+          this.dataService.searchBar['searchCategories'] = searchCategories;
+          this.dataService.searchBar['selectedCategory'] = searchCategories[0];
+
+          this.dataService.error = null;
+        }, error => {
+          this.dataService.error = error;
+        });
+    }
   }
 
   onSearchButtonClick(query, category) {
     if (query !== '') {
-      this.router.navigate(['/search'], {queryParams: {'query': query, 'category': category}});
+      this.router.navigate(['/search'], { queryParams: { 'query': query, 'category': category } });
     }
   }
 }

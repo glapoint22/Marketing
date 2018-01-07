@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DataService {
   public data: any = null;
-  // public error: any;
+  public searchBar: any = {};
 
   //isLoading
   private _isLoading: boolean = false;
