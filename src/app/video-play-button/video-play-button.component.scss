@@ -3,7 +3,7 @@
     font-size: 60px;
     right: 0;
     margin-right: 3px;
-    top: 34px;
+    top: 40px;
     border-radius: 50%;
     line-height: 50px;
     cursor: pointer;
@@ -20,18 +20,12 @@
     -webkit-transition: width 0.2s, height 0.2s, font-size 0.2s, line-height 0.2s; /* For Safari 3.1 to 6.0 */
     transition: width 0.2s, height 0.2s, font-size 0.2s, line-height 0.2s;
 }
-.fa-play-circle:hover::before{
-    width: 54px;
-    height: 54px;
-    font-size: 65px;
-    line-height: 54px;
-}
 .video-tag{
     background: #ce0505;
     height: 45px;
     position: absolute;
     right: 43px;
-    top: 42px;
+    top: 48px;
     line-height: 37px;
     font-size: 28px;
     color: white;

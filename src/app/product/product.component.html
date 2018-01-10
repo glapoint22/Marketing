@@ -1,9 +1,6 @@
 <div class="product">
   <!-- Product Name -->
-  <div class="product-name">
-    {{product.name}}
-    <div>{{product.price | currency:'USD':true}}</div>
-  </div>
+  <div class="product-name">{{product.name}}</div>
 
   <!-- Video Play Button -->
   <video-play-button [videos]="product.videos" [productName]="product.name"></video-play-button>
@@ -12,6 +9,9 @@
   <div class="hop-link" (click)="onClick()">
     <img #img [src]="'assets/images/products/' + product.image">
   </div>
+
+  <!-- Price Tag -->
+  <div class="price-tag">{{product.price | currency:'USD':true}}</div>
 
   <!-- Product Description -->
   <div [innerHtml]="product.description" class="product-description"></div>
