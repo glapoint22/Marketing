@@ -37,13 +37,28 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
   }
 
   close() {
-    if(this.show){
+    if (this.show) {
       super.close();
       window.location.href = this.dataService.data.hopLink;
     }
   }
 
   nextAction(response) {
-    window.location.href = this.dataService.data.hopLink + '?tid=' + response.customer.id + this.dataService.data.id;
+    if (response.customer.subscriptionCount > 0) {
+      this.router.navigate(['/preferences'], { queryParams: { 'cid': response.customer.id } });
+    } else {
+      this.dataService.data['customer'] = response.customer.name;
+      if(this.dataService.data.hopLink){
+        this.dataService.data['content'] = '<a style="color: #ab0395" href="' + this.dataService.data.hopLink + '?tid=' + response.customer.id + this.dataService.data.id + '">Hello</a>';
+      }else{
+        this.dataService.data['content'] = 'No Product and no subscription!!';
+      }
+      
+      
+      this.router.navigate(['/thank-you']);
+    }
+
+
+    // window.location.href = this.dataService.data.hopLink + '?tid=' + response.customer.id + this.dataService.data.id;
   }
 }
