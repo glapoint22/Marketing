@@ -30,6 +30,8 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
   }
 
   setResponse(response) {
+    this.dataService.data['customer'] = response.customer.name;
+
     //Check to see if a cookie is set for this customer
     if (!this.cookieService.check('Customer')) {
       this.cookieService.set('Customer', response.customer.id, 9999);
@@ -39,26 +41,33 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
   close() {
     if (this.show) {
       super.close();
-      window.location.href = this.dataService.data.hopLink;
+      if (this.dataService.data.hopLink) {
+        window.location.href = this.dataService.data.hopLink;
+      }
     }
   }
 
   nextAction(response) {
-    if (response.customer.subscriptionCount > 0) {
-      this.router.navigate(['/preferences'], { queryParams: { 'cid': response.customer.id } });
-    } else {
-      this.dataService.data['customer'] = response.customer.name;
-      if(this.dataService.data.hopLink){
-        this.dataService.data['content'] = '<a style="color: #ab0395" href="' + this.dataService.data.hopLink + '?tid=' + response.customer.id + this.dataService.data.id + '">Hello</a>';
-      }else{
-        this.dataService.data['content'] = 'No Product and no subscription!!';
+    //If a product was clicked
+    if (this.dataService.data.hopLink) {
+      //If we have an existing customer, go straight to the product page
+      if (response.customer.isExistingCustomer) {
+        window.location.href = this.dataService.data.hopLink;
+      } else {
+        //We have a new customer so show the thank you page
+        this.dataService.data['content'] = '<a style="color: #ab0395" href="' + this.dataService.data.hopLink + '?tid=' + response.customer.id + this.dataService.data.id + '">Product</a>';
+        this.router.navigate(['/thank-you']);
       }
-      
-      
-      this.router.navigate(['/thank-you']);
+      //Product was not clicked
+    } else {
+      //If we have an existing customer, go straight to the preferences page
+      if (response.customer.isExistingCustomer) {
+        this.router.navigate(['/preferences'], { queryParams: { 'cid': response.customer.id } });
+      } else {
+        //We have a new customer so show the thank you page
+        this.dataService.data['content'] = 'No Product and not existing customer!!';
+        this.router.navigate(['/thank-you']);
+      }
     }
-
-
-    // window.location.href = this.dataService.data.hopLink + '?tid=' + response.customer.id + this.dataService.data.id;
   }
 }

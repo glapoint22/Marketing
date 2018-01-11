@@ -28,7 +28,7 @@ export class LeadsSubscriptionFormComponent extends SubscriptionFormComponent {
   }
   
   nextAction(response) {
-    this.dataService.data['customer'] = response.customer.name;
+    // this.dataService.data['customer'] = response.customer.name;
     this.dataService.data['content']= this.sanitizer.bypassSecurityTrustHtml('An email has been sent to <b><i>' + response.customer.email + 
       '</i></b> where you will be able to download your <b><i>' + response.leadMagnet + 
       '</i></b>. If you don’t see your new email, check your spam folder and please be sure to whitelist the ' + 
