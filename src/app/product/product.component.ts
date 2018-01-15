@@ -17,7 +17,7 @@ export class ProductComponent {
     if (this.cookieService.check('Customer')) {
       window.location.href = this.product.hopLink;
     }else{
-      this.dataService.data = this.product;
+      this.dataService.data['product'] = this.product;
       this.onShowSubscriptionForm.emit();
     }
   }

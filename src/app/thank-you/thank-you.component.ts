@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from "../data.service";
-import { Router } from '@angular/router';
+// import { DataService } from "../data.service";
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-thank-you',
@@ -8,15 +8,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./thank-you.component.scss']
 })
 export class ThankYouComponent implements OnInit {
-  public customerName: string;
+  private siteName: string = 'Gumpy\'s';
+  private customer: string;
+  private email: string;
+  private leadMagnet: string;
+  private customerId: string;
+  private type: string;
+  private hoplink: string;
+  private productId: string;
+  private productName: string;
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if(this.dataService.data && this.dataService.data.customer){
-      this.customerName = this.dataService.data.customer.substr(0, 1).toUpperCase() + this.dataService.data.customer.substr(1);
-    }else{
-      this.router.navigate(['']);
-    }
+    this.route.queryParamMap.subscribe(queryParams => {
+      this.customer = queryParams.get('customer');
+      this.email = queryParams.get('email');
+      this.leadMagnet = queryParams.get('leadMagnet');
+      this.customerId = queryParams.get('customerId');
+      this.type = queryParams.get('type');
+      this.hoplink = queryParams.get('hoplink');
+      this.productId = queryParams.get('productId');
+      this.productName = queryParams.get('productName');
+    });
   }
 }

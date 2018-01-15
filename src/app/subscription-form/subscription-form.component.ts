@@ -30,8 +30,6 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
   }
 
   setResponse(response) {
-    this.dataService.data['customer'] = response.customer.name;
-
     //Check to see if a cookie is set for this customer
     if (!this.cookieService.check('Customer')) {
       this.cookieService.set('Customer', response.customer.id, 9999);
@@ -41,22 +39,29 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
   close() {
     if (this.show) {
       super.close();
-      if (this.dataService.data.hopLink) {
-        window.location.href = this.dataService.data.hopLink;
+      if (this.dataService.data.product && this.dataService.data.product.hopLink) {
+        window.location.href = this.dataService.data.product.hopLink;
       }
     }
   }
 
   nextAction(response) {
     //If a product was clicked
-    if (this.dataService.data.hopLink) {
+    if (this.dataService.data.product && this.dataService.data.product.hopLink) {
       //If we have an existing customer, go straight to the product page
       if (response.customer.isExistingCustomer) {
-        window.location.href = this.dataService.data.hopLink;
+        window.location.href = this.dataService.data.product.hopLink;
       } else {
-        //We have a new customer so show the thank you page
-        this.dataService.data['content'] = '<a style="color: #ab0395" href="' + this.dataService.data.hopLink + '?tid=' + response.customer.id + this.dataService.data.id + '">Product</a>';
-        this.router.navigate(['/thank-you']);
+        //We have a new customer so naviagate to the thank you page with product info
+        this.router.navigate(['/thank-you'], {
+          queryParams: {
+            'customer': response.customer.name,
+            'customerId': response.customer.id,
+            'hoplink': this.dataService.data.product.hopLink,
+            'productId': this.dataService.data.product.id,
+            'productName': this.dataService.data.product.name
+          }
+        });
       }
       //Product was not clicked
     } else {
@@ -64,9 +69,13 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
       if (response.customer.isExistingCustomer) {
         this.router.navigate(['/preferences'], { queryParams: { 'cid': response.customer.id } });
       } else {
-        //We have a new customer so show the thank you page
-        this.dataService.data['content'] = 'No Product and not existing customer!!';
-        this.router.navigate(['/thank-you']);
+        //We have a new customer so naviagate to the thank you page
+        this.router.navigate(['/thank-you'], {
+          queryParams: {
+            'customer': response.customer.name,
+            'customerId': response.customer.id,
+          }
+        });
       }
     }
   }
