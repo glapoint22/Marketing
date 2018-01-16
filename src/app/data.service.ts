@@ -17,7 +17,6 @@ export class DataService {
   get isLoading(): boolean { return this._isLoading; }
 
 
-
   //error
   private _error: any;
   set error(error: any) {
@@ -25,6 +24,7 @@ export class DataService {
     document.body.style.overflow = error != null ? 'hidden' : 'visible';
   }
   get error(): any { return this._error; }
+  
 
 
 

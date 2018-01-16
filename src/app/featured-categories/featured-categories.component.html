@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="caption">Featured Categories</div>
+    <div class="category" *ngFor="let category of dataService.searchBar.categories">
+        <img src="assets/images/category_icons/Health&Fitness.png" height="170" width="170">
+        <div class="title">{{category.name}}</div>
+    </div>
+</div>

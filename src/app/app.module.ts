@@ -41,6 +41,7 @@ import { PriceFilterComponent } from './price-filter/price-filter.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoadingComponent } from './loading/loading.component';
+import { FeaturedCategoriesComponent } from './featured-categories/featured-categories.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { LoadingComponent } from './loading/loading.component';
     PriceFilterComponent,
     CheckboxComponent,
     FooterComponent,
-    LoadingComponent
+    LoadingComponent,
+    FeaturedCategoriesComponent
   ],
   imports: [
     BrowserModule,
