@@ -38,6 +38,7 @@ export class SearchBarComponent implements OnInit {
           searchCategories.unshift({ name: 'All', id: 0 });
           this.dataService.searchBar['searchCategories'] = searchCategories;
           this.dataService.searchBar['selectedCategory'] = searchCategories[0];
+          this.dataService.searchBar['featuredCategories'] = this.dataService.searchBar.categories.slice().filter(x => x.featured);
 
           this.dataService.error = null;
         }, error => {

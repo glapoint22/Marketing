@@ -7,6 +7,7 @@ import { DataService } from "../data.service";
   styleUrls: ['./featured-categories.component.scss']
 })
 export class FeaturedCategoriesComponent implements OnInit {
+  private showFeatured: boolean = true;
 
   constructor(private dataService: DataService) { }
 
