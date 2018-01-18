@@ -15,10 +15,10 @@
     </a>
   </div>
   <div id="links">
-    <a routerLink="/ultimatebodytransformation">About Us</a>
-    <a routerLink="/ultimatebodytransformation">Contact Us</a>
+    <a routerLink="/about">About Us</a>
+    <a routerLink="/contact">Contact Us</a>
     <a *ngIf="customerId" [routerLink]="['/preferences']" [queryParams]="{cid: customerId}">Manage Email Subscriptions</a>
     <span *ngIf="!customerId" (click)="onShowSubscriptionForm.emit()">Manage Email Subscriptions</span>
-    <a routerLink="/ultimatebodytransformation">Returns Policy</a>
+    <a routerLink="/returns">Returns Policy</a>
   </div>
 </div>
