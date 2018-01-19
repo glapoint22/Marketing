@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from "../data.service";
 
 @Component({
   selector: 'contact',
@@ -6,10 +7,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
+  private name: string;
+  private email: string;
+  private subject: string;
+  private message: string;
+  private messageSent: boolean;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(form): void {
+    if (form.form.status !== 'VALID') return;
+    this.dataService.isLoading = true;
+    let contact = {
+      name: this.name,
+      email: this.email,
+      subject: this.subject,
+      message: this.message
+    }
+    this.dataService.post('api/Contact', contact)
+      .subscribe((response: any) => {
+        this.dataService.error = null;
+        this.dataService.isLoading = false;
+        this.messageSent = true;
+      }, error => {
+        this.dataService.isLoading = false;
+        this.dataService.error = error;
+      });
   }
 
 }

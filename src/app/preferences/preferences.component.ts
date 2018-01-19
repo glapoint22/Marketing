@@ -30,6 +30,7 @@ export class PreferencesComponent implements OnInit {
       this.route.queryParamMap.subscribe(queryParams => {
         //Get the customer id from the query params
         let customerId = queryParams.get('cid');
+        this.dataService.isLoading = true;
 
         //If customer id is null, navigate back to route
         if(customerId === null){
@@ -42,7 +43,9 @@ export class PreferencesComponent implements OnInit {
           .subscribe((response: any) => {
             this.init(response);
             this.dataService.error = null;
+            this.dataService.isLoading = false;
           }, error => {
+            this.dataService.isLoading = false;
             this.dataService.error = error;
           });
       });
@@ -115,12 +118,15 @@ export class PreferencesComponent implements OnInit {
     };
 
     //Send the updated data
+    this.dataService.isLoading = true;
     this.dataService.put('api/Subscriptions', preferences)
       .subscribe((response: any) => {
         this.dataService.data = preferences;
         this.router.navigate(['/confirm']);
         this.dataService.error = null;
+        this.dataService.isLoading = false;
       }, error => {
+        this.dataService.isLoading = false;
         this.dataService.error = error;
       });
   }

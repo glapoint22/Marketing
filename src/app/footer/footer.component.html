@@ -15,7 +15,6 @@
     </a>
   </div>
   <div id="links">
-    <a routerLink="/about">About Us</a>
     <a routerLink="/contact">Contact Us</a>
     <a *ngIf="customerId" [routerLink]="['/preferences']" [queryParams]="{cid: customerId}">Manage Email Subscriptions</a>
     <span *ngIf="!customerId" (click)="onShowSubscriptionForm.emit()">Manage Email Subscriptions</span>

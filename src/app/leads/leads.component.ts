@@ -28,6 +28,7 @@ export class LeadsComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(param => {
       let leadPage = param.get('leadPage');
+      this.dataService.isLoading = true;
 
       //Get the lead page
       this.dataService.get('api/Leads', [{ key: 'leadPage', value: leadPage }])
@@ -45,7 +46,9 @@ export class LeadsComponent implements OnInit {
           this.nicheId = response.nicheId;
           this.caption = 'Enter your name and email below to get the ' + this.leadMagnet + '!';
           this.dataService.error = null;
+          this.dataService.isLoading = false;
         }, error => {
+          this.dataService.isLoading = false;
           this.dataService.error = error;
         });
     })
