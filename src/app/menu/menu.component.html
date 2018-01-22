@@ -5,7 +5,6 @@
     <ul>
       <li *ngFor="let category of categories" (mouseenter)="showNicheList = true; currentCategory = category">
         <div>{{category.name}}</div>
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </li>
     </ul>
   </div>
@@ -14,10 +13,9 @@
       <ul>
         <li *ngFor="let niche of currentCategory.niches">
           <div class="niche" (click)="onNicheClick(niche)">{{niche.name}}</div>
-          <!-- <div *ngFor="let product of niche.products" class="product" (click)="onProductClick(product)">{{product.name}}</div> -->
         </li>
       </ul>
     </div>
-    <img src="assets/images/{{currentCategory.categoryImage.name}}">
+    <img src="assets/images/{{currentCategory.categoryImage.name}}" (click)="onCategoryClick()">
   </div>
 </div>

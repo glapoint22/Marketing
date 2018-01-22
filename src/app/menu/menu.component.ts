@@ -15,10 +15,21 @@ export class MenuComponent {
   constructor(private router: Router) { }
 
   onNicheClick(niche){
-    this.showMenu = false;
-    this.showNicheList = false;
+    this.hideMenu();
     this.router.navigate(['/search'], {
       queryParams: { 'category': this.currentCategory.id, 'nicheId': niche.id }
     });
+  }
+
+  onCategoryClick(){
+    this.hideMenu();
+    this.router.navigate(['/search'], {
+      queryParams: { 'category': this.currentCategory.id }
+    });
+  }
+
+  hideMenu(){
+    this.showMenu = false;
+    this.showNicheList = false;
   }
 }

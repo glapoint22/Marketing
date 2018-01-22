@@ -8,6 +8,7 @@
     z-index: 50;
     display: flex;
     left: 270px;
+    font-family: 'Times New Roman', Times, serif;
 }
 .arrow::after{
     content: "";
@@ -36,6 +37,7 @@ ul{
     padding: 0;
     li{
         list-style: none;
+        
         font-weight: bold;
         font-size: 14px;
     }
@@ -69,12 +71,10 @@ ul{
 .niche-list-container{
     width: 807px;
     cursor: default;
-    // display: flex;
     .niche-container{
         width: 618px;
         height: 500px;
         overflow: auto;
-        // height: 100%;
         display: inline-block;
         border-right: 1px solid $color1;
     }
@@ -85,12 +85,10 @@ ul{
     }
     li{
         margin: 16px;
-        // display: inline-block;
         display: inline-table;
         width: 168px;
         cursor: pointer;
         line-height: normal;
-        // text-align: left;
         .niche{
             color: $color1;
             font-size: 18px;
@@ -98,14 +96,6 @@ ul{
         .niche:hover{
             color: $color5;
         }
-        // .product{
-        //     font-size: 14px;
-        //     color: #c5c5c5;
-        //     font-weight: normal;
-        // }
-        // .product:hover{
-        //     color: rgb(255, 255, 255);
-        // }
     }
 }
 .border{
