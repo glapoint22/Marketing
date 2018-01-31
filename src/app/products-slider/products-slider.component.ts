@@ -14,9 +14,9 @@ export class ProductsSliderComponent {
   @Input() products;
   @Output() onShowSubscriptionForm = new EventEmitter<void>();
 
-  private currentIndex = 0;
-  private currentTranslation = 0;
-  private translations: Array<any> = [{'translate': 0, 'index': 0}];
+  public currentIndex = 0;
+  public currentTranslation = 0;
+  public translations: Array<any> = [{'translate': 0, 'index': 0}];
 
   onArrowClick(direction: number, containerWidth: number, products: Array<any>){
     if(direction === -1){

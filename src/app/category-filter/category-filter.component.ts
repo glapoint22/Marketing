@@ -10,10 +10,10 @@ import { FilterService } from "./../filter.service";
 })
 export class CategoryFilterComponent extends FilterComponent implements OnInit {
   @Input() categories;
-  private displayAllCategories: boolean;
-  private currentCategory;
-  private currentNiche;
-  private query;
+  public displayAllCategories: boolean;
+  public currentCategory;
+  public currentNiche;
+  public query;
 
   constructor(private route: ActivatedRoute, filterService: FilterService) { super(filterService); }
 

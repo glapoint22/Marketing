@@ -8,9 +8,9 @@ import { FilterService } from "./../filter.service";
   styleUrls: ['../filter/filter.component.scss', './price-filter.component.scss']
 })
 export class PriceFilterComponent extends CheckboxFilterComponent implements OnInit {
-  private min: string;
-  private max: string;
-  private showClearPrice: boolean;
+  public min: string;
+  public max: string;
+  public showClearPrice: boolean;
 
   constructor(filterService: FilterService) { super(filterService); }
 

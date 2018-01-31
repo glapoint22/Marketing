@@ -8,5 +8,5 @@ import { DataService } from "../data.service";
 })
 export class LoadingComponent {
 
-  constructor(private dataService: DataService) { }
+  constructor(public dataService: DataService) { }
 }

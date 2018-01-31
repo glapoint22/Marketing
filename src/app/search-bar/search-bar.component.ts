@@ -8,9 +8,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent implements OnInit {
-  private query: string;
+  public query: string;
 
-  constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) { }
+  constructor(public dataService: DataService, private router: Router, private route: ActivatedRoute) { }
 
   stopPropagation(event): void {
     event.stopPropagation();

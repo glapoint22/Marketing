@@ -7,11 +7,11 @@ import { DataService } from "../data.service";
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-  private name: string;
-  private email: string;
-  private subject: string;
-  private message: string;
-  private messageSent: boolean;
+  public name: string;
+  public email: string;
+  public subject: string;
+  public message: string;
+  public messageSent: boolean;
 
   constructor(private dataService: DataService) { }
 

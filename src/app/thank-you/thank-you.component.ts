@@ -8,15 +8,15 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./thank-you.component.scss']
 })
 export class ThankYouComponent implements OnInit {
-  private siteName: string = 'Gumpy\'s';
-  private customer: string;
-  private email: string;
-  private leadMagnet: string;
-  private customerId: string;
-  private type: string;
-  private hoplink: string;
-  private productId: string;
-  private productName: string;
+  public siteName: string = 'Gumpy\'s';
+  public customer: string;
+  public email: string;
+  public leadMagnet: string;
+  public customerId: string;
+  public type: string;
+  public hoplink: string;
+  public productId: string;
+  public productName: string;
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 

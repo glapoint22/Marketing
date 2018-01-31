@@ -10,23 +10,23 @@ import { FilterService } from "./../filter.service";
 })
 export class SearchComponent implements OnInit {
   public totalProducts: number;
-  private products;
-  private pages: number;
-  private productStart: number;
-  private productEnd: number;
-  private query: string;
-  private page: number;
-  private pageList: Array<string> = [];
-  private categories;
-  private filters;
+  public products;
+  public pages: number;
+  public productStart: number;
+  public productEnd: number;
+  public query: string;
+  public page: number;
+  public pageList: Array<string> = [];
+  public categories;
+  public filters;
 
   //Sort Options
-  private selectedSortOption: any;
-  private sortOptions = [];
+  public selectedSortOption: any;
+  public sortOptions = [];
 
   //Products per page
-  private productsPerPage: number;
-  private perPageOptions = [24, 48, 72, 96];
+  public productsPerPage: number;
+  public perPageOptions = [24, 48, 72, 96];
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router, private filterService: FilterService) { }
 

@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./featured-categories.component.scss']
 })
 export class FeaturedCategoriesComponent {
-  private showFeatured: boolean = true;
+  public showFeatured: boolean = true;
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(public dataService: DataService, private router: Router) { }
 
   onClick(category: number) {
     this.router.navigate(['/search'], { queryParams: { 'category': category } });

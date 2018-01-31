@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class FooterComponent implements OnInit {
   @Output() onShowSubscriptionForm = new EventEmitter<void>();
-  private customerId: string ;
+  public customerId: string ;
 
   constructor(private cookieService: CookieService) { }
 

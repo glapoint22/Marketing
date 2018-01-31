@@ -10,20 +10,19 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit {
-  private interval: number = 0;
-  private currentDirection = -1;
-  private iterations: number = 1;
-  private defaultSpeed: number = 0.3;
-  private arrowClicked: boolean = false;
-  private productComponent: ProductComponent;
-
+  public interval: number = 0;
+  public currentDirection = -1;
+  public iterations: number = 1;
+  public defaultSpeed: number = 0.3;
+  public arrowClicked: boolean = false;
+  public productComponent: ProductComponent;
   public translate = 0;
   public index: number = 0;
   public play: boolean = true;
   public curve: string = 'ease-in-out';
   public speed: number = this.defaultSpeed;
-  @Output() onShowSubscriptionForm = new EventEmitter<void>();
   public productBanners: Array<any>;
+  @Output() onShowSubscriptionForm = new EventEmitter<void>();
 
   constructor(private dataService: DataService, private router: Router, private cookieService: CookieService) { }
 
