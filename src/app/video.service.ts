@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
-@Injectable()
+@Injectable(
+  {
+    providedIn: 'root'
+  }
+)
 export class VideoService {
   public currentVideo: SafeUrl;
   public videosCount: number;

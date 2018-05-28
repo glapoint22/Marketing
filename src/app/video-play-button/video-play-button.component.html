@@ -1,5 +1,5 @@
 <div *ngIf="videos.length > 0">
   <div class="video-tag">Videos ({{videos.length}})</div>
-  <i class="fa fa-play-circle" aria-hidden="true" (click)="videoService.open(videos, productName)" 
+  <i class="fas fa-play-circle" (click)="videoService.open(videos, productName)" 
     [title]="'Play ' + videos.length + ' video' + (videos.length > 1?'s':'')"></i>
 </div>

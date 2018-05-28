@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, RequestOptions, URLSearchParams } from "@angular/http";
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable(
+  {
+    providedIn: 'root'
+  }
+)
 export class DataService {
   public data: any = {};
   public searchBar: any = {};
@@ -24,42 +27,29 @@ export class DataService {
     document.body.style.overflow = error != null ? 'hidden' : 'visible';
   }
   get error(): any { return this._error; }
-  
 
 
 
-  constructor(private http: Http) { }
 
-  get(url: string, parameters?: Array<any>): Observable<Response> {
-    if (parameters) {
-      let params: URLSearchParams = new URLSearchParams(),
-        requestOptions: RequestOptions = new RequestOptions();
+  constructor(private http: HttpClient) { }
 
-      //Loop through the parameters
-      for (let i = 0; i < parameters.length; i++) {
-        params.set(parameters[i].key, parameters[i].value);
-      }
+  get(url: string, parameters?: Array<any>): Observable<any> {
+    let params = new HttpParams();
 
-      //Assign the params to the request options
-      requestOptions.params = params;
+    //Set the params
+    if (parameters) parameters.forEach(x => params = params.set(x.key, x.value));
 
-      //Get the data
-      return this.http.get(url, requestOptions)
-        .map((response: Response) => response.json())
-    } else {
-      return this.http.get(url)
-        .map((response: Response) => response.json())
-    }
+
+    //Get the data
+    return this.http.get(url, { params: params });
   }
 
 
-  post(url: string, body: any): Observable<Response> {
-    return this.http.post(url, body)
-      .map((response: Response) => response.json())
+  post(url: string, body: any) {
+    return this.http.post(url, body);
   }
 
-  put(url: string, body: any): Observable<Response> {
-    return this.http.put(url, body)
-      .map((response: Response) => response.json())
+  put(url: string, body: any) {
+    return this.http.put(url, body);
   }
 }

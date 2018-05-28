@@ -31,24 +31,25 @@ export class CarouselComponent implements OnInit {
     this.productComponent.onShowSubscriptionForm = this.onShowSubscriptionForm;
 
     this.dataService.get('api/ProductBanners')
-    .subscribe((response: any) => {
-      this.productBanners = response;
+      .subscribe((response: any) => {
+        this.productBanners = response;
 
-      //Add the pos property
-      for(let i = 0; i < this.productBanners.length; i++){
-        this.productBanners[i]['pos'] = i * 100;
-      }
-      
-      //Start the timer
-      this.startTimer(this.currentDirection);
+        //Add the pos property
+        for (let i = 0; i < this.productBanners.length; i++) {
+          this.productBanners[i]['pos'] = i * 100;
+        }
 
-      this.dataService.error = null;
-    }, error => {
-      this.dataService.error = error;
-    });
+        //Start the timer
+        if (this.productBanners.length > 0) this.startTimer(this.currentDirection);
+
+
+        this.dataService.error = null;
+      }, error => {
+        this.dataService.error = error;
+      });
   }
 
-  onProductBannerClick(product){
+  onProductBannerClick(product) {
     this.productComponent.product = product;
     this.productComponent.onClick();
   }

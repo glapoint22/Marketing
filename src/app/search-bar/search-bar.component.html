@@ -4,7 +4,7 @@
 </select>
 <div class="search-bar">
     <div class="category-menu-button" (mouseenter)="menu.showMenu = true" (mouseleave)="menu.showMenu = false" (click)="menu.showMenu = !menu.showMenu">
-        <i class="fa fa-bars" aria-hidden="true" style="margin-right: 8px"></i>
+        <i class="fas fa-bars" style="margin-right: 8px"></i>
         Categories
         <!-- <menu #menu (click)="stopPropagation($event)" (onShowSubscriptionForm)="onShowSubscriptionForm.emit()" [categories]="categories"></menu> -->
         <menu #menu (click)="stopPropagation($event)" [categories]="dataService.searchBar.categories"></menu>
@@ -21,7 +21,7 @@
             </div>
             <div class="button-container">
                 <button type="submit" class="search-button">
-                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <i class="fas fa-search"></i>
                 </button>
             </div>
         </form>

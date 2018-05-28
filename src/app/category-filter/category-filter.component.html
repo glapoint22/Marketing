@@ -10,7 +10,7 @@
   <div *ngIf="showContent">
     <!-- Any Category -->
     <div *ngIf="currentCategory > 0 && query != undefined">
-      <i class="fa fa-angle-left" aria-hidden="true"></i>
+      <i class="fas fa-angle-left"></i>
       <div class="pointer inline margin-top" (click)="filterService.setQueryParameters([{name: 'category', value: 0}], ['nicheId', 'page'])">Any Category</div>
     </div>
 
@@ -19,7 +19,7 @@
     <div *ngFor="let category of categories; let i = index">
       <!-- Display all categories or partial  -->
       <div *ngIf="!displayAllCategories ? i < 4 : categories.length">
-        <i *ngIf="currentNiche > 0" class="fa fa-angle-left" aria-hidden="true"></i>
+        <i *ngIf="currentNiche > 0" class="fas fa-angle-left"></i>
         <div style="display: inline-block" (click)="filterService.setQueryParameters([{name: 'category', value: category.id}], ['nicheId', 'page'])"
           [ngClass]="{'margin-top' : currentCategory == 0 || query == undefined, 'highlight' : currentNiche == null, 'pointer' : currentCategory == 0 || currentNiche > 0}">{{category.name}}</div>
         <span class="count">({{getProductCount(category)}})</span>
@@ -35,7 +35,7 @@
         </div>
         <!-- See more/See less niches -->
         <div *ngIf="category.niches.length > 4">
-          <i class="fa niche" aria-hidden="true" [ngClass]="{'fa-angle-double-down' : !category.showAllNiches, 'fa-angle-double-up' : category.showAllNiches}"></i>
+          <i class="fas" [ngClass]="{'fa-angle-double-down' : !category.showAllNiches, 'fa-angle-double-up' : category.showAllNiches}"></i>
           <div class="see-more-less pointer" (click)="category.showAllNiches = !category.showAllNiches" [innerHtml]="!category.showAllNiches ? 'See More' : 'See Less'"></div>
         </div>
 
@@ -43,7 +43,7 @@
     </div>
     <!-- See all/See fewer categories -->
     <div *ngIf="categories.length > 4">
-      <i class="fa" aria-hidden="true" [ngClass]="{'fa-angle-double-down' : !displayAllCategories, 'fa-angle-double-up' : displayAllCategories}"></i>
+      <i class="fas" [ngClass]="{'fa-angle-double-down' : !displayAllCategories, 'fa-angle-double-up' : displayAllCategories}"></i>
       <div style="margin-top: 10px" class="see-more-less pointer" (click)="displayAllCategories = !displayAllCategories" [innerHtml]="!displayAllCategories ? 'See All ' + categories.length + ' Categories' : 'See Fewer Categories'"></div>
     </div>
   </div>

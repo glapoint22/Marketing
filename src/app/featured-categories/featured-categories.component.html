@@ -1,7 +1,7 @@
 <div class="container" *ngIf="dataService.searchBar.categories">
     <div class="caption" [innerHtml]="(showFeatured ? 'Featured Categories' : 'All Categories')"></div>
     <div class="category" *ngFor="let category of (showFeatured ? dataService.searchBar.featuredCategories : dataService.searchBar.categories)" (click)="onClick(category.id)">
-        <img src="assets/images/category_icons/{{category.icon}}" height="170" width="170">
+        <img src="/Images/{{category.icon}}" height="170" width="170">
         <div class="title">{{category.name}}</div>
     </div>
     <div class="toggle-categories" (click)="showFeatured = !showFeatured" [innerHtml]="(showFeatured ? 'Show All Categories' : 'Show Featured Categories')"></div>

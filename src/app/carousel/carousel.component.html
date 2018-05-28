@@ -1,7 +1,7 @@
 <div class="carousel-container">
     <div [style.transition]="'all ' + speed + 's ' + curve" [style.transform]="'translateX(' + translate + '%)'" (transitionend)="transitionEnd()">
         <div class="product-banner" *ngFor="let productBanner of productBanners" [style.left.%]="productBanner.pos" (click)="onProductBannerClick(productBanner.product)">
-            <img [src]="'assets/images/carousel/' + productBanner.name">
+            <img [src]="'/Images/' + productBanner.name">
         </div>
     </div>
     <arrows (onArrowClick)="onArrowClick($event)"></arrows>

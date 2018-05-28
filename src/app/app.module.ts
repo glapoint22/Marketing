@@ -1,15 +1,12 @@
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 // Services
-import { DataService } from "./data.service";
-import { VideoService } from "./video.service";
 import { CookieService } from 'ngx-cookie-service';
-import { FilterService } from "./filter.service";
 
 // Components
 import { AppComponent } from './app.component';
@@ -84,9 +81,9 @@ import { ReturnsComponent } from './returns/returns.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpClientModule
   ],
-  providers: [DataService, VideoService, CookieService, FilterService],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
