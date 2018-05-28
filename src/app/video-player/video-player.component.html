@@ -1,4 +1,4 @@
-<div class="modal-background" *ngIf="show" (click)="videoService.close()">
+<div class="modal-background" (click)="videoService.close()">
   <div class="window">
     <div class="title-bar" (click)="stopPropagation($event)">
       <div [innerHtml]="videoService.title" class="title"></div>

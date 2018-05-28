@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Subject } from 'rxjs';
 
 @Injectable(
   {
@@ -13,7 +12,7 @@ export class VideoService {
   public title: string;
   public currentVideoIndex: number;
   public videos: Array<string>;
-  public showPlayer = new Subject<boolean>();
+  public showPlayer: boolean;
 
   constructor(private sanitizer: DomSanitizer) {
     this.currentVideo = this.desanitize('');
@@ -24,12 +23,12 @@ export class VideoService {
     this.videosCount = this.videos.length;
     this.title = productName;
     this.setVideo(0);
-    this.showPlayer.next(true);
+    this.showPlayer = true;
   }
 
   close() {
     this.currentVideo = this.desanitize('');
-    this.showPlayer.next(false);
+    this.showPlayer = false;
   }
 
   setVideo(index: number) {

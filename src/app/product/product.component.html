@@ -7,7 +7,7 @@
 
   <!-- Hop Link -->
   <div class="hop-link" (click)="onClick()">
-    <img #img [src]="'/Images/' + product.image">
+    <img *ngIf="product.image" #img [src]="'/Images/' + product.image">
   </div>
 
   <!-- Price Tag -->
