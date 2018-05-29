@@ -2,7 +2,7 @@
   <div class="window">
     <div class="title-bar" (click)="stopPropagation($event)">
       <div [innerHtml]="videoService.title" class="title"></div>
-      <div class="close-button" (click)="videoService.close()">
+      <div class="close-button" (click)="videoService.close()" title="Close">
         <i class="fas fa-times"></i>
       </div>
     </div>
