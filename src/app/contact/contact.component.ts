@@ -29,12 +29,8 @@ export class ContactComponent implements OnInit {
     }
     this.dataService.post('api/Contact', contact)
       .subscribe((response: any) => {
-        this.dataService.error = null;
         this.dataService.isLoading = false;
         this.messageSent = true;
-      }, error => {
-        this.dataService.isLoading = false;
-        this.dataService.error = error;
       });
   }
 

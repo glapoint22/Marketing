@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable(
   {
@@ -29,8 +30,6 @@ export class DataService {
   get error(): any { return this._error; }
 
 
-
-
   constructor(private http: HttpClient) { }
 
   get(url: string, parameters?: Array<any>): Observable<any> {
@@ -41,15 +40,36 @@ export class DataService {
 
 
     //Get the data
-    return this.http.get(url, { params: params });
+    return this.http.get(url, { params: params })
+      .pipe(
+        catchError(error => {
+          this.error = error;
+          this.isLoading = false;
+          return of();
+        })
+      );
   }
 
 
   post(url: string, body: any) {
-    return this.http.post(url, body);
+    return this.http.post(url, body)
+      .pipe(
+        catchError(error => {
+          this.error = error;
+          this.isLoading = false;
+          return of();
+        })
+      );
   }
 
   put(url: string, body: any) {
-    return this.http.put(url, body);
+    return this.http.put(url, body)
+      .pipe(
+        catchError(error => {
+          this.error = error;
+          this.isLoading = false;
+          return of();
+        })
+      );
   }
 }

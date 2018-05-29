@@ -41,11 +41,6 @@ export class CarouselComponent implements OnInit {
 
         //Start the timer
         if (this.productBanners.length > 0) this.startTimer(this.currentDirection);
-
-
-        this.dataService.error = null;
-      }, error => {
-        this.dataService.error = error;
       });
   }
 

@@ -20,7 +20,7 @@ export class SearchBarComponent implements OnInit {
     this.route.queryParamMap.subscribe(queryParams => {
       //Get the search words from the url
       this.query = queryParams.get('query');
-      
+
       //Get the category from the url
       if (this.dataService.searchBar.categories) {
         let id = this.dataService.searchBar.searchCategories.findIndex(x => x.id == Number(queryParams.get('category')));
@@ -39,10 +39,6 @@ export class SearchBarComponent implements OnInit {
           this.dataService.searchBar['searchCategories'] = searchCategories;
           this.dataService.searchBar['selectedCategory'] = searchCategories[0];
           this.dataService.searchBar['featuredCategories'] = this.dataService.searchBar.categories.slice().filter(x => x.featured);
-
-          this.dataService.error = null;
-        }, error => {
-          this.dataService.error = error;
         });
     }
   }

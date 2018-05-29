@@ -23,36 +23,27 @@ export class PreferencesComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // if (this.dataService.data && this.dataService.data.customer) {
-      //Get the data from the data service
-      // this.init(this.dataService.data);
-    // } else {
-      this.route.queryParamMap.subscribe(queryParams => {
-        //Get the customer id from the query params
-        let customerId = queryParams.get('cid');
-        this.dataService.isLoading = true;
+    this.route.queryParamMap.subscribe(queryParams => {
+      //Get the customer id from the query params
+      let customerId = queryParams.get('cid');
+      this.dataService.isLoading = true;
 
-        //If customer id is null, navigate back to route
-        if(customerId === null){
-          this.router.navigate(['']);
-          return;
-        }
-        
-        //Get the preferences
-        this.dataService.get('api/Subscriptions', [{key: 'customerId', value: customerId}])
-          .subscribe((response: any) => {
-            this.init(response);
-            this.dataService.error = null;
-            this.dataService.isLoading = false;
-          }, error => {
-            this.dataService.isLoading = false;
-            this.dataService.error = error;
-          });
-      });
-    // }
+      //If customer id is null, navigate back to route
+      if (customerId === null) {
+        this.router.navigate(['']);
+        return;
+      }
+
+      //Get the preferences
+      this.dataService.get('api/Subscriptions', [{ key: 'customerId', value: customerId }])
+        .subscribe((response: any) => {
+          this.init(response);
+          this.dataService.isLoading = false;
+        });
+    });
   }
 
-  init(data){
+  init(data) {
     this.customerId = data.customer.id;
     this.subscriptions = data.subscriptions;
     this.originalName = this.name = data.customer.name;
@@ -123,11 +114,7 @@ export class PreferencesComponent implements OnInit {
       .subscribe((response: any) => {
         this.dataService.data = preferences;
         this.router.navigate(['/confirm']);
-        this.dataService.error = null;
         this.dataService.isLoading = false;
-      }, error => {
-        this.dataService.isLoading = false;
-        this.dataService.error = error;
       });
   }
 }

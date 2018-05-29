@@ -45,11 +45,7 @@ export class LeadsComponent implements OnInit {
           this.leadMagnet = response.leadMagnet;
           this.nicheId = response.nicheId;
           this.caption = 'Enter your name and email below to get the ' + this.leadMagnet + '!';
-          this.dataService.error = null;
           this.dataService.isLoading = false;
-        }, error => {
-          this.dataService.isLoading = false;
-          this.dataService.error = error;
         });
     })
   }

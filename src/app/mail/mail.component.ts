@@ -19,14 +19,10 @@ export class MailComponent implements OnInit {
       let emailId = queryParams.get('eid'), customerId = queryParams.get('cid');
       this.dataService.isLoading = true;
 
-      this.dataService.get('api/Mail', [{key: 'emailId', value: emailId}, {key: 'customerId', value: customerId}])
+      this.dataService.get('api/Mail', [{ key: 'emailId', value: emailId }, { key: 'customerId', value: customerId }])
         .subscribe((response: any) => {
-          this.html = this.sanitizer.bypassSecurityTrustHtml(response) ;
-          this.dataService.error = null;
+          this.html = this.sanitizer.bypassSecurityTrustHtml(response);
           this.dataService.isLoading = false;
-        }, error => {
-          this.dataService.isLoading = false;
-          this.dataService.error = error;
         });
     });
   }
