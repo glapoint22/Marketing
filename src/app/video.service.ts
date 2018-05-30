@@ -24,11 +24,13 @@ export class VideoService {
     this.title = productName;
     this.setVideo(0);
     this.showPlayer = true;
+    document.body.style.overflow = 'hidden';
   }
 
   close() {
     this.currentVideo = this.desanitize('');
     this.showPlayer = false;
+    document.body.style.overflow = 'visible';
   }
 
   setVideo(index: number) {

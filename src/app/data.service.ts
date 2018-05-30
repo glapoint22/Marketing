@@ -13,10 +13,10 @@ export class DataService {
   public searchBar: any = {};
 
   //isLoading
-  private _isLoading: boolean = false;
+  private _isLoading: boolean = true;
   set isLoading(bool: boolean) {
     this._isLoading = bool;
-    document.body.style.overflow = bool ? 'hidden' : 'visible';
+    // document.body.style.overflow = bool ? 'hidden' : 'visible';
   }
   get isLoading(): boolean { return this._isLoading; }
 
@@ -25,7 +25,7 @@ export class DataService {
   private _error: any;
   set error(error: any) {
     this._error = error;
-    document.body.style.overflow = error != null ? 'hidden' : 'visible';
+    // document.body.style.overflow = error != null ? 'hidden' : 'visible';
   }
   get error(): any { return this._error; }
 
@@ -42,11 +42,7 @@ export class DataService {
     //Get the data
     return this.http.get(url, { params: params })
       .pipe(
-        catchError(error => {
-          this.error = error;
-          this.isLoading = false;
-          return of();
-        })
+        catchError(this.handleError())
       );
   }
 
@@ -54,22 +50,22 @@ export class DataService {
   post(url: string, body: any) {
     return this.http.post(url, body)
       .pipe(
-        catchError(error => {
-          this.error = error;
-          this.isLoading = false;
-          return of();
-        })
+        catchError(this.handleError())
       );
   }
 
   put(url: string, body: any) {
     return this.http.put(url, body)
       .pipe(
-        catchError(error => {
-          this.error = error;
-          this.isLoading = false;
-          return of();
-        })
+        catchError(this.handleError())
       );
+  }
+
+  handleError() {
+    return (error) => {
+      this.error = error;
+      this.isLoading = false;
+      return of();
+    }
   }
 }
