@@ -1,8 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from "../data.service";
-import { Router } from '@angular/router';
 import { ProductComponent } from "../product/product.component";
 import { CookieService } from 'ngx-cookie-service';
+import { ShowModalService } from "../show-modal.service";
 
 @Component({
   selector: 'carousel',
@@ -15,21 +15,16 @@ export class CarouselComponent implements OnInit {
   public iterations: number = 1;
   public defaultSpeed: number = 0.3;
   public arrowClicked: boolean = false;
-  public productComponent: ProductComponent;
   public translate = 0;
   public index: number = 0;
   public play: boolean = true;
   public curve: string = 'ease-in-out';
   public speed: number = this.defaultSpeed;
   public productBanners: Array<any>;
-  @Output() onShowSubscriptionForm = new EventEmitter<void>();
 
-  constructor(private dataService: DataService, private router: Router, private cookieService: CookieService) { }
+  constructor(private dataService: DataService, private cookieService: CookieService, private showModalService: ShowModalService) { }
 
   ngOnInit() {
-    this.productComponent = new ProductComponent(this.cookieService, this.dataService);
-    this.productComponent.onShowSubscriptionForm = this.onShowSubscriptionForm;
-
     this.dataService.get('api/ProductBanners')
       .subscribe((response: any) => {
         this.productBanners = response;
@@ -45,8 +40,9 @@ export class CarouselComponent implements OnInit {
   }
 
   onProductBannerClick(product) {
-    this.productComponent.product = product;
-    this.productComponent.onClick();
+    let productComponent = new ProductComponent(this.cookieService, this.showModalService);
+    productComponent.product = product;
+    productComponent.onClick();
   }
 
   moveSlider(direction: number) {

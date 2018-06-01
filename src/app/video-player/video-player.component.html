@@ -1,17 +1,17 @@
-<div class="modal-background" (click)="videoService.close()">
+<div *ngIf="show" class="modal-background" (click)="close()">
   <div class="window">
     <div class="title-bar" (click)="stopPropagation($event)">
-      <div [innerHtml]="videoService.title" class="title"></div>
-      <div class="close-button" (click)="videoService.close()" title="Close">
+      <div [innerHtml]="title" class="title"></div>
+      <div class="close-button" (click)="close()" title="Close">
         <i class="fas fa-times"></i>
       </div>
     </div>
     <div class="video-container" (click)="stopPropagation($event)">
-      <iframe [src]="videoService.currentVideo" frameborder="0"></iframe>
-      <arrows [showLeftArrow]="videoService.currentVideoIndex != 0" [showRightArrow]="videoService.currentVideoIndex != videoService.videosCount - 1"
+      <iframe [src]="currentVideo" frameborder="0"></iframe>
+      <arrows [showLeftArrow]="currentVideoIndex != 0" [showRightArrow]="currentVideoIndex != videosCount - 1"
         (onArrowClick)="showNextVideo($event)"></arrows>
     </div>
-    <paginator (click)="stopPropagation($event)" [pages]="videoService.videos" [currentPage]="videoService.currentVideoIndex"
+    <paginator (click)="stopPropagation($event)" [pages]="videos" [currentPage]="currentVideoIndex"
       (onPaginatorClick)="showVideo($event)"></paginator>
   </div>
 </div>

@@ -13,12 +13,12 @@ export class DataService {
   public searchBar: any = {};
 
   //isLoading
-  private _isLoading: boolean = true;
-  set isLoading(bool: boolean) {
-    this._isLoading = bool;
-    // document.body.style.overflow = bool ? 'hidden' : 'visible';
-  }
-  get isLoading(): boolean { return this._isLoading; }
+  public isLoading: boolean;
+  // set isLoading(bool: boolean) {
+  //   this._isLoading = bool;
+  //   // document.body.style.overflow = bool ? 'hidden' : 'visible';
+  // }
+  // get isLoading(): boolean { return this._isLoading; }
 
 
   //error

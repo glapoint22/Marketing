@@ -1,4 +1,4 @@
-<div class="modal-background" *ngIf="show" (click)="close()">
+<div *ngIf="show" class="modal-background" (click)="close()">
   <form (ngSubmit)="onSubmit(form)" #form="ngForm" (click)="stopPropagation($event)">
     <i class="fas fa-times-circle" (click)="close()"></i>
     <p>{{caption}}</p>
@@ -8,7 +8,7 @@
     </div>
     <input type="email" placeholder="Email" required [(ngModel)]="email" name="email" ngModel email #eMail="ngModel">
     <div [hidden]="!form.submitted || eMail.valid" class="warning">
-      <i class="fas fa-exclamation-circle"></i> Please enter your email
+      <i class="fas fa-exclamation-circle"></i>Please enter your email
     </div>
     <button type="submit" [innerHTML]="buttonText"></button>
     <button (click)="close()" type="button">No thanks</button>

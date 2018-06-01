@@ -1,4 +1,5 @@
 <router-outlet></router-outlet>
-<video-player *ngIf="videoService.showPlayer"></video-player>
-<loading *ngIf="dataService.isLoading"></loading>
+<video-player></video-player>
+<subscription-form></subscription-form>
+<loading></loading>
 <error *ngIf="dataService.error != null"></error>

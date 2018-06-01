@@ -1,6 +1,6 @@
 <div *ngIf="videos.length > 0">
   <div class="video-tag">Videos ({{videos.length}})</div>
-  <div class="play-circle" (click)="videoService.open(videos, productName)" [title]="'Play ' + videos.length + ' video' + (videos.length > 1?'s':'')">
+  <div class="play-circle" (click)="showModalService.showVideoPlayer(videos, productName)" [title]="'Play ' + videos.length + ' video' + (videos.length > 1?'s':'')">
     <i class="fas fa-play"></i>
   </div>
 </div>

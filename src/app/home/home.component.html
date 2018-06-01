@@ -1,10 +1,9 @@
 <div class="background-container">
     <search-bar></search-bar>
-    <carousel (onShowSubscriptionForm)="subscriptionForm.show = true"></carousel>
-    <div style="position:relative; margin-bottom: 120px">
-        <products-slider (onShowSubscriptionForm)="subscriptionForm.show = true" *ngFor="let productSlider of productSliders" [caption]="productSlider.caption" [products]="productSlider.products"></products-slider>
+    <carousel></carousel>
+    <div class="content">
+        <products-slider *ngFor="let productSlider of productSliders" [caption]="productSlider.caption" [products]="productSlider.products"></products-slider>
         <featured-categories></featured-categories>
     </div>
-    <footer (onShowSubscriptionForm)="subscriptionForm.show = true"></footer>
-    <subscription-form #subscriptionForm></subscription-form>
+    <footer></footer>
 </div>

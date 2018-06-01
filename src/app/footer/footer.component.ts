@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { ShowModalService } from "../show-modal.service";
 
 @Component({
   selector: 'footer',
@@ -7,13 +8,11 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  @Output() onShowSubscriptionForm = new EventEmitter<void>();
-  public customerId: string ;
+  public customerId: string;
 
-  constructor(private cookieService: CookieService) { }
+  constructor(private cookieService: CookieService, public showModalService: ShowModalService) { }
 
   ngOnInit() {
     if (this.cookieService.check('Customer')) this.customerId = this.cookieService.get('Customer');
   }
-
 }

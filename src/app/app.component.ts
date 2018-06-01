@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { VideoService } from "./video.service";
 import { DataService } from "./data.service";
 
 @Component({
@@ -8,5 +7,5 @@ import { DataService } from "./data.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(public videoService: VideoService, public dataService: DataService) { }
+  constructor(public dataService: DataService) { }
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { VideoService } from "../video.service";
+import { ShowModalService } from "../show-modal.service";
 
 @Component({
   selector: 'video-play-button',
@@ -10,5 +10,5 @@ export class VideoPlayButtonComponent {
   @Input() videos: Array<string>;
   @Input() productName: string;
 
-  constructor(private videoService: VideoService) { }
+  constructor(public showModalService: ShowModalService) { }
 }

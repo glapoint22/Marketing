@@ -3,6 +3,7 @@ import { ModalFormComponent } from '../modal-form/modal-form.component';
 import { CookieService } from 'ngx-cookie-service';
 import { DataService } from "../data.service";
 import { Router } from '@angular/router';
+import { ShowModalService } from "../show-modal.service";
 
 @Component({
   selector: 'subscription-form',
@@ -10,15 +11,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./subscription-form.component.scss', '../modal/modal.component.scss']
 })
 export class SubscriptionFormComponent extends ModalFormComponent implements OnInit {
-  @Input() caption: string = 'Could I please get your name and email address so I can send you exciting offers?';
+  @Input() caption: string = 'Would you like to sign up to our mailing list to receive exciting offers?';
   @Input() buttonText: string = 'Yes! Sign me up!';
   public name: string;
   public email: string;
 
-  constructor(private cookieService: CookieService, dataService: DataService, router: Router) { super(dataService, router); }
+  private product;
+
+  constructor(private cookieService: CookieService, dataService: DataService, router: Router, private showModalService: ShowModalService) { super(dataService, router); }
 
   ngOnInit() {
     this.url = 'api/Subscriptions';
+    this.observable = this.showModalService.subscriptionForm;
+    super.ngOnInit();
   }
 
   setData() {
@@ -36,30 +41,35 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
     }
   }
 
+  open(product) {
+    this.product = product;
+    super.open(product);
+  }
+
   close() {
     if (this.show) {
       super.close();
-      if (this.dataService.data.product && this.dataService.data.product.hopLink) {
-        window.location.href = this.dataService.data.product.hopLink;
+      if (this.product && this.product.hopLink) {
+        window.location.href = this.product.hopLink;
       }
     }
   }
 
   nextAction(response) {
     //If a product was clicked
-    if (this.dataService.data.product && this.dataService.data.product.hopLink) {
+    if (this.product && this.product.hopLink) {
       //If we have an existing customer, go straight to the product page
       if (response.customer.isExistingCustomer) {
-        window.location.href = this.dataService.data.product.hopLink;
+        window.location.href = this.product.hopLink;
       } else {
         //We have a new customer so naviagate to the thank you page with product info
         this.router.navigate(['/thank-you'], {
           queryParams: {
             'customer': response.customer.name,
             'customerId': response.customer.id,
-            'hoplink': this.dataService.data.product.hopLink,
-            'productId': this.dataService.data.product.id,
-            'productName': this.dataService.data.product.name
+            'hoplink': this.product.hopLink,
+            'productId': this.product.id,
+            'productName': this.product.name
           }
         });
       }

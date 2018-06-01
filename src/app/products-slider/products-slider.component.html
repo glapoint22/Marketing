@@ -6,7 +6,7 @@
     <div #slider class="slider" [style.transform]="'translateX(-' + translate + 'px)'">
       <ul #list>
         <li *ngFor="let product of products" [style.marginRight.px]="margin">
-          <product (onShowSubscriptionForm)="onShowSubscriptionForm.emit()" [product]="product"></product>
+          <product [product]="product"></product>
         </li>
       </ul>
     </div>

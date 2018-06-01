@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 
 @Component({
@@ -12,7 +12,7 @@ export class ProductsSliderComponent {
   public translate = 0;
   @Input() caption: string;
   @Input() products;
-  @Output() onShowSubscriptionForm = new EventEmitter<void>();
+  // @Output() onShowSubscriptionForm = new EventEmitter<void>();
 
   public currentIndex = 0;
   public currentTranslation = 0;

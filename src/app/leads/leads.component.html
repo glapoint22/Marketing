@@ -5,7 +5,7 @@
   </div>
   <div class="bar" [style]="barStyle" >
     <p [innerHTML]="barText"></p>
-    <button (click)="subscriptionForm.show = true" [innerHTML]="buttonText" [style]="buttonStyle"></button>
+    <button (click)="subscriptionForm.open()" [innerHTML]="buttonText" [style]="buttonStyle"></button>
   </div>
 </div>
 <leads-subscription-form #subscriptionForm [caption]="caption" [buttonText]="formButtonText" [leadMagnet]="leadMagnet" [nicheId]="nicheId"></leads-subscription-form>

@@ -4,6 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { DataService } from "../data.service";
 import { Router } from '@angular/router';
 import { ModalFormComponent } from '../modal-form/modal-form.component';
+import { ShowModalService } from "../show-modal.service";
 
 @Component({
   selector: 'leads-subscription-form',
@@ -14,7 +15,7 @@ export class LeadsSubscriptionFormComponent extends SubscriptionFormComponent {
   @Input() leadMagnet: string;
   @Input() nicheId: number;
 
-  constructor(cookieService: CookieService, dataService: DataService, router: Router) { super(cookieService, dataService, router); }
+  constructor(cookieService: CookieService, dataService: DataService, router: Router, showModalService: ShowModalService) { super(cookieService, dataService, router, showModalService); }
 
   setData() {
     this.data = {
