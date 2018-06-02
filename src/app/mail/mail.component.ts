@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { DataService } from "../data.service";
 import { Router } from '@angular/router';
+import { ShowModalService } from "../show-modal.service";
 
 @Component({
   selector: 'mail',
@@ -12,17 +13,17 @@ import { Router } from '@angular/router';
 export class MailComponent implements OnInit {
   public html: SafeHtml;
 
-  constructor(private dataService: DataService, private route: ActivatedRoute, private sanitizer: DomSanitizer, private router: Router) { }
+  constructor(private dataService: DataService, private route: ActivatedRoute, private sanitizer: DomSanitizer, private router: Router, private showModalService: ShowModalService) { }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(queryParams => {
       let emailId = queryParams.get('eid'), customerId = queryParams.get('cid');
-      this.dataService.isLoading = true;
+      this.showModalService.showLoading(true);
 
       this.dataService.get('api/Mail', [{ key: 'emailId', value: emailId }, { key: 'customerId', value: customerId }])
         .subscribe((response: any) => {
           this.html = this.sanitizer.bypassSecurityTrustHtml(response);
-          this.dataService.isLoading = false;
+          this.showModalService.showLoading(false);
         });
     });
   }

@@ -18,7 +18,7 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
 
   private product;
 
-  constructor(private cookieService: CookieService, dataService: DataService, router: Router, private showModalService: ShowModalService) { super(dataService, router); }
+  constructor(private cookieService: CookieService, dataService: DataService, router: Router, showModalService: ShowModalService) { super(dataService, router, showModalService); }
 
   ngOnInit() {
     this.url = 'api/Subscriptions';
@@ -43,7 +43,7 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
 
   open(product) {
     this.product = product;
-    super.open(product);
+    super.open();
   }
 
   close() {

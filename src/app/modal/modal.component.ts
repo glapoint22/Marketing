@@ -24,7 +24,7 @@ export class ModalComponent implements OnInit {
     this.show = false;
   }
 
-  open(data: any) {
+  open(data?: any) {
     document.body.style.overflow = 'hidden';
     this.show = true;
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from "../data.service";
+import { ShowModalService } from "../show-modal.service";
 
 @Component({
   selector: 'contact',
@@ -13,14 +14,14 @@ export class ContactComponent implements OnInit {
   public message: string;
   public messageSent: boolean;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private showModalService: ShowModalService) { }
 
   ngOnInit() {
   }
 
   onSubmit(form): void {
     if (form.form.status !== 'VALID') return;
-    this.dataService.isLoading = true;
+    this.showModalService.showLoading(true);
     let contact = {
       name: this.name,
       email: this.email,
@@ -29,7 +30,7 @@ export class ContactComponent implements OnInit {
     }
     this.dataService.post('api/Contact', contact)
       .subscribe((response: any) => {
-        this.dataService.isLoading = false;
+        this.showModalService.showLoading(false);
         this.messageSent = true;
       });
   }

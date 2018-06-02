@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from "../data.service";
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { ShowModalService } from "../show-modal.service";
 
 @Component({
   selector: 'preferences',
@@ -20,13 +21,13 @@ export class PreferencesComponent implements OnInit {
   public updatedSubscriptions: Array<any> = [];
   public isUpdated: boolean = false;
 
-  constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute, private showModalService: ShowModalService) { }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(queryParams => {
       //Get the customer id from the query params
       let customerId = queryParams.get('cid');
-      this.dataService.isLoading = true;
+      this.showModalService.showLoading(true);
 
       //If customer id is null, navigate back to route
       if (customerId === null) {
@@ -38,7 +39,7 @@ export class PreferencesComponent implements OnInit {
       this.dataService.get('api/Subscriptions', [{ key: 'customerId', value: customerId }])
         .subscribe((response: any) => {
           this.init(response);
-          this.dataService.isLoading = false;
+          this.showModalService.showLoading(false);
         });
     });
   }
@@ -109,12 +110,12 @@ export class PreferencesComponent implements OnInit {
     };
 
     //Send the updated data
-    this.dataService.isLoading = true;
+    this.showModalService.showLoading(true);
     this.dataService.put('api/Subscriptions', preferences)
       .subscribe((response: any) => {
         this.dataService.data = preferences;
         this.router.navigate(['/confirm']);
-        this.dataService.isLoading = false;
+        this.showModalService.showLoading(false);
       });
   }
 }

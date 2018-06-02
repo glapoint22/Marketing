@@ -36,7 +36,7 @@ export class VideoPlayerComponent extends ModalComponent implements OnInit {
     this.videosCount = this.videos.length;
     this.title = data.productName;
     this.setVideo(0);
-    super.open(data);
+    super.open();
   }
 
   close() {

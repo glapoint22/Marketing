@@ -1,8 +1,8 @@
-<div class="container">
+<div *ngIf="show" class="container">
   <div>
     <i class="fas fa-exclamation-triangle"></i>
     <p>
-      {{dataService.error.status}} {{dataService.error.statusText}}
+      {{error.status}} {{error.statusText}}
     </p>
   </div>
 </div>

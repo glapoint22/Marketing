@@ -7,6 +7,8 @@ import { Subject } from 'rxjs';
 export class ShowModalService {
   public videoPlayer = new Subject<any>();
   public subscriptionForm = new Subject<any>();
+  public loading = new Subject<boolean>();
+  public error = new Subject<any>();
 
   showVideoPlayer(videos, productName) {
     this.videoPlayer.next({
@@ -17,5 +19,13 @@ export class ShowModalService {
 
   showSubscriptionForm(product) {
     this.subscriptionForm.next(product);
+  }
+
+  showLoading(show) {
+    this.loading.next(show);
+  }
+
+  showError(error) {
+    this.error.next(error);
   }
 }

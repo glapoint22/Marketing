@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { ShowModalService } from "./show-modal.service";
 
 @Injectable(
   {
@@ -12,25 +13,7 @@ export class DataService {
   public data: any = {};
   public searchBar: any = {};
 
-  //isLoading
-  public isLoading: boolean;
-  // set isLoading(bool: boolean) {
-  //   this._isLoading = bool;
-  //   // document.body.style.overflow = bool ? 'hidden' : 'visible';
-  // }
-  // get isLoading(): boolean { return this._isLoading; }
-
-
-  //error
-  private _error: any;
-  set error(error: any) {
-    this._error = error;
-    // document.body.style.overflow = error != null ? 'hidden' : 'visible';
-  }
-  get error(): any { return this._error; }
-
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private showModalService: ShowModalService) { }
 
   get(url: string, parameters?: Array<any>): Observable<any> {
     let params = new HttpParams();
@@ -63,8 +46,8 @@ export class DataService {
 
   handleError() {
     return (error) => {
-      this.error = error;
-      this.isLoading = false;
+      this.showModalService.showError(error);
+      this.showModalService.showLoading(false);
       return of();
     }
   }
