@@ -11,7 +11,6 @@ import { ShowModalService } from "./show-modal.service";
 )
 export class DataService {
   public data: any = {};
-  public searchBar: any = {};
 
   constructor(private http: HttpClient, private showModalService: ShowModalService) { }
 

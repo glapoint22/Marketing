@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService } from "../data.service";
+import { SearchBarService } from "../search-bar.service";
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class FeaturedCategoriesComponent {
   public showFeatured: boolean = true;
 
-  constructor(public dataService: DataService, private router: Router) { }
+  constructor(public searchBarService: SearchBarService, private router: Router) { }
 
   onClick(category: number) {
     this.router.navigate(['/search'], { queryParams: { 'category': category } });

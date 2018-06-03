@@ -23,12 +23,13 @@
 .price-tag{
     width: 300px;
     height: 25px;
-    background: rgba(51, 0, 43, 0.89);
+    background: #300029;
     position: absolute;
     top: 311px;
     line-height: 25px;
     color: $color5;
     font-size: 18px;
+    backface-visibility: hidden;
 }
 .product-name{
     @include gradient($color1, $color2);

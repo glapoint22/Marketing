@@ -1,19 +1,19 @@
 <!-- Temp select element to get width of categories select -->
 <select #tmpSelect style="padding-left: 5px; position: absolute; visibility: hidden">
-    <option [innerHtml]="dataService.searchBar.selectedCategory.name"></option>
+    <option [innerHtml]="searchBarService.searchBar.selectedCategory.name"></option>
 </select>
 <div class="search-bar">
     <div class="category-menu-button" (mouseenter)="menu.showMenu = true" (mouseleave)="menu.showMenu = false" (click)="menu.showMenu = !menu.showMenu">
         <i class="fas fa-bars" style="margin-right: 8px"></i>
         Categories
         <!-- <menu #menu (click)="stopPropagation($event)" (onShowSubscriptionForm)="onShowSubscriptionForm.emit()" [categories]="categories"></menu> -->
-        <menu #menu (click)="stopPropagation($event)" [categories]="dataService.searchBar.categories"></menu>
+        <menu #menu (click)="stopPropagation($event)" [categories]="searchBarService.searchBar.categories"></menu>
     </div>
     <div class="search-container">
-        <form (ngSubmit)="onSearchButtonClick(search.value, dataService.searchBar.selectedCategory.id)" style="display: inline-table">
+        <form (ngSubmit)="onSearchButtonClick(search.value, searchBarService.searchBar.selectedCategory.id)" style="display: inline-table">
             <div class="category-select-container">
-                <select [style.width.px]="tmpSelect.offsetWidth" [(ngModel)]="dataService.searchBar.selectedCategory" name="categories">
-                    <option *ngFor="let category of dataService.searchBar.searchCategories" [ngValue]="category">{{category.name}}</option>
+                <select [style.width.px]="tmpSelect.offsetWidth" [(ngModel)]="searchBarService.searchBar.selectedCategory" name="categories">
+                    <option *ngFor="let category of searchBarService.searchBar.searchCategories" [ngValue]="category">{{category.name}}</option>
                 </select>
             </div>
             <div class="input-container">
