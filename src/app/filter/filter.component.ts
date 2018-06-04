@@ -3,7 +3,7 @@ import { FilterService } from "./../filter.service";
 
 @Component({
   selector: 'filter',
-  templateUrl: './filter.component.html',
+  template: '',
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent {
