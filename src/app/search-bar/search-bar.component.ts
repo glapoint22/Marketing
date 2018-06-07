@@ -48,4 +48,7 @@ export class SearchBarComponent implements OnInit {
       this.router.navigate(['/search'], { queryParams: { 'query': query, 'category': category } });
     }
   }
+  onImageClick() {
+    this.router.navigate(['/']);
+  }
 }

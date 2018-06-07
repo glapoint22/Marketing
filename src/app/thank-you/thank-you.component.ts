@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { DataService } from "../data.service";
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./thank-you.component.scss']
 })
 export class ThankYouComponent implements OnInit {
-  public siteName: string = 'Gumpy\'s';
+  public siteName: string = 'Niche Shack';
   public customer: string;
   public email: string;
   public leadMagnet: string;

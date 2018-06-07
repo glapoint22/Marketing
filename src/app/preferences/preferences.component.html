@@ -23,12 +23,11 @@
     <br>
     
     <!-- Subscriptions -->
-    <h3>Subscriptions:<span class="message">(Check or uncheck to subscribe or unsubscribe, respectively)</span></h3>
+    <h3 *ngIf="subscriptions.length > 0">Subscriptions:<span class="message">(Check or uncheck to subscribe or unsubscribe, respectively)</span></h3>
     <ul>
       <li *ngFor="let subscription of subscriptions">
         <h4>{{subscription.name}}</h4>
         <div *ngFor="let niche of subscription.niches">
-          <!-- <input type="checkbox" [checked]="niche.isSubscribed" (change)="onUpdateSubscription(niche)" [disabled]="emailSendFrequency === 0">{{niche.name}}<br> -->
           <checkbox [label]="niche.name" [checked]="niche.isSubscribed" (change)="onUpdateSubscription(niche)" [disabled]="emailSendFrequency === 0"></checkbox>
         </div>
       </li>

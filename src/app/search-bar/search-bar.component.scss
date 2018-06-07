@@ -41,7 +41,7 @@
     }
     .search-button{
         font-size: 18px;
-        background: #f1c317;
+        background: $gold;
         width: 50px;
         border-radius: 0 100px 100px 0;
         margin-left: -1px;
@@ -80,6 +80,13 @@
     margin-left: 425px;
     line-height: 60px;
     font-size: 18px;
-    color: white;
+    color: $gold;
+    cursor: pointer;
+}
+img {
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    margin-left: 20px;
     cursor: pointer;
 }

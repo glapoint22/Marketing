@@ -1,5 +1,5 @@
 .arrow{
-    background: rgba(80, 80, 80, 0.7);
+    background: #505050b3;
     position: absolute;
     top: 50%;
     width: 30px;
@@ -15,16 +15,17 @@
     box-sizing: border-box;
 }
 .arrow:hover{
-    background: rgba(129, 129, 129, 0.7);
+    background: #000000b3;
     color: #ffffff;
+    border: 1px solid #333333;
 }
 .arrow-left{
     left: 10px;
-    padding-right: 5px;
+    padding-right: 3px;
 }
 .arrow-right{
     right: 10px;
-    padding-left: 5px;
+    padding-left: 3px;
 }
 @media screen and (max-width: 550px) {
     .arrow{

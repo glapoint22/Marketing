@@ -4,6 +4,7 @@ $color2: #550240;
 $color3: #420033;
 $color4: #1f0118;
 $color5: #fa07de;
+$gold:  #ffba00;
 
 @mixin gradient($color...){
     background: nth(nth($color, 2), 1);

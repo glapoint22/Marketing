@@ -3,9 +3,10 @@
     <option [innerHtml]="searchBarService.searchBar.selectedCategory.name"></option>
 </select>
 <div class="search-bar">
+    <img src="assets/Logo.png" title="Home" (click)="onImageClick()">
     <div class="category-menu-button" (mouseenter)="menu.showMenu = true" (mouseleave)="menu.showMenu = false" (click)="menu.showMenu = !menu.showMenu">
         <i class="fas fa-bars" style="margin-right: 8px"></i>
-        Categories
+        <span style="color: white">Categories</span>
         <!-- <menu #menu (click)="stopPropagation($event)" (onShowSubscriptionForm)="onShowSubscriptionForm.emit()" [categories]="categories"></menu> -->
         <menu #menu (click)="stopPropagation($event)" [categories]="searchBarService.searchBar.categories"></menu>
     </div>
