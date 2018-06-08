@@ -2,7 +2,7 @@
 
 .menu-container{
     width: 1057px;
-    height: 500px;
+    height: 502px;
     position: fixed;
     top: 60px;
     z-index: 50;
@@ -63,10 +63,6 @@ ul{
             line-height: 32px;
         }
     }
-    li:hover{
-        background-color: $color3;
-        color: #ffffff;
-    }
 }
 .niche-list-container{
     width: 807px;
@@ -75,26 +71,7 @@ ul{
         width: 618px;
         height: 500px;
         overflow: auto;
-        // display: inline-block;
         border-right: 1px solid $color1;
-    }
-    // img{
-    //     position: absolute;
-    //     right: -19px;
-    //     cursor: pointer;
-    // }
-    li{
-        margin: 10px;
-        display: inline-table;
-        cursor: pointer;
-        background: red;
-    width: 100px;
-    height: 100px;
-        // line-height: normal;
-        
-        .niche:hover{
-            color: $color5;
-        }
     }
 }
 .border{
@@ -102,7 +79,7 @@ ul{
     box-sizing: border-box;
 }
 .menu-background{
-    background: rgba(19, 18, 18, 0.95);
+    background: #131212f2;
 }
 .shadow{
     box-shadow: 4px 0 10px #020202;
@@ -120,13 +97,26 @@ ul{
     text-align: center;
     line-height: 1;
     margin-top: 2px;
-    color: $gold;
 }
-.niche{
+.niche {
     margin: 10px;
-        display: inline-table;
-        cursor: pointer;
-        // background: red;
+    display: inline-table;
+    cursor: pointer;
     width: 100px;
     height: 100px;
+}
+.niche:hover {
+    text-decoration: underline;
+}
+.category-img {
+    position: absolute;
+    top: 1px;
+    right: -19px;
+    cursor: pointer;
+    width: 207px;
+    height: 500px;
+}
+.highlight {
+    background-color: $color1;
+    color: #ffffff !important;
 }
