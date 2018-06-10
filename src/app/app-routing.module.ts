@@ -7,8 +7,7 @@ import { PreferencesComponent } from "./preferences/preferences.component";
 import { LeadsComponent } from "./leads/leads.component";
 import { ConfirmComponent } from "./confirm/confirm.component";
 import { SearchComponent } from "./search/search.component";
-import { ContactComponent } from "./contact/contact.component";
-import { ReturnsComponent } from "./returns/returns.component";
+import { AboutComponent } from "./about/about.component";
 
 const routes: Routes = [
   {
@@ -36,12 +35,8 @@ const routes: Routes = [
     component: SearchComponent
   },
   {
-    path: 'contact',
-    component: ContactComponent
-  },
-  {
-    path: 'returns',
-    component: ReturnsComponent
+    path: 'about',
+    component: AboutComponent
   },
   {
     path: ':leadPage',

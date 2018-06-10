@@ -24,7 +24,7 @@ a{
     right: 250px;
     top: 10px;
     font-size: 18px;
-    color: $gold;
+    color: $color5;
     a{
         color: $color5;
         font-size: 24px;
@@ -36,7 +36,7 @@ a{
         cursor: pointer;
     }
     a, span{
-        color: white;
+        color: $gold;
         margin: 20px;
     }
     a:hover, span:hover{

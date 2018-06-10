@@ -1,5 +1,5 @@
 <div class="container" *ngIf="subscriptions">
- 
+
 
   <search-bar></search-bar>
 
@@ -14,16 +14,25 @@
 
     <!-- Email Send Frequency -->
     <h3>How often to send you mail:</h3>
-    <input type="radio" name="emailSendFrequency" [value]=1 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Daily<br>
-    <input type="radio" name="emailSendFrequency" [value]=3 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Twice a week<br>
-    <input type="radio" name="emailSendFrequency" [value]=7 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Once a week<br>
-    <input type="radio" name="emailSendFrequency" [value]=14 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Twice a month<br>
-    <input type="radio" name="emailSendFrequency" [value]=30 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Once a month<br>
-    <input type="radio" name="emailSendFrequency" [value]=0 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Unsubscribe to all subscriptions<br>
+    <input type="radio" name="emailSendFrequency" [value]=1 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Daily
     <br>
-    
+    <input type="radio" name="emailSendFrequency" [value]=3 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Twice a week
+    <br>
+    <input type="radio" name="emailSendFrequency" [value]=7 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Once a week
+    <br>
+    <input type="radio" name="emailSendFrequency" [value]=14 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Twice a month
+    <br>
+    <input type="radio" name="emailSendFrequency" [value]=30 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Once a month
+    <br>
+    <div *ngIf="subscriptions.length > 0">
+      <input type="radio" name="emailSendFrequency" [value]=0 [(ngModel)]="emailSendFrequency" (change)="onUpdate()"> Unsubscribe to all subscriptions
+    </div>
+    <br>
+
     <!-- Subscriptions -->
-    <h3 *ngIf="subscriptions.length > 0">Subscriptions:<span class="message">(Check or uncheck to subscribe or unsubscribe, respectively)</span></h3>
+    <h3 *ngIf="subscriptions.length > 0">Subscriptions:
+      <span class="message">(Check or uncheck to subscribe or unsubscribe, respectively)</span>
+    </h3>
     <ul>
       <li *ngFor="let subscription of subscriptions">
         <h4>{{subscription.name}}</h4>

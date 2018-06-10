@@ -39,8 +39,7 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoadingComponent } from './loading/loading.component';
 import { FeaturedCategoriesComponent } from './featured-categories/featured-categories.component';
-import { ContactComponent } from './contact/contact.component';
-import { ReturnsComponent } from './returns/returns.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -74,8 +73,7 @@ import { ReturnsComponent } from './returns/returns.component';
     FooterComponent,
     LoadingComponent,
     FeaturedCategoriesComponent,
-    ContactComponent,
-    ReturnsComponent
+    AboutComponent
   ],
   imports: [
     BrowserModule,
