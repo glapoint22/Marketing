@@ -13,6 +13,16 @@ export class ProductComponent {
   constructor(private cookieService: CookieService, private showModalService: ShowModalService) { }
 
   onClick() {
+    if (this.cookieService.check('Products')) {
+      let products: Array<string> = this.cookieService.get('Products').split('~');
+      if (products.findIndex(x => x === this.product.id) === -1) {
+        products.push(this.product.id);
+        this.cookieService.set('Products', products.join('~'), 9999);
+      }
+    } else {
+      this.cookieService.set('Products', this.product.id, 9999);
+    }
+
     if (this.cookieService.check('Customer')) {
       window.location.href = this.product.hopLink;
     } else {

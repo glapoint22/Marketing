@@ -16,18 +16,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.showModalService.showLoading(true);
 
-    if (this.cookieService.check('Customer')) {
-      this.dataService.get('api/Products', [{ key: 'customerId', value: this.cookieService.get('Customer') }])
-        .subscribe((response: any) => {
-          this.productSliders = response;
-          this.showModalService.showLoading(false);
-        });
-    } else {
-      this.dataService.get('api/Products')
-        .subscribe((response: any) => {
-          this.productSliders = response;
-          this.showModalService.showLoading(false);
-        });
-    }
+    this.dataService.get('api/Products', [{ key: 'customerId', value: this.cookieService.get('Customer') }, { key: 'productIds', value: this.cookieService.get('Products') }])
+      .subscribe((response: any) => {
+        this.productSliders = response;
+        this.showModalService.showLoading(false);
+      });
   }
 }
