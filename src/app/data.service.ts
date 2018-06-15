@@ -46,7 +46,6 @@ export class DataService {
   handleError() {
     return (error) => {
       this.showModalService.showError(error);
-      this.showModalService.showLoading(false);
       return of();
     }
   }

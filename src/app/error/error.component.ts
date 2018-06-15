@@ -5,7 +5,7 @@ import { ShowModalService } from "../show-modal.service";
 @Component({
   selector: 'error',
   templateUrl: './error.component.html',
-  styleUrls: ['./error.component.scss']
+  styleUrls: ['./error.component.scss', '../modal/modal.component.scss']
 })
 export class ErrorComponent extends ModalComponent implements OnInit {
   public error: any;
