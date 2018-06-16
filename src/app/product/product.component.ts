@@ -24,6 +24,7 @@ export class ProductComponent {
     }
 
     if (this.cookieService.check('Customer')) {
+      this.showModalService.showLoading(true);
       window.location.href = this.product.hopLink;
     } else {
       this.showModalService.showSubscriptionForm(this.product);

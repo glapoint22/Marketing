@@ -50,6 +50,7 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
     if (this.show) {
       super.close();
       if (this.product && this.product.hopLink) {
+        this.showModalService.showLoading(true);
         window.location.href = this.product.hopLink;
       }
     }
