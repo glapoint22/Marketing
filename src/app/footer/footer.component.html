@@ -14,7 +14,7 @@
       <i class="fab fa-pinterest-square"></i>
     </a>
   </div>
-  <div id="links">
+  <div class="links">
     <a routerLink="/about">About Us</a>
     <a *ngIf="customerId" [routerLink]="['/preferences']" [queryParams]="{cid: customerId}">Manage Email Subscriptions</a>
     <span *ngIf="!customerId" (click)="showModalService.showSubscriptionForm(null)">Manage Email Subscriptions</span>

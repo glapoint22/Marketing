@@ -10,6 +10,8 @@ export class MenuComponent {
   public showMenu: boolean;
   public showNicheList: boolean;
   @Input() categories: any;
+  @Input() positionLeft: number;
+
   public currentCategory: any;
 
   constructor(private router: Router) { }

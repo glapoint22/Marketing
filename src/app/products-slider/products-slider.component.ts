@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 
 @Component({
@@ -12,51 +12,48 @@ export class ProductsSliderComponent {
   public translate = 0;
   @Input() caption: string;
   @Input() products;
-  // @Output() onShowSubscriptionForm = new EventEmitter<void>();
 
   public currentIndex = 0;
   public currentTranslation = 0;
-  public translations: Array<any> = [{'translate': 0, 'index': 0}];
+  public translations: Array<any> = [{ 'translate': 0, 'index': 0 }];
 
-  onArrowClick(direction: number, containerWidth: number, products: Array<any>){
-    if(direction === -1){
+  onArrowClick(direction: number, containerWidth: number, products: Array<any>) {
+    if (direction === -1) {
       this.onLeftArrowClick();
-    }else{
+    } else {
       this.onRightArrowClick(containerWidth, products);
     }
   }
 
-  onRightArrowClick(containerWidth, products){
+  onRightArrowClick(containerWidth, products) {
     let productWidthTotal = 0, i, x;
 
-    for(i = this.currentIndex; i < products.length; i++){
+    for (i = this.currentIndex; i < products.length; i++) {
       productWidthTotal += products[i].offsetWidth + this.margin;
 
-      if(productWidthTotal > containerWidth){
+      if (productWidthTotal > containerWidth) {
         productWidthTotal -= containerWidth;
         x = products[i].offsetWidth + this.margin - productWidthTotal;
         this.currentIndex = i;
         break;
       }
     }
-    for(let j = i + 1; j < products.length; j++){
+    for (let j = i + 1; j < products.length; j++) {
       productWidthTotal += products[j].offsetWidth + this.margin;
 
-      if(productWidthTotal > containerWidth){
+      if (productWidthTotal > containerWidth) {
         this.currentTranslation = this.translate = containerWidth - x + this.currentTranslation;
-        this.translations.push({'translate': this.currentTranslation, 'index': this.currentIndex});
+        this.translations.push({ 'translate': this.currentTranslation, 'index': this.currentIndex });
         return;
       }
     }
 
     this.currentTranslation = this.translate = productWidthTotal - this.margin + this.currentTranslation;
-    this.translations.push({'translate': this.currentTranslation, 'index': this.currentIndex});
+    this.translations.push({ 'translate': this.currentTranslation, 'index': this.currentIndex });
     this.lastPage = true;
-    
-    
   }
 
-  onLeftArrowClick(){
+  onLeftArrowClick() {
     this.lastPage = false;
     this.currentTranslation = this.translate = this.translations[this.translations.length - 2].translate;
     this.currentIndex = this.translations[this.translations.length - 2].index;

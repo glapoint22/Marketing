@@ -4,27 +4,29 @@
 </select>
 <div class="search-bar">
     <img src="assets/Logo.png" title="Home" (click)="onImageClick()">
-    <div class="category-menu-button" (mouseenter)="menu.showMenu = true" (mouseleave)="menu.showMenu = false" (click)="menu.showMenu = !menu.showMenu">
-        <i class="fas fa-bars" style="margin-right: 8px"></i>
-        <span style="color: white">Categories</span>
-        <!-- <menu #menu (click)="stopPropagation($event)" (onShowSubscriptionForm)="onShowSubscriptionForm.emit()" [categories]="categories"></menu> -->
-        <menu #menu (click)="stopPropagation($event)" [categories]="searchBarService.searchBar.categories"></menu>
-    </div>
-    <div class="search-container">
-        <form (ngSubmit)="onSearchButtonClick(search.value, searchBarService.searchBar.selectedCategory.id)" style="display: inline-table">
-            <div class="category-select-container">
-                <select [style.width.px]="tmpSelect.offsetWidth" [(ngModel)]="searchBarService.searchBar.selectedCategory" name="categories">
-                    <option *ngFor="let category of searchBarService.searchBar.searchCategories" [ngValue]="category">{{category.name}}</option>
-                </select>
-            </div>
-            <div class="input-container">
-                <input #search type="text" placeholder="Search" [value]="query">
-            </div>
-            <div class="button-container">
-                <button type="submit" class="search-button">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-        </form>
+
+    <div class="content-container">
+        <div #menuButton class="category-menu-button" (mouseenter)="menu.showMenu = true" (mouseleave)="menu.showMenu = false" (click)="menu.showMenu = !menu.showMenu">
+            <i class="fas fa-bars" style="margin-right: 8px"></i>
+            <span style="color: white">Categories</span>
+            <menu #menu (click)="stopPropagation($event)" [categories]="searchBarService.searchBar.categories" [positionLeft]="menuButton.offsetLeft"></menu>
+        </div>
+        <div class="search-container">
+            <form (ngSubmit)="onSearchButtonClick(search.value, searchBarService.searchBar.selectedCategory.id)" style="display: inline-table">
+                <div class="category-select-container">
+                    <select [style.width.px]="tmpSelect.offsetWidth" [(ngModel)]="searchBarService.searchBar.selectedCategory" name="categories">
+                        <option *ngFor="let category of searchBarService.searchBar.searchCategories" [ngValue]="category">{{category.name}}</option>
+                    </select>
+                </div>
+                <div class="input-container">
+                    <input #search type="text" placeholder="Search" [value]="query">
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

@@ -35,6 +35,11 @@ ul{
     flex-direction: column;
     align-items: center;
 }
+.see-more {
+    color: #ffba00;
+    margin-top: 20px;
+    text-decoration: underline;
+}
 @media screen and (max-width: 1364px) {
     .products-slider-container{
         width: 100%;
