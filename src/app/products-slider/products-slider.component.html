@@ -6,12 +6,13 @@
     <div #slider class="slider" [style.transform]="'translateX(-' + translate + 'px)'">
       <ul #list>
         <li *ngFor="let product of products; let i = index" [style.marginRight.px]="margin">
-          <div *ngIf="container.clientWidth > 300 else seeMore">
+          <div *ngIf="container.clientWidth > 300 || ShowAllProducts else seeMore">
               <product [product]="product"></product>
+              <div *ngIf="i == products.length - 1 && container.clientWidth <= 300" class="see-more" (click)="ShowAllProducts = false">See less products...</div>
           </div>
           <ng-template #seeMore>
               <product *ngIf="i <= 3" [product]="product"></product>
-              <div *ngIf="i == 3" class="see-more">See More Products...</div>
+              <div *ngIf="i == 3 && products.length > 4" class="see-more" (click)="ShowAllProducts = true">See more products...</div>
           </ng-template>
           
         </li>
