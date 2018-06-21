@@ -26,6 +26,7 @@
     display: inline;
     margin-left: 10px;
     font-weight: bold;
+    font-size: 15px;
 }
 .no-match-container{
     width: 50%;
@@ -61,8 +62,6 @@ li{
 .pages-container{
     position: relative;
     margin: auto;
-    // margin-top: 50px;
-    // margin-bottom: 50px;
     display: table;
     li:first-child{
         margin-left: 50px;
@@ -113,6 +112,34 @@ select{
     width: 220px;
     flex-shrink: 0;
 }
+button {
+    height: 26px;
+    font-size: 13px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    background: #ffba00;
+    position: absolute;
+    right: 0;
+    margin: 7px;
+    color: black;
+}
+.sort-filter-button {
+    display: none;
+}
+.sort-dropdown {
+    right: 0;
+}
+
+.display-none {
+    display: none;
+}
+.display-block {
+    display: block !important;
+}
+.display-inline {
+    display: inline !important;
+}
 
 @media screen and (max-width: 1582px) {
     .results-container{
@@ -136,12 +163,21 @@ select{
     }
     .filters-container{
         display: none;
+        width: 95%;
+        margin: auto;
     }
     .filters-products-container{
         width: 100%;
     }
     .dropdown-container{
         display: none;
+    }
+    .sort-dropdown {
+        right: unset;
+        margin-left: 5px;
+    }
+    .sort-filter-button {
+        display: inline-block;
     }
 }
 @media screen and (max-width: 360px) {

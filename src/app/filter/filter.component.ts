@@ -8,7 +8,7 @@ import { FilterService } from "./../filter.service";
 })
 export class FilterComponent {
   @Input() caption: string;
-  public showContent: boolean = true;
+  public showContent: boolean;
 
   constructor(public filterService: FilterService) {}
 }

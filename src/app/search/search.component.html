@@ -15,11 +15,10 @@
   <div *ngIf="totalProducts > 0" style="margin-bottom: 110px; ">
     <!-- Results -->
     <div class="results-container">
-      <div class="results-display" [innerHtml]="'Showing ' + productStart + '-' + productEnd + ' of ' + totalProducts + (query ==undefined?' Products':' results for &quot;' + query + '&quot;')">
-      </div>
+      <div class="results-display" [innerHtml]="'Showing ' + productStart + '-' + productEnd + ' of ' + totalProducts" [ngClass]="{'display-none': isSortFilter}"></div>
 
       <!-- Sort -->
-      <div class="dropdown-container" style="right: 0;">
+      <div class="dropdown-container sort-dropdown" [ngClass]="{'display-inline': isSortFilter}">
         <select [(ngModel)]="selectedSortOption" (change)="filterService.setQueryParameters([{name: 'sort', value: selectedSortOption.value}], ['page'])">
           <option *ngFor="let sortOption of sortOptions" [ngValue]="sortOption">{{sortOption.name}}</option>
         </select>
@@ -31,23 +30,24 @@
           <option *ngFor="let perPageOption of perPageOptions" [ngValue]="perPageOption">{{perPageOption}} Products Per Page</option>
         </select>
       </div>
+      <button class="sort-filter-button" (click)="isSortFilter = !isSortFilter" [innerHtml]="isSortFilter ? 'Done' : 'Sort & Filter'"></button>
     </div>
 
 
     <div class="filters-products-container">
       <!-- Filters -->
-      <div class="filters-container">
+      <div class="filters-container" [ngClass]="{'display-block': isSortFilter}">
         <category-filter [categories]="categories" [caption]="'Categories'"></category-filter>
-        <div *ngFor="let filter of filters">
+        <div *ngFor="let filter of filters; trackBy:trackFilter">
           <price-filter *ngIf="filter.caption == 'Price'" [caption]="filter.caption" [options]="filter.labels"></price-filter>
           <checkbox-filter *ngIf="filter.caption != 'Price'" [caption]="filter.caption" [options]="filter.labels"></checkbox-filter>
         </div>
       </div>
 
       <!-- Products -->
-      <div class="products-container">
+      <div class="products-container" [ngClass]="{'display-none': isSortFilter}">
         <ul>
-          <li *ngFor="let product of products; trackBy:trackById">
+          <li *ngFor="let product of products; trackBy:trackProduct">
             <product [product]="product"></product>
           </li>
         </ul>

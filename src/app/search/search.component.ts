@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from "../data.service";
 import { FilterService } from "./../filter.service";
@@ -20,6 +20,7 @@ export class SearchComponent implements OnInit {
   public pageList: Array<string> = [];
   public categories;
   public filters;
+  public isSortFilter: boolean = false;
 
   //Sort Options
   public selectedSortOption: any;
@@ -141,7 +142,16 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  trackById(index: number, product: any) {
+  trackProduct(index: number, product: any) {
     return product.id;
+  }
+
+  trackFilter(index: number, filter: any) {
+    return filter.caption;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    if(event.target.innerWidth > 900) this.isSortFilter = false;
   }
 }
