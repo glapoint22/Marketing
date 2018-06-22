@@ -15,7 +15,7 @@
   <div *ngIf="totalProducts > 0" style="margin-bottom: 110px; ">
     <!-- Results -->
     <div class="results-container">
-      <div class="results-display" [innerHtml]="'Showing ' + productStart + '-' + productEnd + ' of ' + totalProducts" [ngClass]="{'display-none': isSortFilter}"></div>
+      <div class="results-display" [ngClass]="{'display-none': isSortFilter}">{{results}}</div>
 
       <!-- Sort -->
       <div class="dropdown-container sort-dropdown" [ngClass]="{'display-inline': isSortFilter}">

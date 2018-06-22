@@ -22,14 +22,14 @@
         <i *ngIf="currentNiche > 0" class="fas fa-angle-left"></i>
         <div style="display: inline-block" (click)="filterService.setQueryParameters([{name: 'category', value: category.id}], ['nicheId', 'page'])"
           [ngClass]="{'margin-top' : currentCategory == 0 || query == undefined, 'highlight' : currentNiche == null, 'pointer' : currentCategory == 0 || currentNiche > 0}">{{category.name}}</div>
-        <span class="count">({{getProductCount(category)}})</span>
+        <span class="count">({{getProductCount(category)|number}})</span>
 
         <!-- List of niches per category -->
         <div *ngFor="let niche of category.niches; let j = index">
           <!-- Display all niches or partial -->
           <div *ngIf="!category.showAllNiches ? j < 4 : category.niches.length">
             <div [ngClass]="{'pointer' : currentNiche == null, 'highlight' : currentNiche != null}" class="margin-left" (click)="filterService.setQueryParameters([{name: 'nicheId', value: niche.id}, {name: 'category', value: category.id}], ['page'])">{{niche.name}}
-              <span class="count">({{niche.productCount}})</span>
+              <span class="count">({{niche.productCount|number}})</span>
             </div>
           </div>
         </div>

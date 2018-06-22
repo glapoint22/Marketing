@@ -4,7 +4,6 @@
     width: 1360px;
     display: table;
     left: 220px;
-    text-align: center;
     li{
         margin: 0 20px 40px 20px;
     }
@@ -179,7 +178,17 @@ button {
     .sort-filter-button {
         display: inline-block;
     }
+    .products-container {
+        text-align: center;
+    }
 }
+
+@media screen and (max-width: 430px) {
+    .page-numbers {
+        font-size: 13px;
+    }
+}
+
 @media screen and (max-width: 360px) {
     .products-container{
         li{
@@ -190,5 +199,12 @@ button {
         li {
             margin: 0 5px 0px 5px;
         }
+    }
+    button {
+        margin-right: 5px;
+    }
+    .results-display {
+        margin-left: 5px;
+        font-size: 13px;
     }
 }

@@ -13,14 +13,15 @@ export class SearchComponent implements OnInit {
   public totalProducts: number;
   public products;
   public pages: number;
-  public productStart: number;
-  public productEnd: number;
+  // public productStart: number;
+  // public productEnd: number;
   public query: string;
   public page: number;
   public pageList: Array<string> = [];
   public categories;
   public filters;
   public isSortFilter: boolean = false;
+  public results;
 
   //Sort Options
   public selectedSortOption: any;
@@ -77,6 +78,9 @@ export class SearchComponent implements OnInit {
         .subscribe((response: any) => {
           //Products per page
           let perPage = Number(queryParams.get('limit'));
+          let productStart: number;
+          let productEnd: number;
+
           this.productsPerPage = perPage === 0 ? this.perPageOptions[0] : perPage;
 
           //Sort
@@ -89,8 +93,10 @@ export class SearchComponent implements OnInit {
           this.page = response.page;
           this.products = response.products;
           this.totalProducts = response.totalProducts;
-          this.productStart = this.productsPerPage * (this.page - 1) + 1;
-          this.productEnd = this.productStart + response.products.length - 1;
+          productStart = this.productsPerPage * (this.page - 1) + 1;
+          productEnd = productStart + response.products.length - 1;
+          this.results = 'Showing ' + productStart.toLocaleString('en') + '-' + productEnd.toLocaleString('en') + ' of ' + 
+            this.totalProducts.toLocaleString('en');
           this.pages = Math.ceil(this.totalProducts / this.productsPerPage);
           this.categories = response.categories;
           this.filters = response.filters;

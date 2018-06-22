@@ -7,7 +7,7 @@
   <!-- Content -->
   <div *ngIf="showContent">
     <div *ngFor="let option of options">
-      <checkbox [label]="option.name" [checked]="option.checked" (change)="filterService.setFilter(caption, option.name)"></checkbox><span class="count">({{option.productCount}})</span>
+      <checkbox [label]="option.name" [checked]="option.checked" (change)="filterService.setFilter(caption, option.name)"></checkbox><span class="count">({{option.productCount|number}})</span>
     </div>
   </div>
 </div>
