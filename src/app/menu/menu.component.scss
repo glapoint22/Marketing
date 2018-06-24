@@ -3,8 +3,9 @@
 .menu-container{
     width: 1057px;
     height: 502px;
-    position: fixed;
+    position: absolute;
     top: 60px;
+    left: -154px;
     z-index: 50;
     display: flex;
     font-family: 'Times New Roman', Times, serif;
@@ -118,4 +119,21 @@ ul{
 .highlight {
     background-color: $color1;
     color: #ffffff !important;
+}
+
+@media screen and (max-width: 1150px) {
+    .category-img {
+        display: none;
+    }
+    .niche-list-container{
+        .niche-container{
+            border-right: none;
+        }
+    }
+    .menu-container{
+        width: 870px;
+    }
+    .category-list-container{
+        flex-shrink: 0;
+    }
 }

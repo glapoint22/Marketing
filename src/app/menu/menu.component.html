@@ -1,5 +1,5 @@
-<div *ngIf="showMenu" class="menu-container" (mouseleave)="showNicheList = false" [ngClass]="{'shadow' : showNicheList}" [style.left.px]="positionLeft - 155">
-  <!-- <div class="menu-container" [ngClass]="{'shadow' : showNicheList}" [style.left.px]="positionLeft - 155"> -->
+<div *ngIf="showMenu" class="menu-container" (mouseleave)="showNicheList = false" [ngClass]="{'shadow' : showNicheList}">
+  <!-- <div class="menu-container" [ngClass]="{'shadow' : showNicheList}"> -->
   <div class="arrow"></div>
   <div class="category-list-container border menu-background border-left-radius" [ngClass]="{'shadow border-right-radius' : !showNicheList}">
     <ul>

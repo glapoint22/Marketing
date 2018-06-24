@@ -3,13 +3,13 @@
     <option [innerHtml]="searchBarService.searchBar.selectedCategory.name"></option>
 </select>
 <div class="search-bar">
-    <img src="assets/Logo.png" title="Home" (click)="onImageClick()">
+    <img [src]="'assets/' + logo" title="Home" (click)="onImageClick()">
 
-    <div class="content-container">
-        <div #menuButton class="category-menu-button" (mouseenter)="menu.showMenu = true" (mouseleave)="menu.showMenu = false" (click)="menu.showMenu = !menu.showMenu">
+    <div class="menu-search-container">
+        <div class="category-menu-button" (mouseenter)="menu.showMenu = true" (mouseleave)="menu.showMenu = false" (click)="menu.showMenu = !menu.showMenu">
             <i class="fas fa-bars" style="margin-right: 8px"></i>
-            <span style="color: white">Categories</span>
-            <menu #menu (click)="stopPropagation($event)" [categories]="searchBarService.searchBar.categories" [positionLeft]="menuButton.offsetLeft"></menu>
+            <span class="categories-text">Categories</span>
+            <menu #menu (click)="stopPropagation($event)" [categories]="searchBarService.searchBar.categories"></menu>
         </div>
         <div class="search-container">
             <form (ngSubmit)="onSearchButtonClick(search.value, searchBarService.searchBar.selectedCategory.id)" style="display: inline-table">
@@ -28,5 +28,17 @@
                 </div>
             </form>
         </div>
+    </div>
+
+    <div class="icon-container">
+        <div class="icon" (click)="onEmailClick()" title="Sign up to our mailing list">
+            <i class="fas  fa-lg fa-envelope"></i>
+        </div>
+        <a routerLink="/about" class="icon" title="About us">
+            <i class="fas  fa-lg fa-info-circle"></i>
+        </a>
+        <a href="https://www.clkbank.com" class="icon" title="How can we help?">
+            <i class="fas  fa-lg fa-question-circle"></i>
+        </a>
     </div>
 </div>

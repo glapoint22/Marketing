@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { DataService } from "../data.service";
 import { Router, ActivatedRoute } from '@angular/router';
 import { SearchBarService } from "../search-bar.service";
+import { ShowModalService } from "../show-modal.service";
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'search-bar',
@@ -10,14 +12,17 @@ import { SearchBarService } from "../search-bar.service";
 })
 export class SearchBarComponent implements OnInit {
   public query: string;
+  public logo: string;
 
-  constructor(public dataService: DataService, private router: Router, private route: ActivatedRoute, private searchBarService: SearchBarService) { }
+  constructor(public dataService: DataService, private router: Router, private route: ActivatedRoute, private searchBarService: SearchBarService, private showModalService: ShowModalService, private cookieService: CookieService) { }
 
   stopPropagation(event): void {
     event.stopPropagation();
   }
 
   ngOnInit() {
+    window.dispatchEvent(new Event('resize'));
+
     this.route.queryParamMap.subscribe(queryParams => {
       //Get the search words from the url
       this.query = queryParams.get('query');
@@ -50,5 +55,22 @@ export class SearchBarComponent implements OnInit {
   }
   onImageClick() {
     this.router.navigate(['/']);
+  }
+
+  onEmailClick() {
+    if (this.cookieService.check('Customer')) {
+      this.router.navigate(['/preferences'], { queryParams: { 'cid': this.cookieService.get('Customer') } });
+    } else {
+      this.showModalService.showSubscriptionForm(null);
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    if(event.target.innerWidth > 600) {
+      this.logo = 'Logo.png';
+    } else{
+      this.logo = 'Shack.png';
+    }
   }
 }

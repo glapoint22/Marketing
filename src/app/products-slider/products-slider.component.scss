@@ -40,9 +40,9 @@ ul{
     margin-top: 20px;
     text-decoration: underline;
 }
-@media screen and (max-width: 1364px) {
+@media screen and (max-width: 1440px) {
     .products-slider-container{
-        width: 100%;
+        width: 95%;
     }
 }
 @media screen and (max-width: 600px) {
@@ -57,6 +57,8 @@ ul{
     .slider{
         white-space: normal;
         position: relative;
+        transform: translateX(0) !important;
+        transition: all 0s;
     }
     ul{
         display: block;

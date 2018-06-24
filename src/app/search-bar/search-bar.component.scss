@@ -7,18 +7,19 @@
     position: fixed;
     z-index: 50;
     box-shadow: 0 2px 3px rgba(0,0,0,0.5);
+    display: flex;
 }
-.content-container {
-    width: 922px;
+.menu-search-container {
     height: 100%;
     margin: auto;
+    max-width: 922px;
 }
 .search-container{
-    width: 800px;
     height: 32px;
-    position: relative;
     top: 14px;
-    float: right;
+    max-width: 800px;
+    margin-left: 110px;
+    position: relative;
 }
 .category-select-container{
     display: table-cell;
@@ -34,6 +35,9 @@
             background: #FFFFFF;
         }
     }
+}
+.categories-text {
+    color: white;
 }
 button{
     height: 32px;
@@ -64,55 +68,76 @@ input{
     color: #5A5A5A;
     box-sizing:border-box;
 }
-
 .category-menu-button{
-    position: absolute;
+    position: relative;
     height: 60px;
     line-height: 60px;
     font-size: 18px;
     color: #ffba00;
     cursor: pointer;
+    float: left;
 }
 img {
-    position: absolute;
-    top: 50%;
-    transform: translate(0,-50%);
-    margin-left: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
     cursor: pointer;
+    transform: translate(0,-50%);
+    top: 50%;
+    position: relative;
+    object-fit: contain;
+}
+.icon-container {
+    height: 60px;
+    flex-shrink: 0;
+    margin-right: 22px;
+    margin-left: 22px;
+}
+.icon {
+    position: relative;
+    float: right;
+    line-height: 60px;
+    color: #ffba00;
+    cursor: pointer;
+    margin-right: 25px;
 }
 
-@media screen and (max-width: 1400px) {
-    .content-container{
-        margin-left: 18vw;
+@media screen and (max-width: 1280px) {
+    .icon-container {
+        margin-right: 10px;
+        margin-left: 10px;
     }
-    img {
-        margin-left: 2vw;
+    .icon {
+        margin-right: 10px;
     }
 }
-@media screen and (max-width: 1150px) {
-    .content-container{
-        margin-left: 20vw;
-        width: 800px;
+@media screen and (max-width: 1024px) {
+    .categories-text {
+        display: none;
     }
+    .category-menu-button{
+        width: 15px;
+    }
+    .search-container{
+        margin-left: 25px;
+    }
+    img {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+@media screen and (max-width: 920px) {
     .category-menu-button{
         display: none;
     }
-}
-@media screen and (max-width: 1020px) {
-    .content-container{
-        margin: auto
+    .search-container{
+        margin-left: 0;
     }
-    img {
+}
+@media screen and (max-width: 800px) {
+    .icon-container {
         display: none;
     }
-}
-@media screen and (max-width: 810px) {
     .search-container{
-        width: 97vw;
-        margin: auto;
-        float: unset;
-    }
-    .content-container{
-        width: 100%;
+        margin-right: 10px;
     }
 }

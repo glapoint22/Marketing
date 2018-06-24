@@ -10,27 +10,26 @@ export class MenuComponent {
   public showMenu: boolean;
   public showNicheList: boolean;
   @Input() categories: any;
-  @Input() positionLeft: number;
 
   public currentCategory: any;
 
   constructor(private router: Router) { }
 
-  onNicheClick(niche){
+  onNicheClick(niche) {
     this.hideMenu();
     this.router.navigate(['/search'], {
       queryParams: { 'category': this.currentCategory.id, 'nicheId': niche.id }
     });
   }
 
-  onCategoryClick(){
+  onCategoryClick() {
     this.hideMenu();
     this.router.navigate(['/search'], {
       queryParams: { 'category': this.currentCategory.id }
     });
   }
 
-  hideMenu(){
+  hideMenu() {
     this.showMenu = false;
     this.showNicheList = false;
   }
