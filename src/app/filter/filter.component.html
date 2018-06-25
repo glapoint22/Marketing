@@ -1,0 +1,10 @@
+<div class="filter-container" [ngClass]="{'padding' : showContent}">
+    <div class="caption">{{caption}}</div>
+    <!-- Arrow -->
+    <div (click)="onArrowClick()" class="arrow-container">
+        <div class="arrow" [ngClass]="{'rotate': showContent}"></div>
+    </div>
+
+    <!-- Content -->
+    <ng-content *ngIf="show"></ng-content>
+</div>

@@ -4,8 +4,8 @@ import { FilterService } from "./../filter.service";
 
 @Component({
   selector: 'checkbox-filter',
-  templateUrl: './checkbox-filter.component.html',
-  styleUrls: ['../filter/filter.component.scss', './checkbox-filter.component.scss']
+  templateUrl: '../filter/filter.component.html',
+  styleUrls: ['../filter/filter.component.scss']
 })
 export class CheckboxFilterComponent extends FilterComponent {
   @Input() options: Array<any> = [];
@@ -21,7 +21,7 @@ export class CheckboxFilterComponent extends FilterComponent {
     }
   }
 
-  getOptionsFromQueryParams(){
+  getOptionsFromQueryParams() {
     let optionsArray = [], filterString = this.filterService.queryParams.params['filter'];
 
     //If there are any filters

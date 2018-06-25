@@ -1,0 +1,4 @@
+<div *ngFor="let option of parent.options" class="content" [ngClass]="{'show-content': parent.showContent}" (transitionend)="parent.ontTransitionEnd()">
+  <checkbox [label]="option.name" [checked]="option.checked" (change)="parent.filterService.setFilter(parent.caption, option.name)"></checkbox>
+  <span class="count">({{option.productCount|number}})</span>
+</div>
