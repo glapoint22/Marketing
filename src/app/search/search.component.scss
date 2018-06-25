@@ -5,7 +5,7 @@
     display: table;
     left: 220px;
     li{
-        margin: 0 20px 40px 20px;
+        margin: 0 0 40px 40px;
     }
 }
 .results-container{
@@ -140,7 +140,7 @@ button {
     display: inline !important;
 }
 
-@media screen and (max-width: 1582px) {
+@media screen and (max-width: 1600px) {
     .results-container{
         width: 1240px;
     }
@@ -148,7 +148,7 @@ button {
         width: 1240px;
     }
 }
-@media screen and (max-width: 1240px) {
+@media screen and (max-width: 1270px) {
     .results-container{
         width: 900px;
     }
@@ -156,9 +156,9 @@ button {
         width: 900px;
     }
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 920px) {
     .results-container{
-        width: 95%;
+        width: 640px;
     }
     .filters-container{
         display: none;
@@ -180,6 +180,27 @@ button {
     }
     .products-container {
         text-align: center;
+        width: 680px;
+        margin: auto;
+        li {
+            margin: 0 20px 40px 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .results-container{
+        width: 300px;
+    }
+    .products-container {
+        width: 320px;
+    }
+    .results-display {
+        margin-left: 5px;
+        font-size: 13px;
+    }
+    button {
+        margin-right: 5px;
     }
 }
 
@@ -199,12 +220,5 @@ button {
         li {
             margin: 0 5px 0px 5px;
         }
-    }
-    button {
-        margin-right: 5px;
-    }
-    .results-display {
-        margin-left: 5px;
-        font-size: 13px;
     }
 }

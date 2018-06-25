@@ -1,6 +1,7 @@
 <div *ngIf="show" class="modal-background" (click)="close()">
   <form (ngSubmit)="onSubmit(form)" #form="ngForm" (click)="stopPropagation($event)">
     <i class="fas fa-times-circle" (click)="close()"></i>
+    <br>
     <p>{{caption}}</p>
     <input type="text" placeholder="First Name" required [(ngModel)]="name" name="name" autofocus #fname="ngModel" maxlength="10">
     <div [hidden]="!form.submitted || fname.valid" class="warning">
