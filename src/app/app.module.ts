@@ -40,8 +40,8 @@ import { FooterComponent } from './footer/footer.component';
 import { LoadingComponent } from './loading/loading.component';
 import { FeaturedCategoriesComponent } from './featured-categories/featured-categories.component';
 import { AboutComponent } from './about/about.component';
-import { CheckboxFilterContentComponent } from './checkbox-filter-content/checkbox-filter-content.component';
 import { PriceFilterContentComponent } from './price-filter-content/price-filter-content.component';
+import { FilterOptionsComponent } from './filter-options/filter-options.component';
 
 @NgModule({
   declarations: [
@@ -76,8 +76,8 @@ import { PriceFilterContentComponent } from './price-filter-content/price-filter
     LoadingComponent,
     FeaturedCategoriesComponent,
     AboutComponent,
-    CheckboxFilterContentComponent,
-    PriceFilterContentComponent
+    PriceFilterContentComponent,
+    FilterOptionsComponent
   ],
   imports: [
     BrowserModule,

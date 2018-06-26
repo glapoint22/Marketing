@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'checkbox-filter-content',
-  templateUrl: './checkbox-filter-content.component.html',
+  selector: 'filter-options',
+  templateUrl: './filter-options.component.html',
   styleUrls: ['../filter/filter.component.scss']
 })
-export class CheckboxFilterContentComponent {
+export class FilterOptionsComponent {
   @Input() parent: any = {};
 }

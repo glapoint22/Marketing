@@ -38,16 +38,18 @@
       <!-- Filters -->
       <div class="filters-container" [ngClass]="{'display-block': isSortFilter}">
         <category-filter [categories]="categories" [caption]="'Categories'"></category-filter>
-        
+
         <div *ngFor="let filter of filters; trackBy:trackFilter">
           <!-- Price Filter -->
           <price-filter #priceFilter *ngIf="filter.caption == 'Price'" [caption]="filter.caption" [options]="filter.labels">
-            <price-filter-content [parent]="priceFilter"></price-filter-content>
+            <price-filter-content [parent]="priceFilter">
+              <filter-options [parent]="priceFilter"></filter-options>
+            </price-filter-content>
           </price-filter>
 
           <!-- Checkbox Filter -->
           <checkbox-filter #checkboxFilter *ngIf="filter.caption != 'Price'" [caption]="filter.caption" [options]="filter.labels">
-            <checkbox-filter-content [parent]="checkboxFilter"></checkbox-filter-content>
+            <filter-options [parent]="checkboxFilter"></filter-options>
           </checkbox-filter>
         </div>
       </div>
