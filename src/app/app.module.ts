@@ -42,6 +42,7 @@ import { FeaturedCategoriesComponent } from './featured-categories/featured-cate
 import { AboutComponent } from './about/about.component';
 import { PriceFilterContentComponent } from './price-filter-content/price-filter-content.component';
 import { FilterOptionsComponent } from './filter-options/filter-options.component';
+import { CategoryFilterContentComponent } from './category-filter-content/category-filter-content.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { FilterOptionsComponent } from './filter-options/filter-options.componen
     FeaturedCategoriesComponent,
     AboutComponent,
     PriceFilterContentComponent,
-    FilterOptionsComponent
+    FilterOptionsComponent,
+    CategoryFilterContentComponent
   ],
   imports: [
     BrowserModule,

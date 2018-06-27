@@ -7,7 +7,7 @@
   </div>
 
   <!-- Content -->
-  <div *ngIf="showContent">
+  <!-- <div *ngIf="showContent"> -->
     <!-- Any Category -->
     <div *ngIf="currentCategory > 0 && query != undefined">
       <i class="fas fa-angle-left"></i>
@@ -46,5 +46,5 @@
       <i class="fas" [ngClass]="{'fa-angle-double-down' : !displayAllCategories, 'fa-angle-double-up' : displayAllCategories}"></i>
       <div style="margin-top: 10px" class="see-more-less pointer" (click)="displayAllCategories = !displayAllCategories" [innerHtml]="!displayAllCategories ? 'See All ' + categories.length + ' Categories' : 'See Fewer Categories'"></div>
     </div>
-  </div>
+  <!-- </div> -->
 </div>

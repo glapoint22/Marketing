@@ -22,7 +22,7 @@ export class FilterComponent {
     }
   }
 
-  ontTransitionEnd() {
+  onTransitionEnd() {
     if (!this.showContent) this.show = false;
   }
 }

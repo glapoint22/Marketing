@@ -5,8 +5,8 @@ import { FilterService } from "./../filter.service";
 
 @Component({
   selector: 'category-filter',
-  templateUrl: './category-filter.component.html',
-  styleUrls: ['../filter/filter.component.scss', './category-filter.component.scss']
+  templateUrl: '../filter/filter.component.html',
+  styleUrls: ['../filter/filter.component.scss']
 })
 export class CategoryFilterComponent extends FilterComponent implements OnInit {
   @Input() categories;
@@ -32,7 +32,7 @@ export class CategoryFilterComponent extends FilterComponent implements OnInit {
     });
   }
 
-  getProductCount(category){
+  getProductCount(category) {
     return category.niches.map(a => a.productCount).reduce((a, b) => a + b);
   }
 }

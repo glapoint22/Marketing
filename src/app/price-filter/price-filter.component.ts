@@ -15,18 +15,8 @@ export class PriceFilterComponent extends CheckboxFilterComponent implements OnI
 
   constructor(filterService: FilterService, private route: ActivatedRoute) { super(filterService); }
 
-  onSubmit(priceForm) {
-    //If price range is valid, set the filter
-    if (priceForm.valid) {
-      this.filterService.setFilter('Price', '[' + Math.min(Number(this.min), Number(this.max)) + '-' + Math.max(Number(this.min), Number(this.max)) + ']');
-      priceForm.submitted = false;
-    } else {
-      if (priceForm.form.controls.min.value || priceForm.form.controls.max.value) this.showClearPrice = true;
-    }
-  }
-
   ngOnInit() {
-    this.route.queryParamMap.subscribe(queryParams => {
+    this.route.queryParamMap.subscribe(() => {
       let priceRange = this.getPriceRange();
 
       //If there is a custom price range, set the min and max properties
@@ -36,6 +26,22 @@ export class PriceFilterComponent extends CheckboxFilterComponent implements OnI
         this.showClearPrice = true;
       }
     });
+  }
+
+  onSubmit(priceForm) {
+    if (!priceForm.form.controls.min.value && !priceForm.form.controls.max.value) {
+      priceForm.submitted = false;
+      this.showClearPrice = false;
+      return;
+    }
+
+    //If price range is valid, set the filter
+    if (priceForm.valid) {
+      this.filterService.setFilter('Price', '[' + Math.min(Number(this.min), Number(this.max)) + '-' + Math.max(Number(this.min), Number(this.max)) + ']');
+      priceForm.submitted = false;
+    } else {
+      if (priceForm.form.controls.min.value || priceForm.form.controls.max.value) this.showClearPrice = true;
+    }
   }
 
   getPriceRange() {

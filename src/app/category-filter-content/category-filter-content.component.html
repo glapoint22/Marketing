@@ -1,0 +1,44 @@
+<div *ngIf="parent.currentCategory > 0 && parent.query != undefined">
+  <i class="fas fa-angle-left"></i>
+  <div class="pointer inline margin-top" (click)="parent.filterService.setQueryParameters([{name: 'category', value: 0}], ['nicheId', 'page'])">Any Category</div>
+</div>
+
+<!-- List of categories -->
+<div class="content" [ngClass]="{'opacity': parent.showContent}" *ngFor="let category of parent.categories; let i = index" [style.maxHeight.px]="parent.showContent ?     !parent.displayAllCategories && i < 4 ? getMaxHeight(category) :    parent.displayAllCategories? getMaxHeight(category):     0                    : 0">
+  <!-- Display all categories or partial  -->
+  <div *ngIf="!parent.displayAllCategories ? i < 4 : parent.categories.length">
+
+
+    <div class="text">
+      <i *ngIf="parent.currentNiche > 0" class="fas fa-angle-left"></i>
+      <div style="display: inline-block" (click)="parent.filterService.setQueryParameters([{name: 'category', value: category.id}], ['nicheId', 'page'])"
+        [ngClass]="{'margin-top' : parent.currentCategory == 0 || parent.query == undefined, 'highlight' : parent.currentNiche == null, 'pointer' : parent.currentCategory == 0 || parent.currentNiche > 0}">{{category.name}}</div>
+      <span *ngIf="parent.currentNiche == null" class="count">({{parent.getProductCount(category)|number}})</span>
+    </div>
+
+
+    <!-- List of niches per category -->
+    <div *ngFor="let niche of category.niches; let j = index" class="content" [ngClass]="{'show-content': parent.showContent}">
+      <!-- Display all niches or partial -->
+      <div *ngIf="!category.showAllNiches ? j < 4 : category.niches.length">
+
+        <div [ngClass]="{'pointer' : parent.currentNiche == null, 'highlight' : parent.currentNiche != null}" class="margin-left text"
+          (click)="parent.filterService.setQueryParameters([{name: 'nicheId', value: niche.id}, {name: 'category', value: category.id}], ['page'])">{{niche.name}}
+          <span class="count">({{niche.productCount|number}})</span>
+        </div>
+      </div>
+    </div>
+    <!-- See more/See less niches -->
+    <div *ngIf="category.niches.length > 4" class="margin-left content" [ngClass]="{'show-content': parent.showContent}">
+      <i class="fas" [ngClass]="{'fa-angle-double-down' : !category.showAllNiches, 'fa-angle-double-up' : category.showAllNiches}"></i>
+      <div class="see-more-less pointer" (click)="category.showAllNiches = !category.showAllNiches" [innerHtml]="!category.showAllNiches ? 'See More' : 'See Less'"></div>
+    </div>
+
+  </div>
+</div>
+<!-- See all/See fewer categories -->
+<div *ngIf="parent.categories.length > 4" class="content" [ngClass]="{'show-content': parent.showContent}">
+  <i class="fas" [ngClass]="{'fa-angle-double-down' : !parent.displayAllCategories, 'fa-angle-double-up' : parent.displayAllCategories}"></i>
+  <div style="margin-top: 10px" class="see-more-less pointer" (click)="parent.displayAllCategories = !parent.displayAllCategories"
+    [innerHtml]="!parent.displayAllCategories ? 'See All ' + parent.categories.length + ' Categories' : 'See Fewer Categories'"></div>
+</div>

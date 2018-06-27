@@ -37,7 +37,9 @@
     <div class="filters-products-container">
       <!-- Filters -->
       <div class="filters-container" [ngClass]="{'display-block': isSortFilter}">
-        <category-filter [categories]="categories" [caption]="'Categories'"></category-filter>
+        <category-filter #categoryFilter [categories]="categories" [caption]="'Categories'">
+          <category-filter-content [parent]="categoryFilter"></category-filter-content>
+        </category-filter>
 
         <div *ngFor="let filter of filters; trackBy:trackFilter">
           <!-- Price Filter -->
