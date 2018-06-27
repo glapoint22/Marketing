@@ -10,7 +10,6 @@ import { FilterService } from "./../filter.service";
 })
 export class CategoryFilterComponent extends FilterComponent implements OnInit {
   @Input() categories;
-  public displayAllCategories: boolean;
   public currentCategory;
   public currentNiche;
   public query;
@@ -23,7 +22,6 @@ export class CategoryFilterComponent extends FilterComponent implements OnInit {
       this.currentCategory = queryParams.get('category');
       this.currentNiche = queryParams.get('nicheId');
       this.query = queryParams.get('query');
-      this.displayAllCategories = false;
 
       //Set categories to not show all niches
       for (let i = 0; i < this.categories.length; i++) {

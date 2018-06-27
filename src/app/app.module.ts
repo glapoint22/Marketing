@@ -8,6 +8,9 @@ import { AppRoutingModule } from './app-routing.module';
 // Services
 import { CookieService } from 'ngx-cookie-service';
 
+// Pipes
+import { MaxItemsPipe } from './max-items.pipe';
+
 // Components
 import { AppComponent } from './app.component';
 import { MailComponent } from './mail/mail.component';
@@ -79,7 +82,8 @@ import { CategoryFilterContentComponent } from './category-filter-content/catego
     AboutComponent,
     PriceFilterContentComponent,
     FilterOptionsComponent,
-    CategoryFilterContentComponent
+    CategoryFilterContentComponent,
+    MaxItemsPipe,
   ],
   imports: [
     BrowserModule,
