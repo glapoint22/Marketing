@@ -70,8 +70,14 @@ export class CategoryFilterContentComponent {
   }
 
   onCategoryTransitionEnd() {
-    this.parent.onTransitionEnd();
-
-    if (!this.allCategoriesVisible ) this.showAllCategories = false;
+    if(!this.parent.showContent && this.parent.show){
+      this.parent.onTransitionEnd();
+      this.allCategoriesVisible = false;
+      this.seeMoreCategories = false;
+    }
+    
+    if (!this.allCategoriesVisible ){
+      this.showAllCategories = false;
+    }
   }
 }
