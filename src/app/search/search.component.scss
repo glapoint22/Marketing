@@ -5,7 +5,7 @@
     display: table;
     left: 220px;
     li{
-        margin: 0 0 40px 40px;
+        margin: 0 0 30px 30px;
     }
 }
 .results-container{
@@ -108,7 +108,7 @@ select{
     display: flex;
 }
 .filters-container{
-    width: 220px;
+    width: 260px;
     flex-shrink: 0;
 }
 button {
@@ -140,23 +140,23 @@ button {
     display: inline !important;
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1650px) {
     .results-container{
-        width: 1240px;
+        width: 1250px;
     }
     .filters-products-container{
-        width: 1240px;
+        width: 1250px;
     }
 }
-@media screen and (max-width: 1270px) {
+@media screen and (max-width: 1320px) {
     .results-container{
-        width: 900px;
+        width: 920px;
     }
     .filters-products-container{
-        width: 900px;
+        width: 920px;
     }
 }
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 970px) {
     .results-container{
         width: 640px;
     }
@@ -186,6 +186,11 @@ button {
             margin: 0 20px 40px 20px;
         }
     }
+    .page-numbers {
+        li {
+            margin: 0px 10px;
+        }
+    }
 }
 
 @media screen and (max-width: 680px) {
@@ -207,13 +212,15 @@ button {
         margin: auto;
         margin-top: 80px;
     }
-}
-
-@media screen and (max-width: 430px) {
     .page-numbers {
-        font-size: 13px;
+        font-size: 14px;
+        li {
+            margin: 0px 5px;
+        }
     }
 }
+
+
 
 @media screen and (max-width: 360px) {
     .products-container{
@@ -222,8 +229,9 @@ button {
         }
     }
     .page-numbers {
+        font-size: 13px;
         li {
-            margin: 0 5px 0px 5px;
+            margin: 0 5px;
         }
     }
 }
