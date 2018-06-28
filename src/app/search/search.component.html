@@ -14,11 +14,11 @@
 
   <div *ngIf="totalProducts > 0" style="margin-bottom: 110px; ">
     <!-- Results -->
-    <div class="results-container">
-      <div class="results-display" [ngClass]="{'display-none': isSortFilter}">{{results}}</div>
+    <div *ngIf="!showFilters" class="results-container">
+      <div class="results-display">{{results}}</div>
 
       <!-- Sort -->
-      <div class="dropdown-container sort-dropdown" [ngClass]="{'display-inline': isSortFilter}">
+      <div class="dropdown-container" style="right: 0">
         <select [(ngModel)]="selectedSortOption" (change)="filterService.setQueryParameters([{name: 'sort', value: selectedSortOption.value}], ['page'])">
           <option *ngFor="let sortOption of sortOptions" [ngValue]="sortOption">{{sortOption.name}}</option>
         </select>
@@ -30,13 +30,15 @@
           <option *ngFor="let perPageOption of perPageOptions" [ngValue]="perPageOption">{{perPageOption}} Products Per Page</option>
         </select>
       </div>
-      <button class="sort-filter-button" (click)="isSortFilter = !isSortFilter" [innerHtml]="isSortFilter ? 'Done' : 'Sort & Filter'"></button>
+      <button class="filter-button" (click)="showFilters = true">Sort & Filter</button>
     </div>
 
+    <!-- Done button -->
+    <button *ngIf="showFilters" class="done-button" (click)="showFilters = false">Done</button>
 
     <div class="filters-products-container">
       <!-- Filters -->
-      <div class="filters-container" [ngClass]="{'display-block': isSortFilter}">
+      <div class="filters-container" [ngClass]="{'display-block': showFilters}">
         <category-filter #categoryFilter [categories]="categories" [caption]="'Categories'">
           <category-filter-content [parent]="categoryFilter"></category-filter-content>
         </category-filter>
@@ -57,7 +59,7 @@
       </div>
 
       <!-- Products -->
-      <div class="products-container" [ngClass]="{'display-none': isSortFilter}">
+      <div *ngIf="!showFilters" class="products-container">
         <ul>
           <li *ngFor="let product of products; trackBy:trackProduct">
             <product [product]="product"></product>
@@ -76,8 +78,6 @@
 
       </div>
     </div>
-
-
 
   </div>
   <footer></footer>

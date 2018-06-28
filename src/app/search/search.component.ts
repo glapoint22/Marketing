@@ -13,14 +13,12 @@ export class SearchComponent implements OnInit {
   public totalProducts: number;
   public products;
   public pages: number;
-  // public productStart: number;
-  // public productEnd: number;
   public query: string;
   public page: number;
   public pageList: Array<string> = [];
   public categories;
   public filters;
-  public isSortFilter: boolean = false;
+  public showFilters: boolean = false;
   public results;
 
   //Sort Options
@@ -158,6 +156,6 @@ export class SearchComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    if(event.target.innerWidth > 900) this.isSortFilter = false;
+    if(event.target.innerWidth > 970) this.showFilters = false;
   }
 }

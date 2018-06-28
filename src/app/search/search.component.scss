@@ -90,12 +90,15 @@ li{
 }
 select{
     border-radius: 4px;
-    border: 1px solid #250025;
+    border: 1px solid #444444;
     height: 23px;
-    background: #f1f1f1;
-    color: #1f0118;
+    background: $color3;
+    color: #ffffff;
     outline: none;
-    
+    @include shadow();
+}
+option::selection {
+    color: red;
 }
 .dropdown-container{
     position: absolute;
@@ -112,34 +115,32 @@ select{
     flex-shrink: 0;
 }
 button {
-    height: 26px;
-    font-size: 13px;
     border: none;
     outline: none;
     border-radius: 20px;
     background: #ffba00;
-    position: absolute;
-    right: 0;
-    margin: 7px;
     color: black;
 }
-.sort-filter-button {
+.filter-button {
     display: none;
-}
-.sort-dropdown {
     right: 0;
+    margin: 7px;
+    position: absolute;
+    height: 26px;
+    font-size: 15px;
 }
-
-.display-none {
-    display: none;
+.done-button {
+    margin: auto;
+    width: 95%;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    height: 35px;
+    display: block;
 }
 .display-block {
     display: block !important;
 }
-.display-inline {
-    display: inline !important;
-}
-
 @media screen and (max-width: 1650px) {
     .results-container{
         width: 1250px;
@@ -171,11 +172,7 @@ button {
     .dropdown-container{
         display: none;
     }
-    .sort-dropdown {
-        right: unset;
-        margin-left: 5px;
-    }
-    .sort-filter-button {
+    .filter-button {
         display: inline-block;
     }
     .products-container {
@@ -200,13 +197,6 @@ button {
     .products-container {
         width: 320px;
     }
-    .results-display {
-        margin-left: 5px;
-        font-size: 13px;
-    }
-    button {
-        margin-right: 5px;
-    }
     .no-match-container{
         width: 90%;
         margin: auto;
@@ -219,9 +209,6 @@ button {
         }
     }
 }
-
-
-
 @media screen and (max-width: 360px) {
     .products-container{
         li{
