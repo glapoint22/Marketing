@@ -25,8 +25,8 @@ export class CategoryFilterContentComponent {
     return 6 * this.lineHeight + this.getMargin();
   }
 
-  getMargin(){
-    return this.parent.currentCategory == 0 || this.parent.query == undefined ? this.margin: 0;
+  getMargin() {
+    return this.parent.currentCategory == 0 || this.parent.query == undefined ? this.margin : 0;
   }
 
   showHideNiches(category) {
@@ -63,20 +63,12 @@ export class CategoryFilterContentComponent {
     }
   }
 
-  onNicheTransitionEnd(category) {
-    if (category.niches[this.maxCount] && category.niches[this.maxCount].isVisible != undefined && !category.niches[this.maxCount].isVisible) {
-      category.showAllNiches = false;
-    }
-  }
-
   onCategoryTransitionEnd() {
-    if(!this.parent.showContent && this.parent.show){
-      this.parent.onTransitionEnd();
-      this.allCategoriesVisible = false;
-      this.seeMoreCategories = false;
+    if (!this.parent.showContent && this.parent.show) {
+      this.parent.show = false;
     }
-    
-    if (!this.allCategoriesVisible ){
+
+    if (!this.allCategoriesVisible) {
       this.showAllCategories = false;
     }
   }

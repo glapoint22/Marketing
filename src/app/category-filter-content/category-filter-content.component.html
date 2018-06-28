@@ -4,10 +4,10 @@
 </div>
 
 <!-- List of categories -->
-<div *ngFor="let category of parent.categories | maxItems: maxCount : showAllCategories; let i = index" 
+<div *ngFor="let category of parent.categories | maxItems: maxCount : showAllCategories: !this.parent.showContent && !this.parent.show; let i = index" 
   class="content"
   [ngStyle]="(parent.showContent && i < maxCount) || (allCategoriesVisible && parent.showContent) ? {maxHeight: getMaxHeight(category) + 'px', opacity: 1} : {maxHeight: '0', opacity: 0}"
-  (transitionend)="onCategoryTransitionEnd()">
+  (transitionend)="!parent.showContent && parent.show || (!allCategoriesVisible && showAllCategories) ? onCategoryTransitionEnd() : null">
 
   <!-- Category name -->
   <div class="text">
@@ -21,7 +21,7 @@
   <div *ngFor="let niche of category.niches | maxItems: maxCount : category.showAllNiches; let j = index" 
     class="content"
     [ngStyle]="parent.showContent && j < maxCount || niche.isVisible ? {maxHeight: '18px', opacity: 1} : {}"
-    (transitionend)="onNicheTransitionEnd(category)">
+    (transitionend)="category.niches[maxCount] && category.niches[maxCount].isVisible != undefined && !category.niches[maxCount].isVisible ? category.showAllNiches = false : null">
 
     <!-- Niche name -->
     <div [ngClass]="{'pointer' : parent.currentNiche == null, 'highlight' : parent.currentNiche != null}" class="margin-left text"
