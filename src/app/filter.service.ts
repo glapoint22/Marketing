@@ -132,4 +132,20 @@ export class FilterService {
     let regEx = new RegExp('(' + filter + '\\|)([a-zA-Z0-9`~!@#$%^&*()\-_+={[}\\]\\:;"\'<,>.?/\\s]+)', 'g');
     return regEx.exec(this.filterString);
   }
+
+  getOptionsFromQueryParams(caption: string) {
+    let optionsArray = [], filterString = this.queryParams.params['filter'];
+
+    //If there are any filters
+    if (filterString) {
+      //See if the current filter is in the list
+      let filter = this.getFilter(caption);
+
+      //If the current filter is in the list
+      if (filter) {
+        optionsArray = filter[2].split(this.separator);
+      }
+    }
+    return optionsArray;
+  }
 }

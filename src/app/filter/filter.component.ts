@@ -2,7 +2,9 @@ import { Component, Input } from '@angular/core';
 import { FilterService } from "./../filter.service";
 
 @Component({
-  template: ''
+  selector: 'filter',
+  templateUrl: '../filter/filter.component.html',
+  styleUrls: ['../filter/filter.component.scss']
 })
 export class FilterComponent {
   @Input() caption: string;

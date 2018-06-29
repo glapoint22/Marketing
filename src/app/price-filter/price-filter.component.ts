@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CheckboxFilterComponent } from '../checkbox-filter/checkbox-filter.component';
+import { FilterComponent } from '../filter/filter.component';
 import { FilterService } from "./../filter.service";
 import { ActivatedRoute } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: '../filter/filter.component.html',
   styleUrls: ['../filter/filter.component.scss']
 })
-export class PriceFilterComponent extends CheckboxFilterComponent implements OnInit {
+export class PriceFilterComponent extends FilterComponent implements OnInit {
   public min: string;
   public max: string;
   public showClearPrice: boolean;
@@ -45,7 +45,7 @@ export class PriceFilterComponent extends CheckboxFilterComponent implements OnI
   }
 
   getPriceRange() {
-    let priceRange: any, optionsArray = this.getOptionsFromQueryParams(), regEx = new RegExp(/\[(\d+\.?(?:\d+)?)-(\d+\.?(?:\d+)?)\]/, 'g');
+    let priceRange: any, optionsArray = this.filterService.getOptionsFromQueryParams(this.caption), regEx = new RegExp(/\[(\d+\.?(?:\d+)?)-(\d+\.?(?:\d+)?)\]/, 'g');
 
     //Iterate through all the options
     for (let i = 0; i < optionsArray.length; i++) {

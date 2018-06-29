@@ -39,21 +39,25 @@
     <div class="filters-products-container">
       <!-- Filters -->
       <div class="filters-container" [ngClass]="{'display-block': showFilters}">
+        <filter #sortFilter [caption]="'Sort By'">
+          <radio-options [parent]="sortFilter" [options]="sortOptions" [selectedOption]="selectedSortOption"></radio-options>
+        </filter>
+
         <category-filter #categoryFilter [categories]="categories" [caption]="'Categories'">
           <category-filter-content [parent]="categoryFilter"></category-filter-content>
         </category-filter>
 
         <div *ngFor="let filter of filters; trackBy:trackFilter">
           <!-- Price Filter -->
-          <price-filter #priceFilter *ngIf="filter.caption == 'Price'" [caption]="filter.caption" [options]="filter.labels">
+          <price-filter #priceFilter *ngIf="filter.caption == 'Price'" [caption]="filter.caption">
             <price-filter-content [parent]="priceFilter">
-              <filter-options [parent]="priceFilter"></filter-options>
+              <filter-options [parent]="priceFilter" [options]="filter.labels"></filter-options>
             </price-filter-content>
           </price-filter>
 
           <!-- Checkbox Filter -->
-          <checkbox-filter #checkboxFilter *ngIf="filter.caption != 'Price'" [caption]="filter.caption" [options]="filter.labels">
-            <filter-options [parent]="checkboxFilter"></filter-options>
+          <checkbox-filter #checkboxFilter *ngIf="filter.caption != 'Price'" [caption]="filter.caption">
+            <filter-options [parent]="checkboxFilter" [options]="filter.labels"></filter-options>
           </checkbox-filter>
         </div>
       </div>

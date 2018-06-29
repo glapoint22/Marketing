@@ -46,6 +46,7 @@ import { AboutComponent } from './about/about.component';
 import { PriceFilterContentComponent } from './price-filter-content/price-filter-content.component';
 import { FilterOptionsComponent } from './filter-options/filter-options.component';
 import { CategoryFilterContentComponent } from './category-filter-content/category-filter-content.component';
+import { RadioOptionsComponent } from './radio-options/radio-options.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { CategoryFilterContentComponent } from './category-filter-content/catego
     FilterOptionsComponent,
     CategoryFilterContentComponent,
     MaxItemsPipe,
+    RadioOptionsComponent,
   ],
   imports: [
     BrowserModule,
