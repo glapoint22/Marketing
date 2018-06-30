@@ -3,7 +3,6 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { DataService } from "../data.service";
 import { ActivatedRoute } from '@angular/router';
-import { ShowModalService } from "../show-modal.service";
 
 @Component({
   selector: 'leads',
@@ -24,12 +23,11 @@ export class LeadsComponent implements OnInit {
   public nicheId: number;
   public caption: string;
 
-  constructor(private router: Router, private dataService: DataService, private sanitizer: DomSanitizer, private route: ActivatedRoute, private showModalService: ShowModalService) { }
+  constructor(private router: Router, private dataService: DataService, private sanitizer: DomSanitizer, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(param => {
       let leadPage = param.get('leadPage');
-      this.showModalService.showLoading(true);
 
       //Get the lead page
       this.dataService.get('api/Leads', [{ key: 'leadPage', value: leadPage }])
@@ -46,7 +44,6 @@ export class LeadsComponent implements OnInit {
           this.leadMagnet = response.leadMagnet;
           this.nicheId = response.nicheId;
           this.caption = 'Enter your name and email below to get the ' + this.leadMagnet + '!';
-          this.showModalService.showLoading(false);
         });
     })
   }

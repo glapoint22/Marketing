@@ -20,12 +20,10 @@ export class ModalFormComponent extends ModalComponent {
   }
 
   postData() {
-    this.showModalService.showLoading(true);
     this.dataService.post(this.url, this.data)
       .subscribe((response: any) => {
         this.setResponse(response);
         this.nextAction(response);
-        this.showModalService.showLoading(false);
       });
   }
 

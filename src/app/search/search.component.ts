@@ -2,7 +2,6 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from "../data.service";
 import { FilterService } from "./../filter.service";
-import { ShowModalService } from "../show-modal.service";
 
 @Component({
   selector: 'app-search',
@@ -29,13 +28,12 @@ export class SearchComponent implements OnInit {
   public productsPerPage: any;
   public perPageOptions = [];
 
-  constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router, private filterService: FilterService, private showModalService: ShowModalService) { }
+  constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router, private filterService: FilterService) { }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(queryParams => {
       let parameters: Array<any> = [];
       this.query = queryParams.get('query');
-      this.showModalService.showLoading(true);
 
       //Set the sort options
       this.sortOptions = [
@@ -144,7 +142,6 @@ export class SearchComponent implements OnInit {
             if (this.pages > 7) this.pageList.push('...');
           }
           if (this.pages > 1) this.pageList.push(this.pages.toString());
-          this.showModalService.showLoading(false);
         });
     });
   }
