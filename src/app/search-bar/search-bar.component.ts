@@ -14,7 +14,7 @@ export class SearchBarComponent implements OnInit {
   public query: string;
   public logo: string;
 
-  constructor(public dataService: DataService, private router: Router, private route: ActivatedRoute, private searchBarService: SearchBarService, private showModalService: ShowModalService, private cookieService: CookieService) { }
+  constructor(public dataService: DataService, private router: Router, private route: ActivatedRoute, public searchBarService: SearchBarService, private showModalService: ShowModalService, private cookieService: CookieService) { }
 
   stopPropagation(event): void {
     event.stopPropagation();

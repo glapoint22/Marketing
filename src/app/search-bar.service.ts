@@ -7,7 +7,7 @@ export class SearchBarService {
   public searchBar = {
     categories: [],
     searchCategories: [],
-    selectedCategory: {},
+    selectedCategory: {} as any,
     featuredCategories: []
   }
 

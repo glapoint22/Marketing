@@ -34,7 +34,6 @@ import { ModalFormComponent } from './modal-form/modal-form.component';
 import { LeadsSubscriptionFormComponent } from './leads-subscription-form/leads-subscription-form.component';
 import { MenuComponent } from './menu/menu.component';
 import { SearchComponent } from './search/search.component';
-import { CheckboxFilterComponent } from './checkbox-filter/checkbox-filter.component';
 import { CategoryFilterComponent } from './category-filter/category-filter.component';
 import { FilterComponent } from './filter/filter.component';
 import { PriceFilterComponent } from './price-filter/price-filter.component';
@@ -46,7 +45,8 @@ import { AboutComponent } from './about/about.component';
 import { PriceFilterContentComponent } from './price-filter-content/price-filter-content.component';
 import { FilterOptionsComponent } from './filter-options/filter-options.component';
 import { CategoryFilterContentComponent } from './category-filter-content/category-filter-content.component';
-import { RadioOptionsComponent } from './radio-options/radio-options.component';
+import { RadioFilterOptionsComponent } from './radio-filter-options/radio-filter-options.component';
+import { CheckboxFilterOptionsComponent } from './checkbox-filter-options/checkbox-filter-options.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +72,6 @@ import { RadioOptionsComponent } from './radio-options/radio-options.component';
     LeadsSubscriptionFormComponent,
     MenuComponent,
     SearchComponent,
-    CheckboxFilterComponent,
     CategoryFilterComponent,
     FilterComponent,
     PriceFilterComponent,
@@ -85,7 +84,8 @@ import { RadioOptionsComponent } from './radio-options/radio-options.component';
     FilterOptionsComponent,
     CategoryFilterContentComponent,
     MaxItemsPipe,
-    RadioOptionsComponent,
+    RadioFilterOptionsComponent,
+    CheckboxFilterOptionsComponent,
   ],
   imports: [
     BrowserModule,

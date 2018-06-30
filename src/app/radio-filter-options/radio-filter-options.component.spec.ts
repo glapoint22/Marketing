@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RadioOptionsComponent } from './radio-options.component';
+import { RadioFilterOptionsComponent } from './radio-filter-options.component';
 
 describe('RadioOptionsComponent', () => {
-  let component: RadioOptionsComponent;
-  let fixture: ComponentFixture<RadioOptionsComponent>;
+  let component: RadioFilterOptionsComponent;
+  let fixture: ComponentFixture<RadioFilterOptionsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RadioOptionsComponent ]
+      declarations: [ RadioFilterOptionsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RadioOptionsComponent);
+    fixture = TestBed.createComponent(RadioFilterOptionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

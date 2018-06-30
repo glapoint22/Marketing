@@ -26,8 +26,8 @@ export class SearchComponent implements OnInit {
   public sortOptions = [];
 
   //Products per page
-  public productsPerPage: number;
-  public perPageOptions = [24, 48, 72, 96];
+  public productsPerPage: any;
+  public perPageOptions = [];
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router, private filterService: FilterService, private showModalService: ShowModalService) { }
 
@@ -40,18 +40,38 @@ export class SearchComponent implements OnInit {
       //Set the sort options
       this.sortOptions = [
         {
-          name: 'Sort by Price: Low to High',
+          name: 'Price: Low to High',
           value: 'price-asc'
         },
         {
-          name: 'Sort by Price: High to Low',
+          name: 'Price: High to Low',
           value: 'price-desc'
         }
       ];
 
+      this.perPageOptions = [
+        {
+          name: '24',
+          value: 24
+        },
+        {
+          name: '48',
+          value: 48
+        },
+        {
+          name: '72',
+          value: 72
+        },
+        {
+          name: '96',
+          value: 96
+        },
+        
+      ];
+
       if (this.query) {
         this.sortOptions.unshift({
-          name: 'Sort by Relevance',
+          name: 'Relevance',
           value: 'relevance'
         });
       }
@@ -68,7 +88,7 @@ export class SearchComponent implements OnInit {
 
       //Set the default per page option if not part of the query params
       if (parameters.findIndex(x => x.key === 'limit') === -1) {
-        parameters.push({ key: 'limit', value: this.perPageOptions[0] });
+        parameters.push({ key: 'limit', value: this.perPageOptions[0].value });
       }
 
       //Get the products
@@ -79,7 +99,7 @@ export class SearchComponent implements OnInit {
           let productStart: number;
           let productEnd: number;
 
-          this.productsPerPage = perPage === 0 ? this.perPageOptions[0] : perPage;
+          this.productsPerPage = perPage === 0 ? this.perPageOptions[0] : this.perPageOptions[this.perPageOptions.findIndex(x => x.value === perPage)];
 
           //Sort
           let index = this.sortOptions.findIndex(x => x.value === queryParams.get('sort'));
@@ -91,11 +111,11 @@ export class SearchComponent implements OnInit {
           this.page = response.page;
           this.products = response.products;
           this.totalProducts = response.totalProducts;
-          productStart = this.productsPerPage * (this.page - 1) + 1;
+          productStart = this.productsPerPage.value * (this.page - 1) + 1;
           productEnd = productStart + response.products.length - 1;
           this.results = 'Showing ' + productStart.toLocaleString('en') + '-' + productEnd.toLocaleString('en') + ' of ' + 
             this.totalProducts.toLocaleString('en');
-          this.pages = Math.ceil(this.totalProducts / this.productsPerPage);
+          this.pages = Math.ceil(this.totalProducts / this.productsPerPage.value);
           this.categories = response.categories;
           this.filters = response.filters;
 

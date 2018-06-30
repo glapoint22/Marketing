@@ -20,14 +20,14 @@
       <!-- Sort -->
       <div class="dropdown-container" style="right: 0">
         <select [(ngModel)]="selectedSortOption" (change)="filterService.setQueryParameters([{name: 'sort', value: selectedSortOption.value}], ['page'])">
-          <option *ngFor="let sortOption of sortOptions" [ngValue]="sortOption">{{sortOption.name}}</option>
+          <option *ngFor="let sortOption of sortOptions" [ngValue]="sortOption">Sort by {{sortOption.name}}</option>
         </select>
       </div>
 
       <!-- Per Page -->
       <div class="dropdown-container" style="right: 200px;">
-        <select [(ngModel)]="productsPerPage" (change)="filterService.setQueryParameters([{name: 'limit', value: productsPerPage}], ['page'])">
-          <option *ngFor="let perPageOption of perPageOptions" [ngValue]="perPageOption">{{perPageOption}} Products Per Page</option>
+        <select [(ngModel)]="productsPerPage" (change)="filterService.setQueryParameters([{name: 'limit', value: productsPerPage.value}], ['page'])">
+          <option *ngFor="let perPageOption of perPageOptions" [ngValue]="perPageOption">{{perPageOption.name}} Products Per Page</option>
         </select>
       </div>
       <button class="filter-button" (click)="showFilters = true">Sort & Filter</button>
@@ -39,9 +39,17 @@
     <div class="filters-products-container">
       <!-- Filters -->
       <div class="filters-container" [ngClass]="{'display-block': showFilters}">
-        <filter #sortFilter [caption]="'Sort By'">
-          <radio-options [parent]="sortFilter" [options]="sortOptions" [selectedOption]="selectedSortOption"></radio-options>
-        </filter>
+        <div *ngIf="showFilters">
+          <!-- Per Page -->
+          <filter #perPage [caption]="'Products Per Page'">
+            <radio-filter-options [parent]="perPage" [options]="perPageOptions" [selectedOption]="productsPerPage" [paramName]="'limit'"></radio-filter-options>
+          </filter>
+
+          <!-- Sort -->
+          <filter #sortFilter [caption]="'Sort By'">
+            <radio-filter-options [parent]="sortFilter" [options]="sortOptions" [selectedOption]="selectedSortOption" [paramName]="'sort'"></radio-filter-options>
+          </filter>
+        </div>
 
         <category-filter #categoryFilter [categories]="categories" [caption]="'Categories'">
           <category-filter-content [parent]="categoryFilter"></category-filter-content>
@@ -51,14 +59,14 @@
           <!-- Price Filter -->
           <price-filter #priceFilter *ngIf="filter.caption == 'Price'" [caption]="filter.caption">
             <price-filter-content [parent]="priceFilter">
-              <filter-options [parent]="priceFilter" [options]="filter.labels"></filter-options>
+              <checkbox-filter-options [parent]="priceFilter" [options]="filter.labels"></checkbox-filter-options>
             </price-filter-content>
           </price-filter>
 
           <!-- Checkbox Filter -->
-          <checkbox-filter #checkboxFilter *ngIf="filter.caption != 'Price'" [caption]="filter.caption">
-            <filter-options [parent]="checkboxFilter" [options]="filter.labels"></filter-options>
-          </checkbox-filter>
+          <filter #checkboxFilter *ngIf="filter.caption != 'Price'" [caption]="filter.caption">
+            <checkbox-filter-options [parent]="checkboxFilter" [options]="filter.labels"></checkbox-filter-options>
+          </filter>
         </div>
       </div>
 
