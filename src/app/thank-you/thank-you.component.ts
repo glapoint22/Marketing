@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-thank-you',
@@ -17,7 +17,7 @@ export class ThankYouComponent implements OnInit {
   public productId: string;
   public productName: string;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(queryParams => {

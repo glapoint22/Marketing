@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { DataService } from "../data.service";
 import { ActivatedRoute } from '@angular/router';
 
@@ -23,7 +22,7 @@ export class LeadsComponent implements OnInit {
   public nicheId: number;
   public caption: string;
 
-  constructor(private router: Router, private dataService: DataService, private sanitizer: DomSanitizer, private route: ActivatedRoute) { }
+  constructor(private dataService: DataService, private sanitizer: DomSanitizer, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(param => {
