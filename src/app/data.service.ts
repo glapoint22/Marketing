@@ -20,6 +20,9 @@ export class DataService {
     //Set the params
     if (parameters) parameters.forEach(x => params = params.set(x.key, x.value));
 
+    // Hide error screen
+    this.showModalService.showError(false);
+
     // Show loading screen
     this.showModalService.showLoading(true);
 
@@ -36,6 +39,9 @@ export class DataService {
 
 
   post(url: string, body: any) {
+    // Hide error screen
+    this.showModalService.showError(false);
+
     // Show loading screen
     this.showModalService.showLoading(true);
 
@@ -50,6 +56,9 @@ export class DataService {
   }
 
   put(url: string, body: any) {
+    // Hide error screen
+    this.showModalService.showError(false);
+    
     // Show loading screen
     this.showModalService.showLoading(true);
 

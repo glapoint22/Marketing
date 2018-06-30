@@ -18,8 +18,12 @@ export class ErrorComponent extends ModalComponent implements OnInit {
   }
 
   open(error: any) {
-    this.error = error;
-    super.open();
+    if (typeof (error) === 'boolean') {
+      this.close();
+    } else {
+      this.error = error;
+      super.open();
+    }
   }
 
   handleKeyboardEvent(event: KeyboardEvent) { }
