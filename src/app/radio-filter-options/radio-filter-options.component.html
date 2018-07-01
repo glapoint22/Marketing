@@ -1,4 +1,5 @@
 <div *ngFor="let option of options" class="content" [ngClass]="{'show-content': parent.showContent}" (transitionend)="parent.onTransitionEnd()">
-  <input type="radio" [name]="parent.caption" [value]="option.value" [checked]="selectedOption === option" (change)="filterService.setQueryParameters([{name: paramName, value: option.value}], ['page'])">{{option.name}}
+  <radio-button [name]="parent.caption" [type]="'radio'" [value]="option.value" [label]="option.name" [checked]="selectedOption === option"
+    (change)="filterService.setQueryParameters([{name: paramName, value: option.value}], ['page'])"></radio-button>
   <br>
 </div>

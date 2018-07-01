@@ -49,7 +49,9 @@ export class PreferencesComponent implements OnInit {
     this.originalEmailSendFrequency = this.emailSendFrequency = data.customer.emailSendFrequency;
   }
 
-  onUpdate() {
+  onUpdate(emailSendFrequency) {
+    this.emailSendFrequency = emailSendFrequency;
+
     //Check to see if anything has been updated
     if (this.name.toLocaleLowerCase() !== this.originalName.toLocaleLowerCase() ||
       this.email.toLocaleLowerCase() !== this.originalEmail.toLocaleLowerCase() ||
@@ -80,7 +82,7 @@ export class PreferencesComponent implements OnInit {
         nicheName: niche.name
       });
     }
-    this.onUpdate();
+    this.onUpdate(this.emailSendFrequency);
   }
 
   onSubmit(form) {

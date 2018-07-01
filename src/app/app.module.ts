@@ -47,6 +47,8 @@ import { FilterOptionsComponent } from './filter-options/filter-options.componen
 import { CategoryFilterContentComponent } from './category-filter-content/category-filter-content.component';
 import { RadioFilterOptionsComponent } from './radio-filter-options/radio-filter-options.component';
 import { CheckboxFilterOptionsComponent } from './checkbox-filter-options/checkbox-filter-options.component';
+import { CustomInputComponent } from './custom-input/custom-input.component';
+import { RadioButtonComponent } from './radio-button/radio-button.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +88,8 @@ import { CheckboxFilterOptionsComponent } from './checkbox-filter-options/checkb
     MaxItemsPipe,
     RadioFilterOptionsComponent,
     CheckboxFilterOptionsComponent,
+    CustomInputComponent,
+    RadioButtonComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,11 @@
+.checkmark {
+    border-radius: 50%;
+}
+.checkmark:after {
+    left: 5px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+}
