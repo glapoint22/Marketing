@@ -13,6 +13,6 @@ export class FooterComponent implements OnInit {
   constructor(private cookieService: CookieService, public showModalService: ShowModalService) { }
 
   ngOnInit() {
-    if (this.cookieService.check('Customer')) this.customerId = this.cookieService.get('Customer');
+    this.customerId = this.cookieService.get('Customer');
   }
 }

@@ -7,7 +7,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./thank-you.component.scss']
 })
 export class ThankYouComponent implements OnInit {
-  public siteName: string = 'Niche Shack';
   public customer: string;
   public email: string;
   public leadMagnet: string;

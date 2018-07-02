@@ -7,7 +7,7 @@
   <form (ngSubmit)="onSubmit(preferencesForm)" #preferencesForm="ngForm">
     <h3>Personal Information:</h3>
     <!-- First Name -->
-    <input type="text" placeholder="First Name" required [(ngModel)]="name" name="name" autofocus maxlength="10" (change)="onUpdate()">
+    <input type="text" placeholder="First Name" required [(ngModel)]="name" name="name" autofocus (change)="onUpdate()">
 
     <!-- Last Name -->
     <input type="email" placeholder="Email" required [(ngModel)]="email" name="email" (change)="onUpdate()">
