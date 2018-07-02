@@ -33,8 +33,12 @@ export class ErrorComponent extends ModalComponent implements OnInit {
     }
   }
 
-  onButtonClick(){
+  onHomeButtonClick(){
     this.router.navigate(['']);
+  }
+
+  onRefreshButtonClick(){
+    location.reload();
   }
 
   handleKeyboardEvent(event: KeyboardEvent) { }

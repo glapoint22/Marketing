@@ -1,16 +1,22 @@
 <div id="error" *ngIf="show" class="background-container">
-  <span *ngIf="error.status == 404 else other">
-    <search-bar></search-bar>
-    <div class="text sorry">
-      Sorry...
+  <search-bar></search-bar>
+  <div class="content-container">
+    <div *ngIf="error.status == 404 else other">
+      <div class="text header">Sorry...</div>
+      <div class="text text2">We couldn't find that page</div>
+      <div class="text text3">Try searching or</div>
+      <button (click)="onHomeButtonClick()">Go to our homepage</button>
     </div>
-    <div class="text find-page">We couldn't find that page</div>
-    <div class="text try-searching">Try searching or</div>
-    <button (click)="onButtonClick()">Go to our homepage</button>
-    <footer></footer>
-  </span>
-  <ng-template #other>
-    <div style="color: white;">Error!</div>
-  </ng-template>
 
+    <ng-template #other>
+      <div class="text header">Ooops!</div>
+      <div class="text text2">An error occurred while processing your request</div>
+      <div class="button-container">
+        <button style="display: inline;" (click)="onRefreshButtonClick()">Try Again</button>
+        <span class="text" style="font-size: 30px; margin: 0 10px">or</span>
+        <button style="display: inline;" (click)="onHomeButtonClick()">Go to our homepage</button>
+      </div>
+    </ng-template>
+  </div>
+  <footer></footer>
 </div>
