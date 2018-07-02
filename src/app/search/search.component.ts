@@ -96,11 +96,12 @@ export class SearchComponent implements OnInit {
           let perPage = Number(queryParams.get('limit'));
           let productStart: number;
           let productEnd: number;
+          let index = this.perPageOptions.findIndex(x => x.value === perPage);
 
-          this.productsPerPage = perPage === 0 ? this.perPageOptions[0] : this.perPageOptions[this.perPageOptions.findIndex(x => x.value === perPage)];
+          this.productsPerPage = this.perPageOptions[index == -1 ? 0 : index];
 
           //Sort
-          let index = this.sortOptions.findIndex(x => x.value === queryParams.get('sort'));
+          index = this.sortOptions.findIndex(x => x.value === queryParams.get('sort'));
           this.selectedSortOption = this.sortOptions[index == -1 ? 0 : index];
 
           //Assign properties and variables

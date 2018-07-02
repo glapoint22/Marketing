@@ -1,11 +1,32 @@
 @import 'theme';
-
-.fa-exclamation-triangle{
-    font-size: 300px;
-    color: $color1;
+.background-container {
+    z-index: 100; 
+    position: fixed; 
+    top: 0px; 
+    left: 0px; 
+    width: 100%; 
+    height: 100%;
+    min-height: 0;
 }
-p{
+.text {
+    color: #d8d8d8;
+    text-align: center;
+}
+.sorry {
+    color: #ffba00;
+    font-size: 60px;
+    margin-top: 115px;
+    font-weight: bold;
+}
+.find-page {
     font-size: 40px;
-    color: #ffffff;
-    user-select: none;
+    margin-top: 30px;
+}
+.try-searching {
+    font-size: 30px;
+}
+button {
+    margin: auto;
+    display: block;
+    margin-top: 20px;
 }

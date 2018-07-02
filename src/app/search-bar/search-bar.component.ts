@@ -36,7 +36,7 @@ export class SearchBarComponent implements OnInit {
 
     //Assign the categories if not already done
     if (this.searchBarService.searchBar.categories.length === 0) {
-      this.dataService.get('api/Categories')
+      this.dataService.get('api/Categories', null, document.getElementById('error') !== null)
         .subscribe((response: any) => {
           this.searchBarService.searchBar.categories = response;
           let searchCategories = this.searchBarService.searchBar.categories.slice().map(x => ({ id: x.id, name: x.name }));
@@ -67,9 +67,9 @@ export class SearchBarComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    if(event.target.innerWidth > 600) {
+    if (event.target.innerWidth > 600) {
       this.logo = 'Logo.png';
-    } else{
+    } else {
       this.logo = 'Shack.png';
     }
   }

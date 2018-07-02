@@ -14,17 +14,20 @@ export class DataService {
 
   constructor(private http: HttpClient, private showModalService: ShowModalService) { }
 
-  get(url: string, parameters?: Array<any>): Observable<any> {
+  get(url: string, parameters?: Array<any>, isError?: boolean): Observable<any> {
     let params = new HttpParams();
 
     //Set the params
     if (parameters) parameters.forEach(x => params = params.set(x.key, x.value));
 
-    // Hide error screen
-    this.showModalService.showError(false);
+    if (!isError) {
+      // Hide error screen
+      this.showModalService.showError(false);
 
-    // Show loading screen
-    this.showModalService.showLoading(true);
+      // Show loading screen
+      this.showModalService.showLoading(true);
+    }
+
 
     //Get the data
     return this.http.get(url, { params: params })
@@ -58,7 +61,7 @@ export class DataService {
   put(url: string, body: any) {
     // Hide error screen
     this.showModalService.showError(false);
-    
+
     // Show loading screen
     this.showModalService.showLoading(true);
 
@@ -75,6 +78,7 @@ export class DataService {
   handleError() {
     return (error) => {
       this.showModalService.showError(error);
+      this.showModalService.showLoading(false);
       return of();
     }
   }

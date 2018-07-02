@@ -4,4 +4,10 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
-export class AppComponent { }
+export class AppComponent {
+  public isError: boolean;
+
+  ngAfterContentChecked() {
+    this.isError = document.getElementById('error') !== null;
+  }
+}

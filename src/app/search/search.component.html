@@ -4,9 +4,13 @@
   <!-- No match -->
   <div *ngIf="totalProducts === 0" class="no-match-container">
     <div>
-      <i class="fas fa-exclamation-circle"></i>Sorry, no products matched "{{query}}"
+      <i class="fas fa-exclamation-circle"></i>
+      <span [innerHtml]="query ? 'Sorry, no products matched ' + '&quot;' +  query + '&quot;' : 'No results found'">
+        <!-- Sorry, no products matched "{{query}}" -->
+      </span>
+      
     </div>
-    <ul>
+    <ul *ngIf="query">
       <li>Check your spelling</li>
       <li>Use different keywords and try again</li>
     </ul>

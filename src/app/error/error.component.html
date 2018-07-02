@@ -1,8 +1,16 @@
-<div *ngIf="show" class="modal-background">
-  <div style="text-align: center">
-    <i class="fas fa-exclamation-triangle"></i>
-    <p>
-      {{error.status}} {{error.statusText}}
-    </p>
-  </div>
+<div id="error" *ngIf="show" class="background-container">
+  <span *ngIf="error.status == 404 else other">
+    <search-bar></search-bar>
+    <div class="text sorry">
+      Sorry...
+    </div>
+    <div class="text find-page">We couldn't find that page</div>
+    <div class="text try-searching">Try searching or</div>
+    <button (click)="onButtonClick()">Go to our homepage</button>
+    <footer></footer>
+  </span>
+  <ng-template #other>
+    <div style="color: white;">Error!</div>
+  </ng-template>
+
 </div>
