@@ -8,8 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./featured-categories.component.scss']
 })
 export class FeaturedCategoriesComponent {
-  public showFeatured: boolean = true;
-
   constructor(public searchBarService: SearchBarService, private router: Router) { }
 
   onClick(category: number) {
