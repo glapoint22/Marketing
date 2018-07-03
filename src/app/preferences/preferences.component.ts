@@ -14,6 +14,7 @@ export class PreferencesComponent implements OnInit {
   public name: string;
   public email: string;
   public emailSendFrequency: number;
+  public emailSentDate: Date;
   public originalName: string;
   public originalEmail: string;
   public originalEmailSendFrequency: number;
@@ -47,11 +48,12 @@ export class PreferencesComponent implements OnInit {
     this.originalName = this.name = data.customer.name;
     this.originalEmail = this.email = data.customer.email;
     this.originalEmailSendFrequency = this.emailSendFrequency = data.customer.emailSendFrequency;
+    this.emailSentDate = data.customer.emailSentDate;
   }
 
   onUpdate(emailSendFrequency) {
-    this.emailSendFrequency = emailSendFrequency;
-
+    if (emailSendFrequency !== undefined) this.emailSendFrequency = emailSendFrequency;
+    
     //Check to see if anything has been updated
     if (this.name.toLocaleLowerCase() !== this.originalName.toLocaleLowerCase() ||
       this.email.toLocaleLowerCase() !== this.originalEmail.toLocaleLowerCase() ||
@@ -103,7 +105,8 @@ export class PreferencesComponent implements OnInit {
         EmailSendFrequency: this.emailSendFrequency,
         originalName: this.originalName,
         originalEmail: this.originalEmail,
-        originalEmailSendFrequency: this.originalEmailSendFrequency
+        originalEmailSendFrequency: this.originalEmailSendFrequency,
+        EmailSentDate: this.emailSentDate
       },
       updatedSubscriptions: this.updatedSubscriptions
     };
