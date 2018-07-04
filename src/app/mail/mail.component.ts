@@ -6,7 +6,6 @@ import { DataService } from "../data.service";
 @Component({
   selector: 'mail',
   templateUrl: './mail.component.html',
-  styleUrls: ['./mail.component.scss']
 })
 export class MailComponent implements OnInit {
   public html: SafeHtml;
