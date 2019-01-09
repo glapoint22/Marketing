@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { DataService } from "../data.service";
 import { ActivatedRoute } from '@angular/router';
@@ -9,41 +9,50 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./leads.component.scss']
 })
 export class LeadsComponent implements OnInit {
-  public mainStyle: SafeHtml;
-  public image: string;
-  public text: SafeHtml;
-  public textStyle: SafeHtml;
-  public barStyle: SafeHtml;
-  public barText: string;
-  public buttonStyle: SafeHtml;
-  public buttonText: string;
-  public formButtonText: string;
-  public leadMagnet: string;
-  public nicheId: number;
-  public caption: string;
+  @ViewChild('subscriptionForm') subscriptionForm;
+  // public mainStyle: SafeHtml;
+  // public image: string;
+  // public text: SafeHtml;
+  // public textStyle: SafeHtml;
+  // public barStyle: SafeHtml;
+  // public barText: string;
+  // public buttonStyle: SafeHtml;
+  // public buttonText: string;
+  // public formButtonText: string;
+  // public leadMagnet: string;
+  // public nicheId: number;
+  // public caption: string;
+
+  public leadPage: SafeHtml;
 
   constructor(private dataService: DataService, private sanitizer: DomSanitizer, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.leadPage = this.sanitizer.bypassSecurityTrustHtml('<button>Click Me!</button>');
     this.route.paramMap.subscribe(param => {
       let leadPage = param.get('leadPage');
 
       //Get the lead page
       this.dataService.get('api/Leads', [{ key: 'leadPage', value: leadPage }])
         .subscribe((response: any) => {
-          this.mainStyle = this.sanitizer.bypassSecurityTrustStyle(response.mainStyle);
-          this.image = response.image;
-          this.text = this.sanitizer.bypassSecurityTrustHtml(response.text);
-          this.textStyle = this.sanitizer.bypassSecurityTrustStyle(response.textStyle);
-          this.barStyle = this.sanitizer.bypassSecurityTrustStyle(response.barStyle);
-          this.barText = response.barText;
-          this.buttonStyle = this.sanitizer.bypassSecurityTrustStyle(response.buttonStyle);
-          this.buttonText = response.buttonText;
-          this.formButtonText = response.formButtonText;
-          this.leadMagnet = response.leadMagnet;
-          this.nicheId = response.nicheId;
-          this.caption = 'Enter your name and email below to get the ' + this.leadMagnet + '!';
+          // this.mainStyle = this.sanitizer.bypassSecurityTrustStyle(response.mainStyle);
+          // this.image = response.image;
+          // this.text = this.sanitizer.bypassSecurityTrustHtml(response.text);
+          // this.textStyle = this.sanitizer.bypassSecurityTrustStyle(response.textStyle);
+          // this.barStyle = this.sanitizer.bypassSecurityTrustStyle(response.barStyle);
+          // this.barText = response.barText;
+          // this.buttonStyle = this.sanitizer.bypassSecurityTrustStyle(response.buttonStyle);
+          // this.buttonText = response.buttonText;
+          // this.formButtonText = response.formButtonText;
+          // this.leadMagnet = response.leadMagnet;
+          // this.nicheId = response.nicheId;
+          // this.caption = 'Enter your name and email below to get the ' + this.leadMagnet + '!';
         });
     })
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClick(event) {
+    if (event.target.tagName === 'BUTTON') this.subscriptionForm.open();
   }
 }

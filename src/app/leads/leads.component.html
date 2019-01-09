@@ -1,11 +1,14 @@
-<div class="main-container" [style]="mainStyle" *ngIf="mainStyle">
-  <div class="content-container">
+<!-- <div class="main-container" [style]="mainStyle" *ngIf="mainStyle"> -->
+<!-- <div class="content-container">
     <img src="/Images/{{image}}">
     <div class="text-container" [innerHTML]="text" [style]="textStyle"></div>
   </div>
   <div class="bar" [style]="barStyle" >
     <p [innerHTML]="barText"></p>
     <button (click)="subscriptionForm.open()" [innerHTML]="buttonText" [style]="buttonStyle"></button>
-  </div>
-</div>
-<leads-subscription-form #subscriptionForm [caption]="caption" [buttonText]="formButtonText" [leadMagnet]="leadMagnet" [nicheId]="nicheId"></leads-subscription-form>
+  </div> -->
+<!-- </div> -->
+<div [innerHTML]='leadPage'></div>
+
+<leads-subscription-form #subscriptionForm [caption]="caption" [buttonText]="formButtonText" [leadMagnet]="leadMagnet"
+  [nicheId]="nicheId"></leads-subscription-form>
