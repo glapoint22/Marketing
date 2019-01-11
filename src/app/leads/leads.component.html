@@ -1,14 +1,4 @@
-<!-- <div class="main-container" [style]="mainStyle" *ngIf="mainStyle"> -->
-<!-- <div class="content-container">
-    <img src="/Images/{{image}}">
-    <div class="text-container" [innerHTML]="text" [style]="textStyle"></div>
-  </div>
-  <div class="bar" [style]="barStyle" >
-    <p [innerHTML]="barText"></p>
-    <button (click)="subscriptionForm.open()" [innerHTML]="buttonText" [style]="buttonStyle"></button>
-  </div> -->
-<!-- </div> -->
 <div [innerHTML]='leadPage'></div>
 
-<leads-subscription-form #subscriptionForm [caption]="caption" [buttonText]="formButtonText" [leadMagnet]="leadMagnet"
-  [nicheId]="nicheId"></leads-subscription-form>
+<leads-subscription-form #subscriptionForm [caption]="caption" [buttonText]="'Yes! I would like the free ' + leadMagnetTitle"
+  [leadMagnet]="leadMagnetTitle" [nicheId]="nicheId"></leads-subscription-form>
