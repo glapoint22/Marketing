@@ -23,7 +23,7 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit() {
     window.dispatchEvent(new Event('resize'));
-    this.customerId = this.cookieService.get('Customer');
+    // this.customerId = this.cookieService.get('Customer');
 
     this.route.queryParamMap.subscribe(queryParams => {
       //Get the search words from the url
@@ -61,7 +61,8 @@ export class SearchBarComponent implements OnInit {
 
   onEmailClick() {
     if (this.customerId) {
-      this.router.navigate(['/preferences'], { queryParams: { 'cid': this.cookieService.get('Customer') } });
+      // this.router.navigate(['/preferences'], { queryParams: { 'cid': this.cookieService.get('Customer') } });
+      this.router.navigate(['/preferences']);
     } else {
       this.showModalService.showSubscriptionForm(null);
     }

@@ -22,12 +22,12 @@ export class ModalFormComponent extends ModalComponent {
   postData() {
     this.dataService.post(this.url, this.data)
       .subscribe((response: any) => {
-        this.setResponse(response);
+        // this.setResponse(response);
         this.nextAction(response);
       });
   }
 
-  setResponse(response) { }
+  // setResponse(response) { }
   nextAction(response) { }
   setData() { }
 }

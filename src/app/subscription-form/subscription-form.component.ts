@@ -34,12 +34,12 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
     this.postData();
   }
 
-  setResponse(response) {
-    //Check to see if a cookie is set for this customer
-    if (!this.cookieService.check('Customer')) {
-      this.cookieService.set('Customer', response.customer.id, 9999);
-    }
-  }
+  // setResponse(response) {
+  //   //Check to see if a cookie is set for this customer
+  //   if (!this.cookieService.check('Customer')) {
+  //     this.cookieService.set('Customer', response.customer.id, 9999);
+  //   }
+  // }
 
   open(product) {
     this.product = product;

@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   constructor(private dataService: DataService, private cookieService: CookieService) { }
 
   ngOnInit() {
-    this.dataService.get('api/Products', [{ key: 'customerId', value: this.cookieService.get('Customer') }, { key: 'productIds', value: this.cookieService.get('Products') }])
+    this.dataService.get('api/Products', [{ key: 'productIds', value: this.cookieService.get('Products') }])
       .subscribe((response: any) => {
         this.productSliders = response;
       });
