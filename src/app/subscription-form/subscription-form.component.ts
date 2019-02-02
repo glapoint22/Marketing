@@ -64,29 +64,40 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
         window.location.href = this.product.hopLink;
       } else {
         //We have a new customer so naviagate to the thank you page with product info
-        this.router.navigate(['/thank-you'], {
-          queryParams: {
-            'customer': response.customer.name,
-            'customerId': response.customer.id,
-            'hoplink': this.product.hopLink,
-            'productId': this.product.id,
-            'productName': this.product.name
-          }
-        });
+        this.dataService.data = {
+          customer: response.customer.name,
+          hoplink: this.product.hopLink,
+          productId: this.product.id,
+          productName: this.product.name
+        }
+        this.router.navigate(['/thank-you']);
+        // this.router.navigate(['/thank-you'], {
+        //   queryParams: {
+        //     'customer': response.customer.name,
+        //     // 'customerId': response.customer.id,
+        //     'hoplink': this.product.hopLink,
+        //     'productId': this.product.id,
+        //     'productName': this.product.name
+        //   }
+        // });
       }
       //Product was not clicked
     } else {
       //If we have an existing customer, go straight to the preferences page
       if (response.customer.isExistingCustomer) {
-        this.router.navigate(['/preferences'], { queryParams: { 'cid': response.customer.id } });
+        this.router.navigate(['/preferences']);
       } else {
         //We have a new customer so naviagate to the thank you page
-        this.router.navigate(['/thank-you'], {
-          queryParams: {
-            'customer': response.customer.name,
-            'customerId': response.customer.id,
-          }
-        });
+        this.dataService.data = {
+          customer: response.customer.name
+        }
+        this.router.navigate(['/thank-you']);
+        // this.router.navigate(['/thank-you'], {
+        //   queryParams: {
+        //     'customer': response.customer.name,
+        //     // 'customerId': response.customer.id,
+        //   }
+        // });
       }
     }
   }

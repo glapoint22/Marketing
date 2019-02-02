@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from "../data.service";
 import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+import { ShowModalService } from '../show-modal.service';
 
 @Component({
   selector: 'preferences',
@@ -21,29 +21,23 @@ export class PreferencesComponent implements OnInit {
   public updatedSubscriptions: Array<any> = [];
   public isUpdated: boolean = false;
 
-  constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private dataService: DataService, private router: Router, private showModalService: ShowModalService) { }
 
   ngOnInit() {
-    this.route.queryParamMap.subscribe(queryParams => {
-      //Get the customer id from the query params
-      let customerId = queryParams.get('cid');
-
-      //If customer id is null, navigate back to route
-      if (customerId === null) {
-        this.router.navigate(['']);
-        return;
-      }
-
-      //Get the preferences
-      this.dataService.get('api/Subscriptions', [{ key: 'customerId', value: customerId }])
-        .subscribe((response: any) => {
+    //Get the preferences
+    this.dataService.get('api/Subscriptions')
+      .subscribe((response: any) => {
+        if (response === null) {
+          this.router.navigate(['']);
+          this.showModalService.showSubscriptionForm(null);
+        } else {
           this.init(response);
-        });
-    });
+        }
+      });
   }
 
   init(data) {
-    this.customerId = data.customer.id;
+    // this.customerId = data.customer.id;
     this.subscriptions = data.subscriptions;
     this.originalName = this.name = data.customer.name;
     this.originalEmail = this.email = data.customer.email;
@@ -53,7 +47,7 @@ export class PreferencesComponent implements OnInit {
 
   onUpdate(emailSendFrequency) {
     if (emailSendFrequency !== undefined) this.emailSendFrequency = emailSendFrequency;
-    
+
     //Check to see if anything has been updated
     if (this.name.toLocaleLowerCase() !== this.originalName.toLocaleLowerCase() ||
       this.email.toLocaleLowerCase() !== this.originalEmail.toLocaleLowerCase() ||

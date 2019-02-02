@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-thank-you',
@@ -16,18 +17,18 @@ export class ThankYouComponent implements OnInit {
   public productId: string;
   public productName: string;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
-    this.route.queryParamMap.subscribe(queryParams => {
-      this.customer = queryParams.get('customer');
-      this.email = queryParams.get('email');
-      this.leadMagnet = queryParams.get('leadMagnet');
-      this.customerId = queryParams.get('customerId');
-      this.type = queryParams.get('type');
-      this.hoplink = queryParams.get('hoplink');
-      this.productId = queryParams.get('productId');
-      this.productName = queryParams.get('productName');
-    });
+    if (!this.dataService.data.customer) {
+      this.router.navigate(['']);
+    } else {
+      this.customer = this.dataService.data.customer;
+      this.email = this.dataService.data.email;
+      this.leadMagnet = this.dataService.data.leadMagnet;
+      this.hoplink = this.dataService.data.hoplink;
+      this.productId = this.dataService.data.productId;
+      this.productName = this.dataService.data.productName;
+    }
   }
 }

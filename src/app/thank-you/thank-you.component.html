@@ -19,10 +19,10 @@
         </span>
         <span *ngIf="!leadMagnet">Here </span>
         is a link to your
-        <a [href]="'/preferences?cid=' + customerId">
+        <a href="/preferences">
           email subscriptions</a> where you can set your email preferences and personal information. You can access your
         email subscriptions at any time by clicking on the
-        <a [href]="'/preferences?cid=' + customerId">Manage Email Subscriptions</a>
+        <a href="/preferences">Manage Email Subscriptions</a>
         link at the bottom of every email we send you.
 
         <span *ngIf="hoplink && productId">
