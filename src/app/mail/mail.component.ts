@@ -20,7 +20,6 @@ export class MailComponent implements OnInit {
       this.dataService.get('api/Mail', [{ key: 'emailId', value: emailId }])
         .subscribe((response: any) => {
           if (response === null) {
-            this.router.navigate(['']);
             this.showModalService.showSubscriptionForm(null);
           } else {
             this.html = this.sanitizer.bypassSecurityTrustHtml(response);

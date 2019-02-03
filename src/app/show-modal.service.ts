@@ -17,8 +17,8 @@ export class ShowModalService {
     });
   }
 
-  showSubscriptionForm(product) {
-    this.subscriptionForm.next(product);
+  showSubscriptionForm(data) {
+    this.subscriptionForm.next(data);
   }
 
   showLoading(show) {

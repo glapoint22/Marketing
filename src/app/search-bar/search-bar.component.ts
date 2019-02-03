@@ -13,7 +13,6 @@ import { CookieService } from 'ngx-cookie-service';
 export class SearchBarComponent implements OnInit {
   public query: string;
   public logo: string;
-  public customerId: string;
 
   constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute, public searchBarService: SearchBarService, private showModalService: ShowModalService, private cookieService: CookieService) { }
 
@@ -60,12 +59,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   onEmailClick() {
-    if (this.customerId) {
-      // this.router.navigate(['/preferences'], { queryParams: { 'cid': this.cookieService.get('Customer') } });
-      this.router.navigate(['/preferences']);
-    } else {
-      this.showModalService.showSubscriptionForm(null);
-    }
+    this.router.navigate(['/preferences']);
   }
 
   @HostListener('window:resize', ['$event'])

@@ -1,6 +1,6 @@
 <div class="background-container">
   <search-bar></search-bar>
-  <div class="content">
+  <div *ngIf="dataService.data && dataService.data.updatedSubscriptions" class="content">
     <div class="thanks">
       Thanks, {{name}}!
     </div>

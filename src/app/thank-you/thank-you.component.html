@@ -1,6 +1,6 @@
 <search-bar></search-bar>
 <div class="container">
-  <div style="margin-bottom: 120px;">
+  <div *ngIf="dataService.data && dataService.data.customer" style="margin-bottom: 120px;">
     <div class="content">
       <h1>
         Thank you, {{customer}}!

@@ -10,7 +10,8 @@ import { ShowModalService } from '../show-modal.service';
 })
 export class PreferencesComponent implements OnInit {
   public subscriptions;
-  public customerId;
+  private customerId: string;
+  private sessionId: string
   public name: string;
   public email: string;
   public emailSendFrequency: number;
@@ -28,7 +29,6 @@ export class PreferencesComponent implements OnInit {
     this.dataService.get('api/Subscriptions')
       .subscribe((response: any) => {
         if (response === null) {
-          this.router.navigate(['']);
           this.showModalService.showSubscriptionForm(null);
         } else {
           this.init(response);
@@ -37,7 +37,8 @@ export class PreferencesComponent implements OnInit {
   }
 
   init(data) {
-    // this.customerId = data.customer.id;
+    this.customerId = data.customer.id;
+    this.sessionId = data.customer.sessionId;
     this.subscriptions = data.subscriptions;
     this.originalName = this.name = data.customer.name;
     this.originalEmail = this.email = data.customer.email;
@@ -100,7 +101,8 @@ export class PreferencesComponent implements OnInit {
         originalName: this.originalName,
         originalEmail: this.originalEmail,
         originalEmailSendFrequency: this.originalEmailSendFrequency,
-        EmailSentDate: this.emailSentDate
+        EmailSentDate: this.emailSentDate,
+        SessionID: this.sessionId
       },
       updatedSubscriptions: this.updatedSubscriptions
     };

@@ -22,14 +22,12 @@ export class LeadsSubscriptionFormComponent extends SubscriptionFormComponent {
   }
 
   nextAction(response) {
-    this.router.navigate(['/thank-you'], {
-      queryParams: {
-        'customer': response.customer.name,
-        'email': response.customer.email,
-        'leadMagnet': response.leadMagnet,
-        'customerId': response.customer.id,
-      }
-    });
+    this.dataService.data = {
+      customer: response.customer.name,
+      email: response.customer.email,
+      leadMagnet: response.leadMagnet,
+    }
+    this.router.navigate(['/thank-you']);
   }
 
   close() {

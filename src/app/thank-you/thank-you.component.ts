@@ -20,15 +20,14 @@ export class ThankYouComponent implements OnInit {
   constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
-    if (!this.dataService.data.customer) {
-      this.router.navigate(['']);
-    } else {
+    if (this.dataService.data && this.dataService.data.customer) {
       this.customer = this.dataService.data.customer;
       this.email = this.dataService.data.email;
       this.leadMagnet = this.dataService.data.leadMagnet;
       this.hoplink = this.dataService.data.hoplink;
       this.productId = this.dataService.data.productId;
       this.productName = this.dataService.data.productName;
+      this.customerId = this.dataService.data.customerId
     }
   }
 }

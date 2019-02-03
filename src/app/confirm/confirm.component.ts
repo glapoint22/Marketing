@@ -54,8 +54,6 @@ export class ConfirmComponent implements OnInit {
         this.preferenceList.push(preferences.updatedSubscriptions[i].isSubscribed ? `Subscriibed to ${preferences.updatedSubscriptions[i].nicheName}` : `Unsubscribed from ${preferences.updatedSubscriptions[i].nicheName}`);
       }
 
-    } else {
-      this.router.navigate(['']);
     }
   }
 }

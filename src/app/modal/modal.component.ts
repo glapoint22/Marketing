@@ -11,7 +11,11 @@ export class ModalComponent implements OnInit {
 
   ngOnInit() {
     this.observable.subscribe(data => {
-      this.open(data);
+      if (data === 'close') {
+        this.close(true);
+      } else {
+        this.open(data);
+      }
     });
   }
 
@@ -19,7 +23,7 @@ export class ModalComponent implements OnInit {
     event.stopPropagation();
   }
 
-  close() {
+  close(closedByNavigation?: boolean) {
     document.body.style.overflow = 'visible';
     this.show = false;
   }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from "../data.service";
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'home',
@@ -10,10 +9,10 @@ import { CookieService } from 'ngx-cookie-service';
 export class HomeComponent implements OnInit {
   public productSliders;
 
-  constructor(private dataService: DataService, private cookieService: CookieService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.get('api/Products', [{ key: 'productIds', value: this.cookieService.get('Products') }])
+    this.dataService.get('api/Products')
       .subscribe((response: any) => {
         this.productSliders = response;
       });

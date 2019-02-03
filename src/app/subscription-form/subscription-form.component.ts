@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalFormComponent } from '../modal-form/modal-form.component';
-import { CookieService } from 'ngx-cookie-service';
 import { DataService } from "../data.service";
 import { Router } from '@angular/router';
 import { ShowModalService } from "../show-modal.service";
@@ -11,14 +10,14 @@ import { ShowModalService } from "../show-modal.service";
   styleUrls: ['./subscription-form.component.scss', '../modal/modal.component.scss']
 })
 export class SubscriptionFormComponent extends ModalFormComponent implements OnInit {
-  @Input() caption: string = 'Would you like to sign up to our mailing list to receive exciting offers?';
-  @Input() buttonText: string = 'Yes! Sign me up!';
+  @Input() caption: string = 'Enter your name and email below to manage your email subscriptions';
+  @Input() buttonText: string = 'Submit';
   public name: string;
   public email: string;
 
   private product;
 
-  constructor(private cookieService: CookieService, dataService: DataService, router: Router, showModalService: ShowModalService) { super(dataService, router, showModalService); }
+  constructor(dataService: DataService, router: Router, showModalService: ShowModalService) { super(dataService, router, showModalService); }
 
   ngOnInit() {
     this.url = 'api/Subscriptions';
@@ -46,12 +45,15 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
     super.open();
   }
 
-  close() {
+  close(closedByNavigation: boolean) {
     if (this.show) {
       super.close();
       if (this.product && this.product.hopLink) {
         this.showModalService.showLoading(true);
         window.location.href = this.product.hopLink;
+      }else {
+        if(!closedByNavigation)this.router.navigate(['']);
+        
       }
     }
   }
@@ -65,27 +67,21 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
       } else {
         //We have a new customer so naviagate to the thank you page with product info
         this.dataService.data = {
+          customerId: response.customer.id,
           customer: response.customer.name,
           hoplink: this.product.hopLink,
           productId: this.product.id,
           productName: this.product.name
         }
         this.router.navigate(['/thank-you']);
-        // this.router.navigate(['/thank-you'], {
-        //   queryParams: {
-        //     'customer': response.customer.name,
-        //     // 'customerId': response.customer.id,
-        //     'hoplink': this.product.hopLink,
-        //     'productId': this.product.id,
-        //     'productName': this.product.name
-        //   }
-        // });
       }
       //Product was not clicked
     } else {
       //If we have an existing customer, go straight to the preferences page
       if (response.customer.isExistingCustomer) {
-        this.router.navigate(['/preferences']);
+        // this.router.navigate(['/preferences']);
+        // this.router.navigate([this.dataService.data.redirect], { queryParams: this.dataService.data.queryParams });
+        window.location.reload();
       } else {
         //We have a new customer so naviagate to the thank you page
         this.dataService.data = {

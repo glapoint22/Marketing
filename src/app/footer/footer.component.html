@@ -16,8 +16,7 @@
   </div>
   <div class="links">
     <a routerLink="/about">About us</a>
-    <a *ngIf="customerId" [routerLink]="['/preferences']" [queryParams]="{cid: customerId}">Manage email subscriptions</a>
-    <span *ngIf="!customerId" (click)="showModalService.showSubscriptionForm(null)">Sign up to our mailing list</span>
+    <a [routerLink]="['/preferences']">Manage email subscriptions</a>
     <a href="https://www.clkbank.com">Order support</a>
   </div>
 </div>
