@@ -2,8 +2,6 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { DataService } from "../data.service";
 import { Router, ActivatedRoute } from '@angular/router';
 import { SearchBarService } from "../search-bar.service";
-import { ShowModalService } from "../show-modal.service";
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'search-bar',
@@ -14,7 +12,7 @@ export class SearchBarComponent implements OnInit {
   public query: string;
   public logo: string;
 
-  constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute, public searchBarService: SearchBarService, private showModalService: ShowModalService, private cookieService: CookieService) { }
+  constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute, public searchBarService: SearchBarService) { }
 
   stopPropagation(event): void {
     event.stopPropagation();
@@ -22,8 +20,6 @@ export class SearchBarComponent implements OnInit {
 
   ngOnInit() {
     window.dispatchEvent(new Event('resize'));
-    // this.customerId = this.cookieService.get('Customer');
-
     this.route.queryParamMap.subscribe(queryParams => {
       //Get the search words from the url
       this.query = queryParams.get('query');

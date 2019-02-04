@@ -27,13 +27,22 @@ export class LeadsComponent implements OnInit {
           this.leadPage = this.sanitizer.bypassSecurityTrustHtml(response.body.replace(/title="[a-zA-Z0-9-.]+"/g, ''));
           this.leadMagnetTitle = response.title;
           this.nicheId = response.nicheId;
-          this.caption = 'Enter your name and email below to get the free ' + this.leadMagnetTitle + '!';
+          this.caption = 'Enter your name and email below to get your free ' + this.leadMagnetTitle + '!';
         });
     })
   }
 
   @HostListener('document:click', ['$event'])
   onClick(event) {
-    if (event.target.id === 'button' || (event.target.parentElement && event.target.parentElement.id === 'button')) this.subscriptionForm.open();
+    if (event.target.id === 'button' || (event.target.parentElement && event.target.parentElement.id === 'button')) {
+      this.dataService.post('api/Subscriptions', { nicheId: this.nicheId, leadMagnet: this.leadMagnetTitle })
+        .subscribe((response: any) => {
+          if (response === null) {
+            this.subscriptionForm.open();
+          } else {
+            this.subscriptionForm.nextAction(response);
+          }
+        });
+    }
   }
 }

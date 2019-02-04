@@ -49,6 +49,7 @@ import { RadioFilterOptionsComponent } from './radio-filter-options/radio-filter
 import { CheckboxFilterOptionsComponent } from './checkbox-filter-options/checkbox-filter-options.component';
 import { CustomInputComponent } from './custom-input/custom-input.component';
 import { RadioButtonComponent } from './radio-button/radio-button.component';
+import { NoDataComponent } from './no-data/no-data.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { RadioButtonComponent } from './radio-button/radio-button.component';
     CheckboxFilterOptionsComponent,
     CustomInputComponent,
     RadioButtonComponent,
+    NoDataComponent,
   ],
   imports: [
     BrowserModule,

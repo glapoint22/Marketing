@@ -1,6 +1,6 @@
 <div class="background-container">
   <search-bar></search-bar>
-  <div *ngIf="dataService.data && dataService.data.updatedSubscriptions" class="content">
+  <div *ngIf="dataService.data && dataService.data.updatedSubscriptions; else noData" class="content">
     <div class="thanks">
       Thanks, {{name}}!
     </div>
@@ -14,5 +14,8 @@
       </li>
     </ul>
   </div>
+  <ng-template #noData>
+    <no-data></no-data>
+  </ng-template>
   <footer></footer>
 </div>

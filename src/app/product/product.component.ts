@@ -23,7 +23,7 @@ export class ProductComponent {
       this.cookieService.set('Products', this.product.id, 9999);
     }
 
-    if (this.cookieService.check('Customer')) {
+    if (this.cookieService.check('session')) {
       this.showModalService.showLoading(true);
       window.location.href = this.product.hopLink;
     } else {

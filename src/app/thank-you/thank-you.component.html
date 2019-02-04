@@ -1,6 +1,6 @@
 <search-bar></search-bar>
 <div class="container">
-  <div *ngIf="dataService.data && dataService.data.customer" style="margin-bottom: 120px;">
+  <div *ngIf="dataService.data && dataService.data.customer; else noData" style="margin-bottom: 120px;">
     <div class="content">
       <h1>
         Thank you, {{customer}}!
@@ -11,28 +11,33 @@
           An email has been sent to
           <b>
             <i>{{email}}</i>
-          </b> where you will be able to download your
+          </b> where you will be able to download your free
           <b>
             <i>{{leadMagnet}}</i>
-          </b>. If you don’t see your new email, check your spam folder and please be sure to whitelist the Niche Shack email
-          address. We have more exciting offers we'd love to send you, but we don't want to spam your inbox, so here
+          </b>. If you don’t see your new email, check your spam folder and please be sure to whitelist the Niche Shack
+          email
+          address. We have more exciting offers we'd love to send you, but we don't want to spam your inbox. So here
         </span>
         <span *ngIf="!leadMagnet">Here </span>
         is a link to your
         <a href="/preferences">
-          email subscriptions</a> where you can set your email preferences and personal information. You can access your
+          email subscriptions</a> where you can set your email preferences and personal information. You can access
+        your
         email subscriptions at any time by clicking on the
         <a href="/preferences">Manage Email Subscriptions</a>
         link at the bottom of every email we send you.
 
-        <span *ngIf="hoplink && productId">
+        <span *ngIf="hoplink">
           Click
-          <a [href]="hoplink + '?tid=' + customerId + productId">here</a> to proceed to {{productName}}.
+          <a [href]="hoplink">here</a> to proceed to {{productName}}.
         </span>
         Also, be sure to check out our featured categories below.
       </p>
     </div>
     <featured-categories></featured-categories>
   </div>
+  <ng-template #noData>
+    <no-data></no-data>
+  </ng-template>
   <footer></footer>
 </div>

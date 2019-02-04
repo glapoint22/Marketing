@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { ShowModalService } from './show-modal.service';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,20 @@ import { ShowModalService } from './show-modal.service';
 export class AppComponent {
   public isError: boolean;
 
-  constructor(router: Router, showModalService: ShowModalService) {
-    router.events.subscribe((val) => {
-        if(val instanceof NavigationEnd){
-          showModalService.showSubscriptionForm('close');
-        }
+  constructor(private router: Router, private showModalService: ShowModalService, private dataService: DataService) { }
+
+  ngOnInit() {
+    this.router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        this.showModalService.showSubscriptionForm('close');
+      }
     });
+
+    this.dataService.get('api/Customers/Session').subscribe((response) => {
+      response;
+     });
   }
+
   ngAfterContentChecked() {
     this.isError = document.getElementById('error') !== null;
   }

@@ -33,13 +33,6 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
     this.postData();
   }
 
-  // setResponse(response) {
-  //   //Check to see if a cookie is set for this customer
-  //   if (!this.cookieService.check('Customer')) {
-  //     this.cookieService.set('Customer', response.customer.id, 9999);
-  //   }
-  // }
-
   open(product) {
     this.product = product;
     super.open();
@@ -61,16 +54,16 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
   nextAction(response) {
     //If a product was clicked
     if (this.product && this.product.hopLink) {
+      let hoplink = this.product.hopLink + '?tid=' + response.customer.id + this.product.id;
+
       //If we have an existing customer, go straight to the product page
       if (response.customer.isExistingCustomer) {
-        window.location.href = this.product.hopLink;
+        window.location.href = hoplink;
       } else {
         //We have a new customer so naviagate to the thank you page with product info
         this.dataService.data = {
-          customerId: response.customer.id,
           customer: response.customer.name,
-          hoplink: this.product.hopLink,
-          productId: this.product.id,
+          hoplink: hoplink,
           productName: this.product.name
         }
         this.router.navigate(['/thank-you']);
@@ -79,8 +72,6 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
     } else {
       //If we have an existing customer, go straight to the preferences page
       if (response.customer.isExistingCustomer) {
-        // this.router.navigate(['/preferences']);
-        // this.router.navigate([this.dataService.data.redirect], { queryParams: this.dataService.data.queryParams });
         window.location.reload();
       } else {
         //We have a new customer so naviagate to the thank you page
@@ -88,12 +79,6 @@ export class SubscriptionFormComponent extends ModalFormComponent implements OnI
           customer: response.customer.name
         }
         this.router.navigate(['/thank-you']);
-        // this.router.navigate(['/thank-you'], {
-        //   queryParams: {
-        //     'customer': response.customer.name,
-        //     // 'customerId': response.customer.id,
-        //   }
-        // });
       }
     }
   }
