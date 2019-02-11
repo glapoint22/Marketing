@@ -12,7 +12,7 @@ export class ConfirmComponent implements OnInit {
   public email: string;
   public preferenceList: Array<any> = [];
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(public dataService: DataService, private router: Router) { }
 
   ngOnInit() {
     let preferences;

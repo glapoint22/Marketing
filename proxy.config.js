@@ -4,8 +4,10 @@ const PROXY_CONFIG = [
             "/api",
             "/Images"
         ],
-        target: "http://localhost:49699/",
-        secure: false
+        target: "http://www.nicheshack.com/",
+        // target: "http://localhost:49699/",
+        secure: false,
+        "changeOrigin": true
     }
 ]
 module.exports = PROXY_CONFIG;

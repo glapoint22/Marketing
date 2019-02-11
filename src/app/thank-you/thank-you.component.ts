@@ -15,7 +15,7 @@ export class ThankYouComponent implements OnInit {
   public hoplink: string;
   public productName: string;
 
-  constructor(private router: Router, private dataService: DataService) { }
+  constructor(private router: Router, public dataService: DataService) { }
 
   ngOnInit() {
     if (this.dataService.data && this.dataService.data.customer) {
