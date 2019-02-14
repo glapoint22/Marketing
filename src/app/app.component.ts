@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { ShowModalService } from './show-modal.service';
 import { DataService } from './data.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { DataService } from './data.service';
 export class AppComponent {
   public isError: boolean;
 
-  constructor(private router: Router, private showModalService: ShowModalService, private dataService: DataService) { }
+  constructor(private router: Router, private showModalService: ShowModalService, private dataService: DataService, private cookieService: CookieService) { }
 
   ngOnInit() {
     this.router.events.subscribe((val) => {
@@ -19,9 +20,15 @@ export class AppComponent {
       }
     });
 
-    this.dataService.get('api/Customers/Session').subscribe((response) => {
-      response;
-     });
+
+    if (!this.cookieService.check('_session')) {
+      this.cookieService.set('_session', '');
+      this.dataService.get('api/Customers/Session').subscribe((response) => {
+        response;
+      });
+    }
+
+
   }
 
   ngAfterContentChecked() {
